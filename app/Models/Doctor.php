@@ -10,6 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 class Doctor extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-    public $timestamp = false;
-    protected $fillable = ["Doctor_Id","First_Name",'Last_Name','Email','Password','Role_ID', 'Salary' ];
+    public $timestamps = false;
+    protected $fillable = ["Doctor_ID", "First_Name", "Last_Name", "Email", "Password","Role_ID","Salary"];
 }
