@@ -14,7 +14,19 @@ class FinalProjectController extends Controller
     //     Testtable::create($test);
     //     return $test;
     // }
+    // Home page functions
+    function showLoginPage(){
+        return view("LoginPage");
+    }
+    function showRegisterPage(){
+        return view("RegisterPage");
+    }
+    //end home page functions
 
+    //return to home
+    function showHomePage(){
+        return view("/welcome");
+    }
     function doctorForm(){
        return view("registerDoctor");
     }
