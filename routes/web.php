@@ -17,6 +17,7 @@ use App\Http\Controllers\FinalProjectController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage']);
 Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
 //end home page functions
@@ -24,7 +25,14 @@ Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
 //Return to home function
 Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
 //end return to home function
-Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
 
+//Register Doctor Routes
+Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
 Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
+
+//Register Admin Routes
+Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
+Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
+
+
 
