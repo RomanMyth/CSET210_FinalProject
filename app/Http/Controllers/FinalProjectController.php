@@ -24,4 +24,7 @@ class FinalProjectController extends Controller
         Doctor::create($data);
         return $data;
     }
+    function showAdminReport(){
+        return view("AdminsReport");
+    }
 }
