@@ -26,7 +26,7 @@
             </div>
         </form>
         <br>
-        <form id="loginForm" action="HomePage.html">
+        <form action={{ url('/') }} method="get">
             <button>Return to Home Page</button>
         </form>
     </div>

@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+    <title>Old Home Page</title>
 </head>
 <body>
-    <h1>Words</h1>
-    <form action={{ url('/testdone') }} method="post">
+    <h1>Welcome to retirement home!</h1>
+    <form action={{ url('/LoginPage') }} method="get">
         @csrf
-        <label>One</label>
-        <input name="column1">
-        <label>Two</label>
-        <input name="column2">
-        <button>Enter</button>
+        <button>Log in</button>
+    </form>
+    <form action={{ url('/RegisterPage') }} method="get">
+        @csrf
+        <button>Register</button>
     </form>
 </body>
 </html>
