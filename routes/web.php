@@ -17,7 +17,14 @@ use App\Http\Controllers\FinalProjectController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
 
+//Register Doctor Routes
+Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
 Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
+
+//Register Admin Routes
+Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
+Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
+
+
 
