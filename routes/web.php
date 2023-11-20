@@ -34,5 +34,8 @@ Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
 Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
 Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
 
+//View Admin Report
+Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
+
 
 

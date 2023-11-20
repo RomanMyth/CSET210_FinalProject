@@ -44,6 +44,7 @@ class FinalProjectController extends Controller
         return $data;
     }
 
+
     function addAdmin(Request $request){
         $data = $request->all();
         Admin::create($data);
@@ -51,4 +52,8 @@ class FinalProjectController extends Controller
     }
 
     //End Functions to add form data to database
+  
+    function showAdminReport(){
+        return view("AdminsReport");
+    }
 }
