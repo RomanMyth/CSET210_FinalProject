@@ -9,8 +9,22 @@ use App\Models\Admin;
 
 class FinalProjectController extends Controller
 {
+    // Home page functions
+    function showLoginPage(){
+        return view("LoginPage");
+    }
+    function showRegisterPage(){
+        return view("RegisterPage");
+    }
+    //end home page functions
+  
+    //return to home
+    function showHomePage(){
+        return view("/welcome");
+    }
+  
     //Start function to return register views
-
+  
     function doctorForm(){
        return view("registerDoctor");
     }
