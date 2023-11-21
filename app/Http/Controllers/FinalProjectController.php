@@ -35,6 +35,12 @@ class FinalProjectController extends Controller
 
     //End functions to return register views
 
+    //Start functions to patients home page
+    function showPatientsHomePage(){
+        return view("patientsHome");
+    }
+    //End functions to patients home page
+
 
     //Start Functions to add form data to database
 

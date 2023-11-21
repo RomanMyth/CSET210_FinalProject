@@ -37,7 +37,7 @@
     <input name="First_Name" type="checkbox">
     <br>
     <br>
-    <label for="First_Name">Afternoon Medicine&nbsp</label>
+    <label for="First_Name">Afternoon Medicine</label>
     <input name="First_Name" type="checkbox">
     <br>
     <br>

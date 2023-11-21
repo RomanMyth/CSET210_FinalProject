@@ -37,5 +37,8 @@ Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
 //View Admin Report
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
 
+//Patients Home Routes
+Route::get('/patientsHome',[FinalProjectController::class,'showPatientsHomePage']);
+
 
 
