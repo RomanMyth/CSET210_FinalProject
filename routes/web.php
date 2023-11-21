@@ -17,5 +17,10 @@ use App\Http\Controllers\FinalProjectController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/testdone',[FinalProjectController::class,'addData']);
+Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
 
+Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
+
+Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
+
+Route::get('/DoctorsAppointment', [FinalProjectController::class,'showdoctorsappointment']);
