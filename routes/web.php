@@ -34,6 +34,10 @@ Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
 Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
 Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
 
+//Register Supervisor Routes
+Route::get('/supervisorForm',[FinalProjectController::class,'supervisorForm']);
+Route::post('/addSupervisor',[FinalProjectController::class,'addSupervisor']);
+
 //View Admin Report
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
 

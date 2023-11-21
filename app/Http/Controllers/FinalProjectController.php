@@ -33,6 +33,10 @@ class FinalProjectController extends Controller
         return view("registerAdmin");
     }
 
+    function supervisorForm(){
+        return view("registerSupervisor");
+    }
+
     //End functions to return register views
 
 
@@ -46,6 +50,12 @@ class FinalProjectController extends Controller
 
 
     function addAdmin(Request $request){
+        $data = $request->all();
+        Admin::create($data);
+        return $data;
+    }
+
+    function addSupervisor(Request $request){
         $data = $request->all();
         Admin::create($data);
         return $data;
