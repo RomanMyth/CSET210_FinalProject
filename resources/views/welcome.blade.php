@@ -33,7 +33,7 @@
       width: 120%;
       height: 170%;
       transform: translate(-50%, -50%);
-
+      z-index: -1;
       animation: rotateOrbit 32s linear infinite; /* 16s for each full orbit */
     }
 
