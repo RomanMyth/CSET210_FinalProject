@@ -108,5 +108,16 @@
     });
   </script>
 
+</head>
+<body>
+    <h1>Welcome to retirement home!</h1>
+    <form action={{ url('/LoginPage') }} method="get">
+        @csrf
+        <button>Log in</button>
+    </form>
+    <form action={{ url('/RegisterPage') }} method="get">
+        @csrf
+        <button>Register</button>
+    </form>
 </body>
 </html>

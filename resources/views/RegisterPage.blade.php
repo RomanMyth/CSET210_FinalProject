@@ -51,6 +51,11 @@
             <div class="form-group">
                 <input type="submit" value="Register">
             </div>
+            <div class="form-group">
+                <form action={{ url('/welcome') }} method="get">
+                    <button>Return to Home Page</button>
+                </form>
+            </div>
         </form>
     </div>
 </body>
