@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['Role_ID', 'First_Name', 'Last_Name', 'Email', 'Phone', 'Password', 'DOB', 'Family_Code', 'Emergency_Contact', 'Emergency_Contact_Relation'];
 }
