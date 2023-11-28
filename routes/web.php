@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage']);
 Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
+
+Route::post('/addToRegister', [FinalProjectController::class,'addToRegister']);
 //end home page functions
 
 //Return to home function
@@ -36,6 +38,10 @@ Route::get('/DoctorsAppointment', [FinalProjectController::class,'showdoctorsapp
 //Register Admin Routes
 Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
 Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
+
+//Register Supervisor Routes
+Route::get('/supervisorForm',[FinalProjectController::class,'supervisorForm']);
+Route::post('/addSupervisor',[FinalProjectController::class,'addSupervisor']);
 
 //View Admin Report
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
