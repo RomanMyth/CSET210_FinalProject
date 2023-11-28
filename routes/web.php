@@ -30,12 +30,13 @@ Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
 Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
 Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
 
+//Show doctors appointment page
+Route::get('/DoctorsAppointment', [FinalProjectController::class,'showdoctorsappointment']);
+
 //Register Admin Routes
 Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
 Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
 
 //View Admin Report
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
-
-
 

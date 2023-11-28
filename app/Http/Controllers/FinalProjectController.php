@@ -56,4 +56,7 @@ class FinalProjectController extends Controller
     function showAdminReport(){
         return view("AdminsReport");
     }
+    function showdoctorsappointment(){
+        return view("DoctorsAppointment");
+    }
 }
