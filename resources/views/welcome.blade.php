@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Day-Night Transition</title>
   <style>
-    body {
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+      body {
       margin: 0;
       overflow: hidden;
       background-color: #0d47a1; /* Initial background color (night) */
@@ -33,7 +34,7 @@
       width: 120%;
       height: 170%;
       transform: translate(-50%, -50%);
-
+      z-index: -1;
       animation: rotateOrbit 32s linear infinite; /* 16s for each full orbit */
     }
 
@@ -73,6 +74,38 @@
       0%, 100% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    #btn1{
+      width: 100%;
+      height: 70px;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: transparent;
+      color: white; 
+            font-size: 30px; 
+            text-shadow: -2px 2px 0 #000, 
+                          2px 2px 0 #000, 
+                         2px -2px 0 #000, 
+                        -2px -2px 0 #000;
+      text-shadow: h-shadow v-shadow blur-radius color;
+    }
+    #btn1:hover{
+    background-color:#0d47a1
+    }
+    .hold{
+      border-color: 2px solid black;
+      padding: 70px;
+      border-radius: 10px;
+    }
+    h1{
+      font-family: 'DM Serif Display', serif;
+      text-shadow: h-shadow v-shadow blur-radius color;
+      color: white; 
+            font-size: 50px; 
+            text-shadow: -1px 1px 0 #000, 
+                          1px 1px 0 #000, 
+                         1px -1px 0 #000, 
+                        -1px -1px 0 #000;
+    }
   </style>
 </head>
 <body>
@@ -110,14 +143,20 @@
 
 </head>
 <body>
-    <h1>Welcome to retirement home!</h1>
+  <div class="hold">
+     <h1>Welcome to the retirement home!</h1>
+    <br>
     <form action={{ url('/LoginPage') }} method="get">
         @csrf
-        <button>Log in</button>
+        <br>
+        <button id="btn1">Log in</button>
     </form>
     <form action={{ url('/RegisterPage') }} method="get">
         @csrf
-        <button>Register</button>
+        <br>
+        <button id="btn1">Register</button>
     </form>
+  </div>
+   
 </body>
 </html>
