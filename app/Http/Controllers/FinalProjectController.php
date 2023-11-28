@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Admin;
+use app\Models\Supervisor;
 
 class FinalProjectController extends Controller
 {
@@ -23,6 +24,13 @@ class FinalProjectController extends Controller
         return view("/welcome");
     }
   
+
+    //Users apply for register function
+    function addToRegister(Request $request){
+        $role = $request->input("role");
+        return $role;
+    }
+
     //Start function to return register views
   
     function doctorForm(){
@@ -57,7 +65,7 @@ class FinalProjectController extends Controller
 
     function addSupervisor(Request $request){
         $data = $request->all();
-        Admin::create($data);
+        Supervisor::create($data);
         return $data;
     }
 

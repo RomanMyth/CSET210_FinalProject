@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage']);
 Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
+
+Route::post('/addToRegister', [FinalProjectController::class,'addToRegister']);
 //end home page functions
 
 //Return to home function
