@@ -154,10 +154,16 @@ class FinalProjectController extends Controller
     //End functions to return register views
 
     //Start functions to patients home page
-    function showPatientsHomePage(){
+    function showPatientsHome(){
         return view("patientsHome");
     }
     //End functions to patients home page
+
+    //Start functions to caregivers home page
+    function showCaregiversHome(){
+        return view("caregiversHome");
+    }
+    //End functions to caregivers home page
 
 
     //Start Functions to add form data to database
@@ -216,6 +222,22 @@ class FinalProjectController extends Controller
         echo "paymewnt";
     }
     //End functions for Admin Dashboard Page
+
+    //Start functions for Supervisor Dashboard
+    function showSupervisorDashboard(){
+        return view("supervisorDashboard");
+    }
+    //End function for Supervisor Dashboard
+
+    //Start functions for Doctors Home
+    function showDoctorsHome(){
+        return view("doctorsHome");
+    }
+    function showPatientOfDoc(){
+        echo "Patientofdoc";
+    }
+    //End function for Doctors Home
+
   
     function showAdminReport(){
         return view("AdminsReport");

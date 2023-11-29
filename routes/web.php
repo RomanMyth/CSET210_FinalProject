@@ -50,6 +50,7 @@ Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
 
 //Admin Dashboard Page Routes
 Route::get('/adminDashboard',[FinalProjectController::class,'showAdminDashboard']);
+
 Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrationApproval']);
 Route::get('/addInfoOfPatient',[FinalProjectController::class,'showAddInfoOfPatient']);
 Route::get('/employee',[FinalProjectController::class,'showEmployee']);
@@ -59,3 +60,16 @@ Route::get('/patients',[FinalProjectController::class,'showPatients']);
 Route::get('/roles',[FinalProjectController::class,'showRoles']);
 Route::get('/rosterNewRoster',[FinalProjectController::class,'showRosterNewRoster']);
 Route::get('/payment',[FinalProjectController::class,'showPayment']);
+
+//Supervsior Dashboard Page Routes
+Route::get('/supervisorDashboard',[FinalProjectController::class,'showSupervisorDashboard']);
+
+//Doctors Home Page Routes
+Route::get('/doctorsHome',[FinalProjectController::class,'showDoctorsHome']);
+Route::get('/patientOfDoc',[FinalProjectController::class,'showPatientOfDoc']);
+
+//Patients Home Page Routes
+Route::get('/patientsHome',[FinalProjectController::class,'showPatientsHome']);
+
+//Caregivers Home Page Routes
+Route::get('/caregiversHome',[FinalProjectController::class,'showCaregiversHome']);
