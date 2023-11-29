@@ -34,8 +34,8 @@
         <form id="registrationForm" action="addToRegister" method="POST">
             @csrf
             <div class="form-group">
-                <label for="role">Role:</label>
-                <select id="role" name="role" required>
+                <label for="Role_ID">Role:</label>
+                <select id="role" name="Role_ID" required>
                     <option value="Admin">Admin</option>
                     <option value="Supervisor">Supervisor</option>
                     <option value="Doctor">Doctor</option>
