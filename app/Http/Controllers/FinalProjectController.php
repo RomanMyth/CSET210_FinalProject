@@ -14,12 +14,28 @@ use Illuminate\Support\Facades\DB;
 
 class FinalProjectController extends Controller
 {
+    //Generates a family for the register page
+    function generateFamilyCode(){
+        $FamilyCode = rand(10000, 999999);
+        $codes = DB::table("patients")->get();
+        foreach($codes as $code){
+            //if the code matches one in the database it calls the function again
+            if($FamilyCode == $code->Family_Code){
+                return $this->generateFamilyCode();
+            }
+        }
+        return $FamilyCode;
+    }
+
     // Home page functions
     function showLoginPage(){
         return view("LoginPage");
     }
     function showRegisterPage(){
-        return view("RegisterPage");
+        //Calls the function to generate a family code and passes it to the view
+        $FamilyCode = $this->generateFamilyCode();
+
+        return view("RegisterPage", ['FamilyCode' => $FamilyCode]);
     }
     //end home page functions
   
@@ -78,6 +94,47 @@ class FinalProjectController extends Controller
 
 
         return $data;
+    }
+
+
+    //
+    function userLogin(Request $request){
+        $patients = DB::table("patients")->get();
+        foreach($patients as $patient){
+            if( $patient->Email == $request->Email && $patient->Password == $request->Password ){
+                return $patient;
+            }
+        }
+
+        $doctors = DB::table("doctors")->get();
+        foreach($doctors as $doctor){
+            if( $doctor->Email == $request->Email && $doctor->Password == $request->Password ){
+                return $doctor;
+            }
+        }
+
+        $supervisors = DB::table("supervisors")->get();
+        foreach($supervisors as $supervisor){
+            if( $supervisor->Email == $request->Email && $supervisor->Password == $request->Password ){
+                return $supervisor;
+            }
+        }
+
+        $caregivers = DB::table("caregivers")->get();
+        foreach($caregivers as $caregiver){
+            if( $caregiver->Email == $request->Email && $caregiver->Password == $request->Password ){
+                return $caregiver;
+            }
+        }
+
+        $admins = DB::table("admins")->get();
+        foreach($admins as $admin){
+            if( $admin->Email == $request->Email && $admin->Password == $request->Password ){
+                return $admin;
+            }
+        }
+
+        return view("LoginPage");
     }
 
     //Start function to return register views

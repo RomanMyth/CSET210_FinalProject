@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage']);
 Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
 
+Route::POST('/Login',[FinalProjectController::class,'userLogin']);
+
 Route::post('/addToRegister', [FinalProjectController::class,'addToRegister']);
 //end home page functions
 
