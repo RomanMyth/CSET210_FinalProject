@@ -12,8 +12,8 @@
     <br>
     <br>
     <h2>You are signed in as</h2>
-    <h2>firstName</h2>
-    <h2>lastname</h2>
+    <h2>{{ $First_Name }}</h2>
+    <h2>{{ $Last_Name }}</h2>
     <form action={{ url('/registrationApproval') }} method="get">
         <button>Registration Approval</button>
     </form>
