@@ -71,7 +71,7 @@
             <div id="Patient-Fields">
                 <div class="form-group">
                     <label for="Family_Code">Family Code (this will be used by your family members):</label>
-                    <input type="number" id="family-code" name="Family_Code" >
+                    <input type="number" id="family-code" name="Family_Code" value={{ $FamilyCode }} readonly>
                 </div>
                 <div class="form-group">
                     <label for="Emergency_Contact">Emergency Contact Name:</label>
@@ -86,12 +86,12 @@
             <div class="form-group">
                 <button type="submit" value="Register">Register</button>
             </div>
-            <div class="form-group">
-                <form action={{ url('/welcome') }} method="get">
-                    <button>Return to Home Page</button>
-                </form>
-            </div>
         </form>
+        <div class="form-group">
+            <form action={{ url('/welcome') }} method="get">
+                <button>Return to Home Page</button>
+            </form>
+        </div>
     </div>
 </body>
 

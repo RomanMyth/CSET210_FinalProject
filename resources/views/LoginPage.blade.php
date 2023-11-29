@@ -12,17 +12,18 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form id="loginForm" action="login.php" method="POST">
+        <form id="loginForm" action="Login" method="POST">
+            @CSRF
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
+                <label for="Email">Email:</label>
+                <input type="text" id="email" name="Email" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="Password">Password:</label>
+                <input type="password" id="password" name="Password" required>
             </div>
             <div class="form-group">
-                <input type="submit" value="Login">
+                <button type="submit">Login</button>
             </div>
         </form>
         <br>
