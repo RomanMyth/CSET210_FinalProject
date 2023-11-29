@@ -96,6 +96,12 @@ class FinalProjectController extends Controller
 
     //End functions to return register views
 
+    //Start functions to patients home page
+    function showPatientsHomePage(){
+        return view("patientsHome");
+    }
+    //End functions to patients home page
+
 
     //Start Functions to add form data to database
 
@@ -119,6 +125,40 @@ class FinalProjectController extends Controller
     // }
 
     //End Functions to add form data to database
+
+    //Start Functions for Admin Dashboard Page
+    function showAdminDashboard(){
+        return view("adminDashboard");
+    }
+
+    function showRegistrationApproval(){
+        echo "Reg";
+    }
+    function showAddInfoOfPatient(){
+        echo "addinfo";
+    }
+    function showEmployee(){
+        echo "emp";
+    }
+    function showDoctAppt(){
+        echo "docappt";
+    }
+    function showAdminsReport(){
+        echo "admins";
+    }
+    function showPatients(){
+        echo "pat";
+    }
+    function showRoles(){
+        echo "roles";
+    }
+    function showRosterNewRoster(){
+        echo "rosterns";
+    }
+    function showPayment(){
+        echo "paymewnt";
+    }
+    //End functions for Admin Dashboard Page
   
     function showAdminReport(){
         return view("AdminsReport");
