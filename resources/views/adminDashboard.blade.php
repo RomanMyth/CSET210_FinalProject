@@ -110,8 +110,8 @@
   <h1>Admin Dashboard</h1>
   <br>
   <h2>You are signed in as</h2>
-  <h2>First name:</h2>
-  <h2>Last name:</h2>
+  <h2>{{ $First_Name }}</h2>
+  <h2>{{ $Last_Name }}</h2>
   <form action={{ url('/registrationApproval') }} method="get">
       <button id="btn1">Registration Approval</button>
   </form>
