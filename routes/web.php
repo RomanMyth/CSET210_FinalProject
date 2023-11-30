@@ -34,6 +34,7 @@ Route::post('/Register', [FinalProjectController::class, 'approveRegistration'])
 Route::get('/welcome', [FinalProjectController::class, 'showHomePage']);
 //end return to home function
 
+<<<<<<< HEAD
 //Register Doctor Routes
 Route::get('/doctorForm', [FinalProjectController::class, 'doctorForm']);
 Route::post('/addDoctor', [FinalProjectController::class, 'addDoctor']);
@@ -51,3 +52,47 @@ Route::post('/addSupervisor', [FinalProjectController::class, 'addSupervisor']);
 
 //View Admin Report
 Route::get('/AdminsReport', [FinalProjectController::class, 'showAdminReport']);
+=======
+//Doctors appointment page routes
+Route::get('/DoctorsAppointment', [FinalProjectController::class,'showDoctorsAppointment']);
+
+//View Admin Report
+Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
+
+//Admin Dashboard Page Routes
+Route::get('/adminDashboard',[FinalProjectController::class,'showAdminDashboard']);
+
+Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrationApproval']);
+Route::get('/addInfoOfPatient',[FinalProjectController::class,'showAddInfoOfPatient']);
+Route::get('/employee',[FinalProjectController::class,'showEmployee']);
+Route::get('/doctAppt',[FinalProjectController::class,'showDoctAppt']);
+
+
+
+Route::get('/rosterNewRoster',[FinalProjectController::class,'showRosterNewRoster']);
+
+//Supervsior Dashboard Page Routes
+Route::get('/supervisorDashboard',[FinalProjectController::class,'showSupervisorDashboard']);
+
+//Doctors Home Page Routes
+Route::get('/doctorsHome',[FinalProjectController::class,'showDoctorsHome']);
+Route::get('/patientOfDoc',[FinalProjectController::class,'showPatientOfDoc']);
+
+//Patients Home Page Routes
+Route::get('/patientsHome',[FinalProjectController::class,'showPatientsHome']);
+
+//Caregivers Home Page Routes
+Route::get('/caregiversHome',[FinalProjectController::class,'showCaregiversHome']);
+
+//Payment Page Routes
+Route::get('/payment',[FinalProjectController::class,'showPayment']);
+
+//Admins Report Page Routes
+Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);
+
+//Patients page routes
+Route::get('/patients',[FinalProjectController::class,'showPatients']);
+
+//Roles page routes
+Route::get('/roles',[FinalProjectController::class,'showRoles']);
+>>>>>>> a77ad26352e6e2e68e47e64ea55b036a1cd42654

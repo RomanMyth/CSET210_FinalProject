@@ -87,6 +87,7 @@ class FinalProjectController extends Controller
         return $data;
     }
 
+<<<<<<< HEAD
     function addSupervisor(Request $request)
     {
         $data = $request->all();
@@ -95,11 +96,26 @@ class FinalProjectController extends Controller
     }
 
     //End Functions to add form data to database
+=======
+    function showRegistrationApproval(){
+        echo "Reg";
+    }
+    function showAddInfoOfPatient(){
+        echo "addinfo";
+    }
+    function showEmployee(){
+        echo "emp";
+    }
+    function showRosterNewRoster(){
+        echo "rosterns";
+    }
+>>>>>>> a77ad26352e6e2e68e47e64ea55b036a1cd42654
 
     function showAdminReport()
     {
         return view("AdminsReport");
     }
+<<<<<<< HEAD
     function showdoctorsappointment()
     {
         return view("DoctorsAppointment");
@@ -156,5 +172,30 @@ class FinalProjectController extends Controller
 
 
     //WRAPPER**
+=======
+    //End functions for admins report page
+
+    //Start functions for doctors appointment page
+    function showDoctorsAppointment(){
+        return view("DoctorsAppointment");
+    }
+    //End fuctions for doctors appointment page
+
+    //Start functions for patients page
+    function showPatients(){
+        return view("patients");
+    }
+    //End functions for patients page
+
+    //Start functions for roles page
+    function showRoles(){
+        return view("roles");
+    }
+    //End functions for roles page
+  
+    function showAdminReport(){
+        return view("AdminsReport");
+    }
+>>>>>>> a77ad26352e6e2e68e47e64ea55b036a1cd42654
 }
 //end of WRAPPER**
