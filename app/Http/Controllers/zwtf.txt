@@ -1,0 +1,26 @@
+ function login_process(Request $request)
+    {
+        // Handle the login process
+        if ($request->isMethod('post')) {
+            $email = $request->input('email');
+            $enteredPassword = $request->input('password');
+
+            // Retrieve the user by email from the database
+            $user = User::where('email', $email)->first();
+
+            // Check if user exists and verify password
+            if ($user && $enteredPassword === $user->password) {
+                // Start session and store necessary data
+                session()->put('loggedin', true);
+                session()->put('email', $email);
+
+                // Redirect to the caregiver home page upon successful login
+                return redirect('/caregiver');
+            } else {
+                // Redirect back to login page with an error message for invalid credentials
+                return redirect('/')->with('error', 'Invalid email or password.');
+            }
+        }
+    }
+
+    WHY IS THIS WRAPPED IN A IF STATEMENT???????? MR.SMITH

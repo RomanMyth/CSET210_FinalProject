@@ -8,6 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
     public $timestamps = false;
-    protected $fillable = ['Role_ID', 'First_Name', 'Last_Name', 'Email', 'Phone', 'Password', 'DOB', 'Family_Code', 'Emergency_Contact', 'Emergency_Contact_Relation'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'Role_ID',
+        'First_Name',
+        'Last_Name',
+        'Email',
+        'Phone',
+        'Password',
+        'DOB',
+        'Family_Code',
+        'Emergency_Contact',
+        'Emergency_Contact_Relation',
+    ];
 }

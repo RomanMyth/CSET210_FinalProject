@@ -18,31 +18,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage']);
-Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
+Route::get('/LoginPage', [FinalProjectController::class, 'showLoginPage']);
+Route::get('/RegisterPage', [FinalProjectController::class, 'showRegisterPage']);
 
-Route::post('/addToRegister', [FinalProjectController::class,'addToRegister']);
+Route::post('/addToRegister', [FinalProjectController::class, 'addToRegister']);
 //end home page functions
 
 //Return to home function
-Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
+Route::get('/welcome', [FinalProjectController::class, 'showHomePage']);
 //end return to home function
 
 //Register Doctor Routes
-Route::get('/doctorForm',[FinalProjectController::class,'doctorForm']);
-Route::post('/addDoctor',[FinalProjectController::class,'addDoctor']);
+Route::get('/doctorForm', [FinalProjectController::class, 'doctorForm']);
+Route::post('/addDoctor', [FinalProjectController::class, 'addDoctor']);
 
 //Show doctors appointment page
-Route::get('/DoctorsAppointment', [FinalProjectController::class,'showdoctorsappointment']);
+Route::get('/DoctorsAppointment', [FinalProjectController::class, 'showdoctorsappointment']);
 
 //Register Admin Routes
-Route::get('/adminForm',[FinalProjectController::class,'adminForm']);
-Route::post('/addAdmin',[FinalProjectController::class,'addAdmin']);
+Route::get('/adminForm', [FinalProjectController::class, 'adminForm']);
+Route::post('/addAdmin', [FinalProjectController::class, 'addAdmin']);
 
 //Register Supervisor Routes
-Route::get('/supervisorForm',[FinalProjectController::class,'supervisorForm']);
-Route::post('/addSupervisor',[FinalProjectController::class,'addSupervisor']);
+Route::get('/supervisorForm', [FinalProjectController::class, 'supervisorForm']);
+Route::post('/addSupervisor', [FinalProjectController::class, 'addSupervisor']);
 
 //View Admin Report
-Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
+Route::get('/AdminsReport', [FinalProjectController::class, 'showAdminReport']);
 
+//CareGiver Home Page Route
+Route::get('/caregiver', [FinalProjectController::class, 'showcaregiverpage']);
+//get data **LOGIN CHECK**
+Route::post('/loginCheck', [FinalProjectController::class, 'login_process']);
+//Get Doctor Page
+Route::get('/DoctorPage', [FinalProjectController::class, 'showDoctorPage']);

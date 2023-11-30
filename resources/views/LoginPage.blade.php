@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
     <title>Login Page</title>
-
 </head>
 
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form id="loginForm" action="login.php" method="POST">
+        <form id="loginForm" action="{{ url('/loginCheck') }}" method="POST">
+            @csrf
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" required>
@@ -26,10 +26,15 @@
             </div>
         </form>
         <br>
-        <form action={{ url('/') }} method="get">
+        <form action="welcome" method="get">
             <button>Return to Home Page</button>
         </form>
     </div>
+    <br>
+    <form action={{ url('/caregiver') }} method="get">
+        @csrf
+        <button>care giver dashboard</button>
+    </form>
 </body>
 
 </html>
