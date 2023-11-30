@@ -34,8 +34,8 @@
         <form id="registrationForm" action="addToRegister" method="POST">
             @csrf
             <div class="form-group">
-                <label for="role">Role:</label>
-                <select id="role" name="role" required>
+                <label for="Role_ID">Role:</label>
+                <select id="role" name="Role_ID" required>
                     <option value="Admin">Admin</option>
                     <option value="Supervisor">Supervisor</option>
                     <option value="Doctor">Doctor</option>
@@ -45,24 +45,24 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <label for="First_Name">First Name:</label>
+                <input type="text" id="First_Name" name="First_Name" required>
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <label for="Last_Name">Last Name:</label>
+                <input type="text" id="Last_Name" name="Last_Name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="Email">Email:</label>
+                <input type="Email" id="Email" name="Email" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="Phone">Phone:</label>
+                <input type="tel" id="Phone" name="Phone" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="Password">Password:</label>
+                <input type="Password" id="Password" name="Password" required>
             </div>
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
@@ -71,27 +71,27 @@
             <div id="Patient-Fields">
                 <div class="form-group">
                     <label for="Family_Code">Family Code (this will be used by your family members):</label>
-                    <input type="number" id="family-code" name="Family_Code" >
+                    <input type="number" id="family-code" name="Family_Code" value={{ $FamilyCode }} readonly>
                 </div>
                 <div class="form-group">
                     <label for="Emergency_Contact">Emergency Contact Name:</label>
                     <input type="text" id="emergency-contact" name="Emergency_Contact" >
                 </div>
                 <div class="form-group">
-                    <label for="Emergency_Contact_Relation">Relation to Contact:</label>
-                    <input type="text" id="emergency-contact-relation" name="Emergency_Contact_Relation" >
+                    <label for="Contact_Relation">Relation to Contact:</label>
+                    <input type="text" id="emergency-contact-relation" name="Contact_Relation" >
                 </div>
             </div>
             <!-- Add more fields as needed -->
             <div class="form-group">
                 <button type="submit" value="Register">Register</button>
             </div>
-            <div class="form-group">
-                <form action={{ url('/welcome') }} method="get">
-                    <button>Return to Home Page</button>
-                </form>
-            </div>
         </form>
+        <div class="form-group">
+            <form action={{ url('/welcome') }} method="get">
+                <button>Return to Home Page</button>
+            </form>
+        </div>
     </div>
 </body>
 

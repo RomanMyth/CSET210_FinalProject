@@ -6,12 +6,25 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Doctor;
+use App\Models\Admin;
 use app\Models\Supervisor;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class FinalProjectController extends Controller
 {
+    //Generates a family for the register page
+    function generateFamilyCode()
+    {
+        $FamilyCode = rand(10000, 999999);
+        $codes = DB::table("patients")->get();
+        foreach ($codes as $code) {
+            //if the code matches one in the database it calls the function again
+            if ($FamilyCode == $code->Family_Code) {
+                return $this->generateFamilyCode();
+            }
+        }
+        return $FamilyCode;
+    }
+
     // Home page functions
     function showLoginPage()
     {

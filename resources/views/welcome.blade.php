@@ -36,7 +36,7 @@
             width: 120%;
             height: 170%;
             transform: translate(-50%, -50%);
-            z-index: -1;
+
             animation: rotateOrbit 32s linear infinite;
             /* 16s for each full orbit */
         }
@@ -141,22 +141,13 @@
 
     <body>
         <h1>Welcome to retirement home!</h1>
-
         <form action={{ url('/LoginPage') }} method="get">
             @csrf
-            <button>
-                <h1>Log in</h1>
-            </button>
+            <button>Log in</button>
         </form>
         <form action={{ url('/RegisterPage') }} method="get">
             @csrf
             <button>Register</button>
-        </form>
-        <form action={{ url('/DoctorPage') }} method="get">
-            @csrf
-            <button>
-                <h1>Doctors</h1>
-            </button>
         </form>
     </body>
 

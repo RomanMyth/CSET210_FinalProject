@@ -24,6 +24,12 @@ Route::get('/RegisterPage', [FinalProjectController::class, 'showRegisterPage'])
 Route::post('/addToRegister', [FinalProjectController::class, 'addToRegister']);
 //end home page functions
 
+Route::POST('/Login', [FinalProjectController::class, 'userLogin']);
+
+Route::post('/addToRegister', [FinalProjectController::class, 'addToRegistration']);
+Route::get('/viewRegisters', [FinalProjectController::class, 'viewRegisters']);
+Route::post('/Register', [FinalProjectController::class, 'approveRegistration']);
+
 //Return to home function
 Route::get('/welcome', [FinalProjectController::class, 'showHomePage']);
 //end return to home function
@@ -45,10 +51,3 @@ Route::post('/addSupervisor', [FinalProjectController::class, 'addSupervisor']);
 
 //View Admin Report
 Route::get('/AdminsReport', [FinalProjectController::class, 'showAdminReport']);
-
-//CareGiver Home Page Route
-Route::get('/caregiver', [FinalProjectController::class, 'showcaregiverpage']);
-//get data **LOGIN CHECK**
-Route::post('/loginCheck', [FinalProjectController::class, 'login_process']);
-//Get Doctor Page
-Route::get('/DoctorPage', [FinalProjectController::class, 'showDoctorPage']);
