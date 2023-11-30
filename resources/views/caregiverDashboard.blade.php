@@ -20,34 +20,34 @@
         position: relative;
         width: 100vw;
         height: 100vh;
-        background: radial-gradient(circle at 50% 50%, #ff6b6b, #ffb6c1, #87ceeb);
-        z-index: -1;
+        background: radial-gradient(circle at 50% 50%, #ff6b6b, #ffb6c1, #87ceeb); /* More radiant sky colors */
+        z-index: -1; /* Set a higher z-index for the background */
       }
 
       .sun {
         position: absolute;
-        bottom: 10%;
+        bottom: 50%;
         left: 50%;
         transform: translate(-50%, 50%);
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(circle at 50% 50%, #ffd700, transparent);
+        width: 150px; /* Adjusted size of the sun */
+        height: 150px; /* Adjusted size of the sun */
+        background: radial-gradient(circle at 50% 50%, #ffd700, transparent); /* Different color for the sun */
         border-radius: 50%;
-        animation: ripple 3s infinite ease-in-out;
-        z-index: -2;
+        animation: ripple 3s infinite ease-in-out; /* Add ripple animation */
+        z-index: -2; /* Set a higher z-index for the sun */
       }
 
       .water {
         position: absolute;
         width: 100%;
-        height: 5%;
+        height: 44%;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgba(255, 255, 255, .1);
+        background-color: rgba(255, 255, 255, .1); /* Adjusted water colors to create a reflection effect */
         overflow: hidden;
         box-shadow: inset 0 1px 4px -3px white;
-        z-index: -2;
+        z-index: -2; /* Set a higher z-index for the water */
       }
 
       @keyframes ripple {
@@ -73,11 +73,7 @@ button {
   background-color:  rgba(134, 184, 224, 0.7);
   box-shadow: 5px 5px 10px rgba(134, 184, 224, 0.7);
 }
-  .hold{
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      flex-direction: row;
+      .hold{
       border-color: 1px solid black;
       padding-left:30px;
       border-radius: 10px;
@@ -91,11 +87,11 @@ button {
       align-items: left;
       z-index: 1;
       margin-left: 30px;
-      height: 60%;
+      height: 70%;
     }
     #btn1{
     width: 85%;
-      height: 90px;
+      height: 40px;
       border: 2px solid black;
       border-radius: 5px;
       background-color: transparent;
@@ -105,16 +101,11 @@ button {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
     }
     .hold2{
         display: flex;
         height: 100%;
         width: 100%;
-        justify-content: center;
-        align-content: center;
-        flex-direction: row;
     }
     .hold3{
       display: flex;
@@ -136,7 +127,7 @@ button {
     <div class="sun"></div>
     <div class="water"></div>
       <div class="hold3">
-        <h1 class="boxed">Admin Dashboard</h1>
+        <h1 class="boxed">Caregiver Dashboard</h1>
       </div>
     <div class="hold2">    
           <br>
@@ -157,10 +148,7 @@ button {
           </form>
           <br>
           
-         
-      </div> 
-      <div class="hold">
-        <form action={{ url('/doctAppt') }} method="get">
+          <form action={{ url('/doctAppt') }} method="get">
               <button id="btn1">Doctor's Appointment</button>
           </form>
           <br>
@@ -175,9 +163,7 @@ button {
           </form>
           
           <br>
-      </div>
-      <div class="hold">
-        <form action={{ url('/roles') }} method="get">
+          <form action={{ url('/roles') }} method="get">
               <button id="btn1">Roles</button>
           </form>
           
@@ -191,8 +177,8 @@ button {
               <button id="btn1">Payment</button>
         </form>
         <br>
-      </div>
-          
+      </div> 
+     
     </div>
     
 </div>

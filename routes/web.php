@@ -78,6 +78,9 @@ Route::post('changePatientGroup',[FinalProjectController::class,'changePatientGr
 //Supervsior Dashboard Page Routes
 Route::get('/supervisorDashboard',[FinalProjectController::class,'showSupervisorDashboard']);
 
+//Caregiver Dashboard Page Routes
+Route::get('/caregiverDashboard',[FinalProjectController::class,'showCaregiverDashboard']);
+
 //Doctors Home Page Routes
 Route::get('/doctorsHome',[FinalProjectController::class,'showDoctorsHome']);
 Route::get('/patientOfDoc',[FinalProjectController::class,'showPatientOfDoc']);
