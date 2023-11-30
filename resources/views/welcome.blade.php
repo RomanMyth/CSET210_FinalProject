@@ -81,7 +81,7 @@
       border-radius: 5px;
       background-color: transparent;
       color: white; 
-            font-size: 30px; 
+            font-size: 25px; 
             text-shadow: -2px 2px 0 #000, 
                           2px 2px 0 #000, 
                          2px -2px 0 #000, 
@@ -92,15 +92,18 @@
     background-color:#0d47a1
     }
     .hold{
-      border-color: 2px solid black;
+      border-color: 1px solid black;
       padding: 70px;
       border-radius: 10px;
+      background-color: rgba(0, 0, 0, .2);
+      border: #000 2px solid;
+      box-shadow: 5px 5px 10px black;
     }
     h1{
       font-family: 'DM Serif Display', serif;
       text-shadow: h-shadow v-shadow blur-radius color;
       color: white; 
-            font-size: 50px; 
+            font-size: 35px; 
             text-shadow: -1px 1px 0 #000, 
                           1px 1px 0 #000, 
                          1px -1px 0 #000, 
