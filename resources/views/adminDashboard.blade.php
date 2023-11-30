@@ -12,6 +12,8 @@
         overflow: hidden;
         width: 100%;
         height: 100%;
+        position: absolute;
+        z-index: -1;
       }
 
       .scene {
@@ -80,6 +82,7 @@
       justify-content: center;
       flex-direction: column;
       align-items: left;
+      z-index: 1;
       margin-left: 30px;
       margin-top: 50px;
       margin-bottom: 50px
@@ -112,17 +115,17 @@
   <h2>You are signed in as</h2>
   <h2>First Name</h2>
   <h2>Last Name</h2>
-  <form action={{ url('/registrationApproval') }} method="get">
+  <form action={{ url('/viewRegisters') }} method="get">
       <button id="btn1">Registration Approval</button>
   </form>
   <br>
   
-  <form action={{ url('/addInfoOfPatient') }} method="get">
+  <form action={{ url('/additionalPatientInfo') }} method="get">
       <button id="btn1">Additional Information of Patient</button>
   </form>
   <br>
   
-  <form action={{ url('/employee') }} method="get">
+  <form action={{ url('/viewEmployees') }} method="get">
       <button id="btn1">Employee</button>
   </form>
   <br>
