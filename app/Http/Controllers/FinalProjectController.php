@@ -185,6 +185,10 @@ class FinalProjectController extends Controller
 
     //Start Functions for Admin Dashboard Page
 
+    function showAdminDashboard(){
+        return view("adminDashboard");
+    }
+
     function showRegistrationApproval(){
         echo "Reg";
     }
