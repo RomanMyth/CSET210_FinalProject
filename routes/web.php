@@ -46,11 +46,10 @@ Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrat
 Route::get('/addInfoOfPatient',[FinalProjectController::class,'showAddInfoOfPatient']);
 Route::get('/employee',[FinalProjectController::class,'showEmployee']);
 Route::get('/doctAppt',[FinalProjectController::class,'showDoctAppt']);
-Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);
+
 Route::get('/patients',[FinalProjectController::class,'showPatients']);
 Route::get('/roles',[FinalProjectController::class,'showRoles']);
 Route::get('/rosterNewRoster',[FinalProjectController::class,'showRosterNewRoster']);
-Route::get('/payment',[FinalProjectController::class,'showPayment']);
 
 //Supervsior Dashboard Page Routes
 Route::get('/supervisorDashboard',[FinalProjectController::class,'showSupervisorDashboard']);
@@ -64,3 +63,9 @@ Route::get('/patientsHome',[FinalProjectController::class,'showPatientsHome']);
 
 //Caregivers Home Page Routes
 Route::get('/caregiversHome',[FinalProjectController::class,'showCaregiversHome']);
+
+//Payment Page Routes
+Route::get('/payment',[FinalProjectController::class,'showPayment']);
+
+//Admins Report Page Routes
+Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);

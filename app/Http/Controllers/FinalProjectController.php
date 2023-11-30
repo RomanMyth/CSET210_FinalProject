@@ -201,9 +201,7 @@ class FinalProjectController extends Controller
     function showDoctAppt(){
         echo "docappt";
     }
-    function showAdminsReport(){
-        echo "admins";
-    }
+
     function showPatients(){
         echo "pat";
     }
@@ -213,9 +211,7 @@ class FinalProjectController extends Controller
     function showRosterNewRoster(){
         echo "rosterns";
     }
-    function showPayment(){
-        echo "paymewnt";
-    }
+
     //End functions for Admin Dashboard Page
 
     //Start functions for Supervisor Dashboard
@@ -233,6 +229,17 @@ class FinalProjectController extends Controller
     }
     //End function for Doctors Home
 
+    //Start functions for payment page
+    function showPayment(){
+        return view("PaymentPage");
+    }
+    //End functions for payment page
+
+    //Start functions for admins report page
+    function showAdminsReport(){
+        return view("AdminsReport");
+    }
+    //End functions for admins report page
   
     function showAdminReport(){
         return view("AdminsReport");
