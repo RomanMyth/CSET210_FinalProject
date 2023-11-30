@@ -192,11 +192,26 @@ class FinalProjectController extends Controller
     function showRegistrationApproval(){
         echo "Reg";
     }
-    function showAddInfoOfPatient(){
-        echo "addinfo";
+    function showAdditionalPatientInfo(){
+        $patients = DB::table("patients")->get();
+
+        return view("additionalPatientInfo", ["patients"=> $patients]);
     }
-    function showEmployee(){
-        echo "emp";
+
+    function changePatientGroup(Request $request){
+        $patient = $request->Patient_ID;
+        $group = $request->input("New-Patient-Group");
+        DB::table("patients")->where("Patient_ID",$patient)->update(["Patient_Group"=> $group]);
+        echo "success";
+    }
+
+    function viewEmployees(){
+        $admins = DB::table("admins")->where("Role_ID", 1)->get();
+        $supervisors = DB::table("supervisors")->where("Role_ID", 3)->get();
+        $doctors = DB::table("doctors")->where("Role_ID", 2)->get();
+        $caregivers = DB::table("caregivers")->where("Role_ID", 4)->get();
+        $patients = DB::table("patients")->where("Role_ID", 5)->get();
+        return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
     }
     function showRosterNewRoster(){
         echo "rosterns";

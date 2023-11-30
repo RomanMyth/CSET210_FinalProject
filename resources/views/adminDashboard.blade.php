@@ -85,6 +85,7 @@ button {
       justify-content: center;
       flex-direction: column;
       align-items: left;
+      z-index: 1;
       margin-left: 30px;
       height: 70%;
     }
@@ -129,7 +130,6 @@ button {
         <h1 class="boxed">Admin Dashboard</h1>
       </div>
     <div class="hold2">    
-       <div class="hold">
           <br>
           {{-- <h2>You are signed in as</h2>
           <h2>First Name</h2>
@@ -137,10 +137,10 @@ button {
           <form action={{ url('/registrationApproval') }} method="get">
               <button id="btn1">Registration Approval</button>
           </form>
-          <br>
-          <form action={{ url('/addInfoOfPatient') }} method="get">
-              <button id="btn1">Additional Information of Patient</button>
-          </form>
+   
+         <form action={{ url('/additionalPatientInfo') }} method="get">
+           <button id="btn1">Additional Information of Patient</button>
+         </form>
           <br>
           
           <form action={{ url('/employee') }} method="get">
