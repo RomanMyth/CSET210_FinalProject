@@ -225,6 +225,10 @@ class FinalProjectController extends Controller
     }
     //End function for Supervisor Dashboard
 
+    function showCaregiverDashboard(){
+        return view("caregiverDashboard");
+    }
+
     //Start functions for Doctors Home
     function showDoctorsHome(){
         return view("doctorsHome");
