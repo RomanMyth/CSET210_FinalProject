@@ -62,14 +62,18 @@ Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
 //Admin Dashboard Page Routes
 Route::get('/adminDashboard',[FinalProjectController::class,'showAdminDashboard']);
 
+Route::get('viewEmployees',[FinalProjectController::class,'viewEmployees']);
+
 Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrationApproval']);
-Route::get('/addInfoOfPatient',[FinalProjectController::class,'showAddInfoOfPatient']);
+Route::get('/additionalPatientInfo',[FinalProjectController::class,'showAdditionalPatientInfo']);
 Route::get('/employee',[FinalProjectController::class,'showEmployee']);
 Route::get('/doctAppt',[FinalProjectController::class,'showDoctAppt']);
 
 
 
 Route::get('/rosterNewRoster',[FinalProjectController::class,'showRosterNewRoster']);
+
+Route::post('changePatientGroup',[FinalProjectController::class,'changePatientGroup']);
 
 //Supervsior Dashboard Page Routes
 Route::get('/supervisorDashboard',[FinalProjectController::class,'showSupervisorDashboard']);
