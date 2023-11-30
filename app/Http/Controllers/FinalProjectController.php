@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Doctor;
-use App\Models\Admin;
 use app\Models\Supervisor;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 
 class FinalProjectController extends Controller
 {
@@ -87,33 +88,27 @@ class FinalProjectController extends Controller
         return $data;
     }
 
-<<<<<<< HEAD
-    function addSupervisor(Request $request)
+    function showRegistrationApproval()
     {
-        $data = $request->all();
-        Supervisor::create($data);
-        return $data;
-    }
-
-    //End Functions to add form data to database
-=======
-    function showRegistrationApproval(){
         echo "Reg";
     }
-    function showAdditionalPatientInfo(){
+    function showAdditionalPatientInfo()
+    {
         $patients = DB::table("patients")->get();
 
-        return view("additionalPatientInfo", ["patients"=> $patients]);
+        return view("additionalPatientInfo", ["patients" => $patients]);
     }
 
-    function changePatientGroup(Request $request){
-        $patient = $request->Patient_ID;
+    function changePatientGroup(Request $request)
+    {
+        $patient = $request->input('patientid');
         $group = $request->input("New-Patient-Group");
-        DB::table("patients")->where("Patient_ID",$patient)->update(["Patient_Group"=> $group]);
+        DB::table("patients")->where("Patient_ID", $patient)->update(["Patient_Group" => $group]);
         echo "success";
     }
 
-    function viewEmployees(){
+    function viewEmployees()
+    {
         $admins = DB::table("admins")->where("Role_ID", 1)->get();
         $supervisors = DB::table("supervisors")->where("Role_ID", 3)->get();
         $doctors = DB::table("doctors")->where("Role_ID", 2)->get();
@@ -121,96 +116,74 @@ class FinalProjectController extends Controller
         $patients = DB::table("patients")->where("Role_ID", 5)->get();
         return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
     }
-    function showRosterNewRoster(){
+    function showRosterNewRoster()
+    {
         echo "rosterns";
     }
->>>>>>> a77ad26352e6e2e68e47e64ea55b036a1cd42654
 
-    function showAdminReport()
+    //End functions for Admin Dashboard Page
+
+    //Start functions for Supervisor Dashboard
+    function showSupervisorDashboard()
+    {
+        return view("supervisorDashboard");
+    }
+    //End function for Supervisor Dashboard
+
+    function showCaregiverDashboard()
+    {
+        return view("caregiverDashboard");
+    }
+
+    //Start functions for Doctors Home
+    function showDoctorsHome()
+    {
+        return view("doctorsHome");
+    }
+    function showPatientOfDoc()
+    {
+        echo "Patientofdoc";
+    }
+    //End function for Doctors Home
+
+    //Start functions for payment page
+    function showPayment()
+    {
+        return view("PaymentPage");
+    }
+    //End functions for payment page
+
+    //Start functions for admins report page
+    function showAdminsReport()
     {
         return view("AdminsReport");
     }
-<<<<<<< HEAD
-    function showdoctorsappointment()
-    {
-        return view("DoctorsAppointment");
-    }
-
-    function showcaregiverpage()
-    {
-        return view("CareGiverHomePage");
-    }
-
-    //show Doctor Page
-    function showDoctorpage()
-    {
-        return view("DoctorHomePage");
-    }
-
-    // Handle the login process
-    function login_process(Request $request)
-    {
-        session_start();
-        // Retrieve user input
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        // Assuming you have a User model and a database table named 'users'
-        $user = User::where('email', $email)->first();
-        $doctor = Doctor::where('email', $email)->first();
-
-        // Verify user credentials
-        if ($user && $password === $user->password) {
-            // Start the session and store necessary data
-            $_SESSION['loggedin'] = true;
-            $_SESSION['email'] = $email;
-
-            // Redirect to the caregiver home page upon successful login
-            return redirect('/caregiver');
-        }
-        // Verify user credentials for doctor
-        elseif ($doctor && $password === $doctor->password) {
-            // Start the session and store necessary data
-            $_SESSION['loggedin'] = true;
-            $_SESSION['email'] = $email;
-
-            // Redirect to the doctor page upon successful login
-            return redirect('/DoctorPage');
-        } else {
-            // Redirect back to login page with an error message for invalid credentials
-            return redirect('/')->with('error', 'Invalid email or password.');
-        }
-    }
-
-
-
-
-
-    //WRAPPER**
-=======
     //End functions for admins report page
 
     //Start functions for doctors appointment page
-    function showDoctorsAppointment(){
+    function showDoctorsAppointment()
+    {
         return view("DoctorsAppointment");
     }
     //End fuctions for doctors appointment page
 
     //Start functions for patients page
-    function showPatients(){
+    function showPatients()
+    {
         return view("patients");
     }
     //End functions for patients page
 
     //Start functions for roles page
-    function showRoles(){
+    function showRoles()
+    {
         return view("roles");
     }
     //End functions for roles page
-  
-    function showAdminReport(){
+
+    function showAdminReport()
+    {
         return view("AdminsReport");
     }
->>>>>>> a77ad26352e6e2e68e47e64ea55b036a1cd42654
 }
 //end of WRAPPER**
