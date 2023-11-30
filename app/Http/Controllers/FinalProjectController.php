@@ -213,24 +213,10 @@ class FinalProjectController extends Controller
         $patients = DB::table("patients")->where("Role_ID", 5)->get();
         return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
     }
-    function showDoctAppt(){
-        echo "docappt";
-    }
-    function showAdminsReport(){
-        echo "admins";
-    }
-    function showPatients(){
-        echo "pat";
-    }
-    function showRoles(){
-        echo "roles";
-    }
     function showRosterNewRoster(){
         echo "rosterns";
     }
-    function showPayment(){
-        echo "paymewnt";
-    }
+
     //End functions for Admin Dashboard Page
 
     //Start functions for Supervisor Dashboard
@@ -248,11 +234,37 @@ class FinalProjectController extends Controller
     }
     //End function for Doctors Home
 
+    //Start functions for payment page
+    function showPayment(){
+        return view("PaymentPage");
+    }
+    //End functions for payment page
+
+    //Start functions for admins report page
+    function showAdminsReport(){
+        return view("AdminsReport");
+    }
+    //End functions for admins report page
+
+    //Start functions for doctors appointment page
+    function showDoctorsAppointment(){
+        return view("DoctorsAppointment");
+    }
+    //End fuctions for doctors appointment page
+
+    //Start functions for patients page
+    function showPatients(){
+        return view("patients");
+    }
+    //End functions for patients page
+
+    //Start functions for roles page
+    function showRoles(){
+        return view("roles");
+    }
+    //End functions for roles page
   
     function showAdminReport(){
         return view("AdminsReport");
-    }
-    function showdoctorsappointment(){
-        return view("DoctorsAppointment");
     }
 }

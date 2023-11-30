@@ -11,51 +11,41 @@
     <h1>Admin Report</h1>
     <br>
     <br>
-    <h2>Patient </h2>
-    <label for="date">Date</label>
-    <input name="date" type="date">
-    <br>
-    <br>
-    <label for="First_Name">Patient</label>
-    <input name="First_Name" type="text">
-    <br>
-    <br>
-    <h2>Doctor</h2>
-    <label for="First_Name">Doctor's Name</label>
-    <input name="First_Name" type="text">
-    <br>
-    <br>
-    <label for="First_Name">Doctor's Appointment</label>
-    <input name="First_Name" type="checkbox">
-    <br>
-    <br>
-    <h2>Caregiver</h2>
-    <label for="First_Name">Caregiver's Name</label>
-    <input name="First_Name" type="text">
-    <br>
-    <br>
-    <label for="First_Name">Morning Medicine</label>
-    <input name="First_Name" type="checkbox">
-    <br>
-    <br>
-    <label for="First_Name">Afternoon Medicine</label>
-    <input name="First_Name" type="checkbox">
-    <br>
-    <br>
-    <label for="First_Name">Night Medicine</label>
-    <input name="First_Name" type="checkbox">
-    <br>
-    <br>
-    <label for="First_Name">Breakfast</label>
-    <input name="First_Name" type="checkbox">
-    <br>
-    <br>
-    <label for="First_Name">Lunch</label>
-    <input name="First_Name" type="checkbox">
-    <br>
-    <br>
-    <label for="First_Name">Dinner</label>
-    <input name="First_Name" type="checkbox">
+    <h3>Check the missed patient activity for a specific day</h3>
+    <form id="adminsReportForm" action="" method="">
+        <label for="date" name="date">Select Date</label>
+        <input type="date" name="date">
+        <br>
+        <br>
+        <button type="submit" name="submit">Submit</button>
+    </form>
+    <h1>Missed Patients Daily Checklists</h1>
+    <table id="patientsHomeTable">
+        <tr id="titleRow" class="patientRow">
+            <td class='titleRowData'><strong>Patient's Name</strong></td>
+            <td class='titleRowData'><strong>Doctor's Name</strong></td>
+            <td class='titleRowData'><strong>Doctor's Appointment</strong></td>
+            <td class='titleRowData'><strong>Caregiver's Name</strong></td>
+            <td class='titleRowData'><strong>Morning Med</strong></td>
+            <td class='titleRowData'><strong>Afternoon Med</strong></td>
+            <td class='titleRowData'><strong>Night Med</strong></td>
+            <td class='titleRowData'><strong>Breakfast</strong></td>
+            <td class='titleRowData'><strong>Lunch</strong></td>
+            <td class='titleRowData'><strong>Dinner</strong></td>
+        </tr>
+        <tr id="titleRow" class="patientRow">
+            <td class='rowData'>John Doe</td>
+            <td class='rowData'>Jane Smith</td>
+            <td class='rowData'>11/22/33</td>
+            <td class='rowData'>Anne Smith</td>
+            <td class='rowData'>yes</td>
+            <td class='rowData'>no</td>
+            <td class='rowData'>no</td>
+            <td class='rowData'>yes</td>
+            <td class='rowData'>no</td>
+            <td class='rowData'>no</td>
+        </tr>
+    </table>
 
 </body>
 </html>

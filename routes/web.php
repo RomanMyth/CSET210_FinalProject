@@ -33,8 +33,8 @@ Route::post('/Register',[FinalProjectController::class,'approveRegistration']);
 Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
 //end return to home function
 
-//Show doctors appointment page
-Route::get('/DoctorsAppointment', [FinalProjectController::class,'showdoctorsappointment']);
+//Doctors appointment page routes
+Route::get('/DoctorsAppointment', [FinalProjectController::class,'showDoctorsAppointment']);
 
 //View Admin Report
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
@@ -48,11 +48,10 @@ Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrat
 Route::get('/additionalPatientInfo',[FinalProjectController::class,'showAdditionalPatientInfo']);
 Route::get('/employee',[FinalProjectController::class,'showEmployee']);
 Route::get('/doctAppt',[FinalProjectController::class,'showDoctAppt']);
-Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);
-Route::get('/patients',[FinalProjectController::class,'showPatients']);
-Route::get('/roles',[FinalProjectController::class,'showRoles']);
+
+
+
 Route::get('/rosterNewRoster',[FinalProjectController::class,'showRosterNewRoster']);
-Route::get('/payment',[FinalProjectController::class,'showPayment']);
 
 Route::post('changePatientGroup',[FinalProjectController::class,'changePatientGroup']);
 
@@ -68,3 +67,15 @@ Route::get('/patientsHome',[FinalProjectController::class,'showPatientsHome']);
 
 //Caregivers Home Page Routes
 Route::get('/caregiversHome',[FinalProjectController::class,'showCaregiversHome']);
+
+//Payment Page Routes
+Route::get('/payment',[FinalProjectController::class,'showPayment']);
+
+//Admins Report Page Routes
+Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);
+
+//Patients page routes
+Route::get('/patients',[FinalProjectController::class,'showPatients']);
+
+//Roles page routes
+Route::get('/roles',[FinalProjectController::class,'showRoles']);
