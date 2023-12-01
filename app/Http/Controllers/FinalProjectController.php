@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\DB;
 class FinalProjectController extends Controller
 {
     //Generates a family for the register page
-    function generateFamilyCode(){
+    function generateFamilyCode()
+    {
         $FamilyCode = rand(10000, 999999);
         $codes = DB::table("patients")->get();
-        foreach($codes as $code){
+        foreach ($codes as $code) {
             //if the code matches one in the database it calls the function again
-            if($FamilyCode == $code->Family_Code){
+            if ($FamilyCode == $code->Family_Code) {
                 return $this->generateFamilyCode();
             }
         }
@@ -29,23 +30,27 @@ class FinalProjectController extends Controller
     }
 
     // Home page functions
-    function showLoginPage(){
+    function showLoginPage()
+    {
         return view("LoginPage");
     }
-    function showRegisterPage(){
+    function showRegisterPage()
+    {
         //Calls the function to generate a family code and passes it to the view
         $FamilyCode = $this->generateFamilyCode();
 
         return view("RegisterPage", ['FamilyCode' => $FamilyCode]);
     }
     //end home page functions
-  
+
     //return to home
-    function showHomePage(){
+    function showHomePage()
+    {
         return view("/welcome");
     }
-  
-    function viewRegisters(){
+
+    function viewRegisters()
+    {
         $admins = DB::table("registrations")->where("Role_ID", "Admin")->get();
         $supervisors = DB::table("registrations")->where("Role_ID", "Supervisor")->get();
         $doctors = DB::table("registrations")->where("Role_ID", "Doctor")->get();
@@ -55,10 +60,11 @@ class FinalProjectController extends Controller
     }
 
     //Users added to registration table
-    function addToRegistration(Request $request){
-       $role = $request->input("Role_ID");
+    function addToRegistration(Request $request)
+    {
+        $role = $request->input("Role_ID");
         $data = $request->all();
-        if($role != "Patient"){
+        if ($role != "Patient") {
             $data['Family_Code'] = NULL;
         }
 
@@ -67,7 +73,8 @@ class FinalProjectController extends Controller
         return $data;
     }
 
-    function approveRegistration(Request $request){
+    function approveRegistration(Request $request)
+    {
         $role = $request->input("Role_ID");
         $formData = $request->all();
 
@@ -75,27 +82,27 @@ class FinalProjectController extends Controller
         $data = json_decode(json_encode($data), true);
 
 
-        if($role == 'Admin'){
+        if ($role == 'Admin') {
             $data[0]["Role_ID"] = 1;
             Admin::create($data[0]);
         }
 
-        if($role == 'Doctor'){
+        if ($role == 'Doctor') {
             $data[0]["Role_ID"] = 2;
             Doctor::create($data[0]);
         }
 
-        if($role == 'Supervisor'){
+        if ($role == 'Supervisor') {
             $data[0]["Role_ID"] = 3;
             Supervisor::create($data[0]);
         }
 
-        if($role == 'Caregiver'){
+        if ($role == 'Caregiver') {
             $data[0]['Role_ID'] = 4;
             Caregiver::create($data[0]);
         }
 
-        if($role == 'Patient'){
+        if ($role == 'Patient') {
             $data[0]["Role_ID"] = 5;
 
             $patient_group = rand(1, 5);
@@ -114,42 +121,51 @@ class FinalProjectController extends Controller
         return $this->viewRegisters();
     }
 
-   
-    function userLogin(Request $request){
+
+    function userLogin(Request $request)
+    {
         $patients = DB::table("patients")->get();
-        foreach($patients as $patient){
-            if( $patient->Email == $request->Email && $patient->Password == $request->Password ){
-                return $patient;
+        foreach ($patients as $patient) {
+            if ($patient->Email == $request->Email && $patient->Password == $request->Password) {
+                $First_Name = $patient->First_Name;
+                $Last_Name = $patient->Last_Name;
+                return view("patientDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
             }
         }
 
         $doctors = DB::table("doctors")->get();
-        foreach($doctors as $doctor){
-            if( $doctor->Email == $request->Email && $doctor->Password == $request->Password ){
-                return $doctor;
+        foreach ($doctors as $doctor) {
+            if ($doctor->Email == $request->Email && $doctor->Password == $request->Password) {
+                $First_Name = $doctor->First_Name;
+                $Last_Name = $doctor->Last_Name;
+                return view("docotrDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
             }
         }
 
         $supervisors = DB::table("supervisors")->get();
-        foreach($supervisors as $supervisor){
-            if( $supervisor->Email == $request->Email && $supervisor->Password == $request->Password ){
-                return $supervisor;
+        foreach ($supervisors as $supervisor) {
+            if ($supervisor->Email == $request->Email && $supervisor->Password == $request->Password) {
+                $First_Name = $supervisor->First_Name;
+                $Last_Name = $supervisor->Last_Name;
+                return view("supervisorDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
             }
         }
 
         $caregivers = DB::table("caregivers")->get();
-        foreach($caregivers as $caregiver){
-            if( $caregiver->Email == $request->Email && $caregiver->Password == $request->Password ){
-                return $caregiver;
+        foreach ($caregivers as $caregiver) {
+            if ($caregiver->Email == $request->Email && $caregiver->Password == $request->Password) {
+                $First_Name = $caregiver->First_Name;
+                $Last_Name = $caregiver->Last_Name;
+                return view("caregiverDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
             }
         }
 
         $admins = DB::table("admins")->get();
-        foreach($admins as $admin){
-            if( $admin->Email == $request->Email && $admin->Password == $request->Password ){
+        foreach ($admins as $admin) {
+            if ($admin->Email == $request->Email && $admin->Password == $request->Password) {
                 $First_Name = $admin->First_Name;
                 $Last_Name = $admin->Last_Name;
-                return view("adminDashboard", ["First_Name" => $First_Name, "Last_Name"=> $Last_Name ]);
+                return view("adminDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
             }
         }
 
@@ -157,55 +173,65 @@ class FinalProjectController extends Controller
     }
 
     //Start function to return register views
-  
-    function doctorForm(){
-       return view("registerDoctor");
+
+    function doctorForm()
+    {
+        return view("registerDoctor");
     }
 
-    function adminForm(){
+    function adminForm()
+    {
         return view("registerAdmin");
     }
 
-    function supervisorForm(){
+    function supervisorForm()
+    {
         return view("registerSupervisor");
     }
 
     //End functions to return register views
 
     //Start functions to patients home page
-    function showPatientsHome(){
+    function showPatientsHome()
+    {
         return view("patientsHome");
     }
     //End functions to patients home page
 
     //Start functions to caregivers home page
-    function showCaregiversHome(){
+    function showCaregiversHome()
+    {
         return view("caregiversHome");
     }
 
     //Start Functions for Admin Dashboard Page
 
-    function showAdminDashboard(){
+    function showAdminDashboard()
+    {
         return view("adminDashboard");
     }
 
-    function showRegistrationApproval(){
+    function showRegistrationApproval()
+    {
         echo "Reg";
     }
-    function showAdditionalPatientInfo(){
+    function showAdditionalPatientInfo()
+    {
         $patients = DB::table("patients")->get();
 
-        return view("additionalPatientInfo", ["patients"=> $patients]);
+        return view("additionalPatientInfo", ["patients" => $patients]);
     }
 
-    function changePatientGroup(Request $request){
+    function changePatientGroup(Request $request)
+    {
         $patient = $request->Patient_ID;
         $group = $request->input("New-Patient-Group");
-        DB::table("patients")->where("Patient_ID",$patient)->update(["Patient_Group"=> $group]);
+        DB::table("patients")->where("Patient_ID", $patient)->update(["Patient_Group" => $group]);
         echo "success";
     }
 
-    function viewEmployees(){
+    function viewEmployees()
+    {
         $admins = DB::table("admins")->where("Role_ID", 1)->get();
         $supervisors = DB::table("supervisors")->where("Role_ID", 3)->get();
         $doctors = DB::table("doctors")->where("Role_ID", 2)->get();
@@ -213,62 +239,73 @@ class FinalProjectController extends Controller
         $patients = DB::table("patients")->where("Role_ID", 5)->get();
         return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
     }
-    function showRosterNewRoster(){
+    function showRosterNewRoster()
+    {
         echo "rosterns";
     }
 
     //End functions for Admin Dashboard Page
 
     //Start functions for Supervisor Dashboard
-    function showSupervisorDashboard(){
+    function showSupervisorDashboard()
+    {
         return view("supervisorDashboard");
     }
     //End function for Supervisor Dashboard
 
-    function showCaregiverDashboard(){
+    function showCaregiverDashboard()
+    {
         return view("caregiverDashboard");
     }
 
     //Start functions for Doctors Home
-    function showDoctorsHome(){
+    function showDoctorsHome()
+    {
         return view("doctorsHome");
     }
-    function showPatientOfDoc(){
+    function showPatientOfDoc()
+    {
         echo "Patientofdoc";
     }
     //End function for Doctors Home
 
     //Start functions for payment page
-    function showPayment(){
+    function showPayment()
+    {
         return view("PaymentPage");
     }
     //End functions for payment page
 
     //Start functions for admins report page
-    function showAdminsReport(){
+    function showAdminsReport()
+    {
         return view("AdminsReport");
     }
     //End functions for admins report page
 
     //Start functions for doctors appointment page
-    function showDoctorsAppointment(){
+    function showDoctorsAppointment()
+    {
         return view("DoctorsAppointment");
     }
     //End fuctions for doctors appointment page
 
     //Start functions for patients page
-    function showPatients(){
+    function showPatients()
+    {
         return view("patients");
     }
     //End functions for patients page
 
     //Start functions for roles page
-    function showRoles(){
+    function showRoles()
+    {
         return view("roles");
     }
     //End functions for roles page
-  
-    function showAdminReport(){
+
+    function showAdminReport()
+    {
         return view("AdminsReport");
     }
 }
