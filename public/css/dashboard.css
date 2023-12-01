@@ -85,6 +85,53 @@ button {
       margin-left: 30px;
       height: 60%;
     }
+    /*Start Patient dashboard style*/
+    .holdcenter{
+      margin: 0px auto;
+      width: fit-content;
+      height: fit-content;
+    }
+    .hold input{
+      display: block;
+      margin-top: 20px;
+      background-color: #ecc4c4;
+      border-radius: 3px;
+      border: 1px solid #000;
+    }
+    .hold button{
+      width: 15%;
+      height: 40px;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: transparent;
+      color: black; 
+      font-size: 20px; 
+      text-shadow: h-shadow v-shadow blur-radius color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .hold button:hover{
+      background-color:  rgba(134, 184, 224, 0.7);
+      box-shadow: 5px 5px 10px rgba(134, 184, 224, 0.7);
+    }
+    #patientsHomeTable{
+      margin: 10px 10px;
+    }
+    #titleRow{
+      border-bottom: 2px solid #000;
+    }
+    .patientRow{
+      display: block;
+      border-bottom: 1px solid #666;
+      margin-bottom: 10px;
+    }
+    .rowData{
+      width: 9%;
+    }
+    /*End Patient dashboard style*/
     #btn1{
     width: 85%;
       height: 90px;
