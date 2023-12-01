@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Dashboard</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
       body {
         margin: 0;
         overflow: hidden;
@@ -62,139 +62,134 @@
         }
       }
 
-h1,
-h2,
-button {
-  position: relative;
-  display:flex;
-  z-index: 3; /* Set a higher z-index for other elements */
-}
-#btn1:hover{
-  background-color:  rgba(134, 184, 224, 0.7);
-  box-shadow: 5px 5px 10px rgba(134, 184, 224, 0.7);
-}
-  .hold{
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      flex-direction: row;
-      border-color: 1px solid black;
-      padding-left:30px;
-      border-radius: 10px;
-      background-color: rgba(134, 184, 224, 0.2);
-      border: #000 1px solid;
-      box-shadow: 5px 5px 10px rgb(240, 110, 245);
-      width: 20%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: left;
-      z-index: 1;
-      margin-left: 30px;
-      height: 60%;
-    }
-    #btn1{
-    width: 85%;
-      height: 90px;
-      border: 2px solid black;
-      border-radius: 5px;
-      background-color: transparent;
-      color: black; 
-      font-size: 20px; 
-      text-shadow: h-shadow v-shadow blur-radius color;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .hold2{
+      h1, h2, button {
+        position: relative;
+        display:flex;
+        z-index: 3; /* Set a higher z-index for other elements */
+      }
+      #btn1:hover{
+        background-color:  rgba(134, 184, 224, 0.7);
+        box-shadow: 5px 5px 10px rgba(134, 184, 224, 0.7);
+      }
+      .hold{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+        border-color: 1px solid black;
+        padding-left:30px;
+        border-radius: 10px;
+        background-color: rgba(134, 184, 224, 0.2);
+        border: #000 1px solid;
+        box-shadow: 5px 5px 10px rgb(240, 110, 245);
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: left;
+        z-index: 1;
+        margin-left: 30px;
+        height: 60%;
+      }
+      #btn1{
+        width: 85%;
+        height: 90px;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: transparent;
+        color: black; 
+        font-size: 20px; 
+        text-shadow: h-shadow v-shadow blur-radius color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .hold2{
         display: flex;
         height: 100%;
         width: 100%;
         justify-content: center;
         align-content: center;
         flex-direction: row;
-    }
-    .hold3{
-      display: flex;
-      justify-content: center;
-    }
-    .boxed{
-      border-color: 1px solid black;
-      border-radius: 10px;
-      background-color: rgba(248, 100, 236, 0.2);
-      border: #000 1px solid;
-      box-shadow: 5px 5px 10px rgba(248, 100, 236, 0.2);
-      padding: 20px;
-    }
+      }
+      .hold3{
+        display: flex;
+        justify-content: center;
+      }
+      .boxed{
+        border-color: 1px solid black;
+        border-radius: 10px;
+        background-color: rgba(248, 100, 236, 0.2);
+        border: #000 1px solid;
+        box-shadow: 5px 5px 10px rgba(248, 100, 236, 0.2);
+        padding: 20px;
+      }
 
     </style>
-</head>
-<body>
-  <div class="scene">
-    <div class="sun"></div>
-    <div class="water"></div>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="sun"></div>
+      <div class="water"></div>
       <div class="hold3">
         <h1 class="boxed">Admin Dashboard</h1>
       </div>
-    <div class="hold2">    
-          <br>
-          {{-- <h2>You are signed in as</h2>
-          <h2>First Name</h2>
-          <h2>Last Name</h2>  he wants this as like a drop down thing at the side--}}
-          <form action={{ url('/registrationApproval') }} method="get">
-              <button id="btn1">Registration Approval</button>
-          </form>
+      <div class="hold2">    
+        <br>
+        {{-- <h2>You are signed in as</h2>
+        <h2>First Name</h2>
+        <h2>Last Name</h2>  he wants this as like a drop down thing at the side--}}
+        <form action={{ url('/registrationApproval') }} method="get">
+            <button id="btn1">Registration Approval</button>
+        </form>
    
-         <form action={{ url('/additionalPatientInfo') }} method="get">
-           <button id="btn1">Additional Information of Patient</button>
-         </form>
-          <br>
+        <form action={{ url('/additionalPatientInfo') }} method="get">
+          <button id="btn1">Additional Information of Patient</button>
+        </form>
+        <br>
           
-          <form action={{ url('/employee') }} method="get">
-              <button id="btn1">Employee</button>
-          </form>
-          <br>
+        <form action={{ url('/employee') }} method="get">
+          <button id="btn1">Employee</button>
+        </form>
+        <br>
           
          
       </div> 
       <div class="hold">
         <form action={{ url('/doctAppt') }} method="get">
-              <button id="btn1">Doctor's Appointment</button>
-          </form>
-          <br>
+          <button id="btn1">Doctor's Appointment</button>
+        </form>
+        <br>
           
-          <form action={{ url('/adminsReport') }} method="get">
-              <button id="btn1">Admin's Report</button>
-          </form>
-          <br>
+        <form action={{ url('/adminsReport') }} method="get">
+          <button id="btn1">Admin's Report</button>
+        </form>
+        <br>
           
-          <form action={{ url('/patients') }} method="get">
-              <button id="btn1">Patients</button>
-          </form>
+        <form action={{ url('/patients') }} method="get">
+          <button id="btn1">Patients</button>
+        </form>
           
-          <br>
+        <br>
       </div>
       <div class="hold">
         <form action={{ url('/roles') }} method="get">
-              <button id="btn1">Roles</button>
-          </form>
+          <button id="btn1">Roles</button>
+        </form>
           
-          <br>
-          <form action={{ url('/rosterNewRoster') }} method="get">
-              <button id="btn1">Roster & New Roster</button>
-          </form>
+        <br>
+        <form action={{ url('/rosterNewRoster') }} method="get">
+          <button id="btn1">Roster & New Roster</button>
+        </form>
           
-          <br>
-          <form action={{ url('/payment') }} method="get">
-              <button id="btn1">Payment</button>
+        <br>
+        <form action={{ url('/payment') }} method="get">
+          <button id="btn1">Payment</button>
         </form>
         <br>
-      </div>
-          
+      </div>    
     </div>
-    
-</div>
-</body>
+  </body>
 </html>
