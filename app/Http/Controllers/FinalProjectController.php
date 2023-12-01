@@ -267,7 +267,19 @@ class FinalProjectController extends Controller
         return view("roles");
     }
     //End functions for roles page
+
+    //Start functions for doctor dashboard page
+    function showDoctorDashboard(){
+        return view("doctorDashboard");
+    }
+    //End functions for doctor dashboard page
   
+    //Start functions for patient dashboard page
+    function showPatientDashboard(){
+        return view("patientDashboard");
+    }
+    //End functions for patient dashboard page
+
     function showAdminReport(){
         return view("AdminsReport");
     }
