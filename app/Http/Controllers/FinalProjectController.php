@@ -138,7 +138,7 @@ class FinalProjectController extends Controller
             if ($doctor->Email == $request->Email && $doctor->Password == $request->Password) {
                 $First_Name = $doctor->First_Name;
                 $Last_Name = $doctor->Last_Name;
-                return view("docotrDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
+                return view("doctorDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
             }
         }
 

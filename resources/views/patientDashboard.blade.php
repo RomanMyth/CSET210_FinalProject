@@ -5,36 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/UpdatedDashboard.css') }}">
 </head>
 <body>
-    <div class="scene">
-        <div class="sun"></div>
-        <div class="water"></div>
-<div class="hold3">
-    <h1 class="boxed">Patient Dashboard</h1>
+<div class="scene">
+    <div class="sun"></div>
+    <div class="water"></div>
 </div>
-    
-    {{-- <br>
-    <br>
-    <h2>You are signed in as</h2>
-    <h2>firstName</h2>
-    <h2>lastname</h2> --}}
-    <div class="hold2">
-        <div class="hold">
+<div id="container">
+    <div class="banner">
+        <h1 class="boxed">Caregiver Dashboard</h1>
+    </div>
+    <div id="hold">
+        <div class="btn-con">
             <form action={{ url('/patientsHome') }} method="get">
-                <button id="btn1">Patients Home</button>
+                <button class="btn1">Patients Home</button>
             </form>
-            <br>
-            <br>
             <form action={{ url('/rosterNewRoster') }} method="get">
-                <button id="btn1">Roster</button>
+                <button class="btn1">Roster</button>
             </form>
         </div>
-    <br>
-    <br>
-    </div>
-    
-</div>
+    </div>  
+        {{-- <h2>You are signed in as</h2>
+        <h2>First Name</h2>
+        <h2>Last Name</h2>  he wants this as like a drop down thing at the side--}}
+</div>  
 </body>
 </html>
