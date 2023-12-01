@@ -82,3 +82,9 @@ Route::get('/patients',[FinalProjectController::class,'showPatients']);
 
 //Roles page routes
 Route::get('/roles',[FinalProjectController::class,'showRoles']);
+
+//Doctor dashboard routes
+Route::get('/doctorDashboard',[FinalProjectController::class,'showDoctorDashboard']);
+
+//Patient dashboard routes
+Route::get('/patientDashboard',[FinalProjectController::class,'showPatientDashboard']);
