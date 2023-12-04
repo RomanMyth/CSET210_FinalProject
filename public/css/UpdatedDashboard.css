@@ -84,7 +84,7 @@ form{
 #hold{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     height: 50%;
     margin-top: 50px;
@@ -156,4 +156,13 @@ header {
 #btn2:hover{
     background-color:  rgba(134, 184, 224, 0.7);
     box-shadow: 5px 5px 10px rgba(134, 184, 224, 0.7);
+.boxed{
+    border-color: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(248, 100, 236, 0.2);
+  border: #000 1px solid;
+  box-shadow: 5px 5px 10px rgba(248, 100, 236, 0.2);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
