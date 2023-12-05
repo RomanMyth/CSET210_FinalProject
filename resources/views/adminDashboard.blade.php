@@ -35,13 +35,13 @@
         </div>
         <div id="hold">
             <div class="btn-con">
-              <form action={{ url('/registrationApproval') }} method="get">
+              <form action={{ url('/viewRegisters') }} method="get">
                 <button class="btn1">Registration Approval</button>
               </form>
               <form action={{ url('/additionalPatientInfo') }} method="get">
                 <button class="btn1">Additional Information of Patient</button>
               </form>
-              <form action={{ url('/employee') }} method="get">
+              <form action={{ url('/viewEmployees') }} method="get">
                 <button class="btn1">Employee</button>
               </form>
             </div>
@@ -60,7 +60,7 @@
               <form action={{ url('/roles') }} method="get">
                 <button class="btn1">Roles</button>
               </form>
-              <form action={{ url('/rosterNewRoster') }} method="get">
+              <form action={{ url('/roster') }} method="get">
                 <button class="btn1">Roster & New Roster</button>
               </form>
               <form action={{ url('/payment') }} method="get">

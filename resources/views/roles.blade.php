@@ -46,11 +46,31 @@
             <td class='titleRowData'><strong>Required Role</strong></td>
         </tr>
         <tr id="titleRow" class="rolesRow">
+            <td class='rowData'>Admin Dashboard</td>
+            <td class='rowData'>Admin</td>
+        </tr>
+        <tr id="titleRow" class="rolesRow">
+            <td class='rowData'>Supervisor Dashboard</td>
+            <td class='rowData'>Supervisor</td>
+        </tr>
+        <tr id="titleRow" class="rolesRow">
+            <td class='rowData'>Doctor Dashboard</td>
+            <td class='rowData'>Doctor</td>
+        </tr>
+        <tr id="titleRow" class="rolesRow">
+            <td class='rowData'>Caregiver Dashboard</td>
+            <td class='rowData'>Caregiver</td>
+        </tr>
+                <tr id="titleRow" class="rolesRow">
+            <td class='rowData'>Patient Dashboard</td>
+            <td class='rowData'>Patient</td>
+        </tr>
+        <tr id="titleRow" class="rolesRow">
             <td class='rowData'>Registration Approval</td>
             <td class='rowData'>Admin, Supervisor</td>
         </tr>
         <tr id="titleRow" class="rolesRow">
-            <td class='rowData'>Add Information to Patient</td>
+            <td class='rowData'>Additional Information of Patient</td>
             <td class='rowData'>Admin, Supervisor</td>
         </tr>
         <tr id="titleRow" class="rolesRow">
@@ -99,7 +119,7 @@
         </tr>
         <tr id="titleRow" class="rolesRow">
             <td class='rowData'>Roster</td>
-            <td class='rowData'>All</td>
+            <td class='rowData'>Any</td>
         </tr>
     </table>
     <br>

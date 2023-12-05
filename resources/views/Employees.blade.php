@@ -1,5 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+        <title>Employees</title>
         <style>
             table{
                 width: 500px;
@@ -12,6 +18,10 @@
         </style>
     </head>
     <body>
+        <h1>Employees</h1>
+        <br>
+        <br>
+        <h3>Browse though employees</h3>
         <table>
             <tr>
                 <th>Employee ID</th>
@@ -52,5 +62,31 @@
                 </tr>
             @endforeach
         </table>
+        <form id='employeeSearchForm' action="" method="">
+            <label for="search">Search</label>
+            <input type="text" name="search" id="">
+            <br>
+            <br>
+            <button type="submit">Enter</button>
+        </form>
+        <br>
+        <h3>Change employee salary (admin only)</h3>
+        <br>
+        <br>
+        <form id='employeeForm' action="" method="">
+            <label for="empID">Employee ID</label>
+            <input type="number" name="empID" id="">
+            <br>
+            <br>
+            <label for="salary">New salary</label>
+            <input type="number" name="salary" id="">
+            <br>
+            <br>
+            <button type="submit">Change</button>
+        </form>
+        <br>
+        <form id='employeeCancelForm' action="" method="">
+            <button type="submit">Cancel</button>
+        </form>
     </body>
 </html>
