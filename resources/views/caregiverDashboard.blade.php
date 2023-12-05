@@ -7,14 +7,27 @@
         <title>Caregiver Dashboard</title>
         <link rel="stylesheet" href="{{ asset('css/UpdatedDashboard.css') }}">
     </head>
+  
     <body>
         <div class="scene">
             <div class="sun"></div>
             <div class="water"></div>
-        </div>
+        </div>  
+        <header class="nohead">
+            <div>Sunrise name place holder</div>
+              <h1 class="boxed">Caregiver Dashboard</h1>
+                <div class="user-dropdown">
+                    <button id="btn2">Profile</button>
+                <div class="dropdown-content">
+                    <a href="#">First Name</a>
+                    <a href="#">Last Name</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </header>
         <div id="container">
             <div class="banner">
-                <h1 class="boxed">Caregiver Dashboard</h1>
+                {{-- just ignore this max I know youll probably see this but please this random div its actually important --}}
             </div>
             <div id="hold">
                 <div class="btn-con">
