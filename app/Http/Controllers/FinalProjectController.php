@@ -172,25 +172,6 @@ class FinalProjectController extends Controller
         return view("LoginPage");
     }
 
-    //Start function to return register views
-
-    function doctorForm()
-    {
-        return view("registerDoctor");
-    }
-
-    function adminForm()
-    {
-        return view("registerAdmin");
-    }
-
-    function supervisorForm()
-    {
-        return view("registerSupervisor");
-    }
-
-    //End functions to return register views
-
     //Start functions to patients home page
     function showPatientsHome()
     {
@@ -211,10 +192,6 @@ class FinalProjectController extends Controller
         return view("adminDashboard");
     }
 
-    function showRegistrationApproval()
-    {
-        echo "Reg";
-    }
     function showAdditionalPatientInfo()
     {
         $patients = DB::table("patients")->get();
@@ -239,10 +216,6 @@ class FinalProjectController extends Controller
         $patients = DB::table("patients")->where("Role_ID", 5)->get();
         return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
     }
-    function showRosterNewRoster()
-    {
-        echo "rosterns";
-    }
 
     //End functions for Admin Dashboard Page
 
@@ -262,10 +235,6 @@ class FinalProjectController extends Controller
     function showDoctorsHome()
     {
         return view("doctorsHome");
-    }
-    function showPatientOfDoc()
-    {
-        echo "Patientofdoc";
     }
     //End function for Doctors Home
 
@@ -316,9 +285,22 @@ class FinalProjectController extends Controller
     }
     //End functions for patient dashboard page
 
-    function showAdminReport()
+    //Start functions for patient of doctor
+    function showPatientOfDoctor()
     {
-
-        return view("AdminsReport");
+        return view("patientOfDoctor");
     }
+    //End functions for patient of doctor
+
+    //Start functions for roster page
+    function showRoster(){
+        return view("roster");
+    }
+    //End functions for roster page
+    
+    //Start functions for new roster page
+    function showNewRoster(){
+        return view("newRoster");
+    }
+    //End functions for new roster page
 }

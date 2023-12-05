@@ -14,14 +14,14 @@
 </div>
 <div id="container">
     <div class="banner">
-        <h1 class="boxed">Caregiver Dashboard</h1>
+        <h1 class="boxed">Patient Dashboard</h1>
     </div>
     <div id="hold">
         <div class="btn-con">
             <form action={{ url('/patientsHome') }} method="get">
                 <button class="btn1">Patients Home</button>
             </form>
-            <form action={{ url('/rosterNewRoster') }} method="get">
+            <form action={{ url('/roster') }} method="get">
                 <button class="btn1">Roster</button>
             </form>
         </div>

@@ -28,7 +28,7 @@
                     </form>
                 </div>
                 <div class="btn-con">
-                    <form action={{ url('/employee') }} method="get">
+                    <form action={{ url('/roster') }} method="get">
                         <button class="btn1">Roster</button>
                     </form>
                 </div>

@@ -18,7 +18,7 @@
         </div>
         <div id="hold">
             <div class="btn-con">
-                <form action={{ url('/registrationApproval') }} method="get">
+                <form action={{ url('/viewRegisters') }} method="get">
                     <button class="btn1">Registration Approval</button>
                 </form>
                 <form action={{ url('/addInfoOfPatient') }} method="get">
@@ -40,7 +40,7 @@
                 <form action={{ url('/patients') }} method="get">
                     <button class="btn1">Patients</button>
                 </form>
-                <form action={{ url('/rosterNewRoster') }} method="get">
+                <form action={{ url('/roster') }} method="get">
                     <button class="btn1">Roster & New Roster</button>
                 </form>
             </div>
