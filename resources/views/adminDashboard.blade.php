@@ -13,15 +13,20 @@
         <div class="water"></div>
     </div>
       <header class="nohead">
-            <div>Sunrise name place holder</div>
+            <div>
+              Sunrise name place holder
+            </div>
+            <div>
               <h1 class="boxed">Admin Dashboard</h1>
-                <div class="user-dropdown">
+            </div>
+              
+              <div class="user-dropdown">
                     <button id="btn2">Profile</button>
                 <div class="dropdown-content">
                     <a href="#">First Name</a>
                     <a href="#">Last Name</a>
                     <a href="#">Logout</a>
-                </div>
+              </div>
             </div>
         </header>
     <div id="container">

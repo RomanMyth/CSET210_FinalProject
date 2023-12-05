@@ -109,7 +109,7 @@ header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    position: absolute;
+    /* position: absolute; */
     z-index: 3;
     margin-bottom: 40px;
   }
@@ -145,6 +145,9 @@ header {
   .nohead{
     height: 70px;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
   }
   #btn2{
     background-color: rgba(134, 184, 224, 0.2);  
@@ -156,6 +159,7 @@ header {
 #btn2:hover{
     background-color:  rgba(134, 184, 224, 0.7);
     box-shadow: 5px 5px 10px rgba(134, 184, 224, 0.7);
+}
 .boxed{
     border-color: 1px solid black;
   border-radius: 10px;
