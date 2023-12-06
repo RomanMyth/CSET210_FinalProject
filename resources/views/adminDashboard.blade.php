@@ -48,15 +48,15 @@
                 </form>
             </div>
             <div class="btn-con">
-                <form action={{ url('/doctAppt') }} method="get">
-                    <button class="btn1">Doctor's Appointment</button>
-                </form>
-                <form action={{ url('/adminsReport') }} method="get">
-                    <button class="btn1">Admin's Report</button>
-                </form>
-                <form action={{ url('/patients') }} method="get">
-                    <button class="btn1">Patients</button>
-                </form>
+              <form action={{ url('/DoctorsAppointment') }} method="get">
+                <button class="btn1">Doctor's Appointment</button>
+              </form>
+              <form action={{ url('/adminsReport') }} method="get">
+                <button class="btn1">Admin's Report</button>
+              </form>
+              <form action={{ url('/patients') }} method="get">
+                <button class="btn1">Patients</button>
+              </form>
             </div>
             <div class="btn-con">
                 <form action={{ url('/roles') }} method="get">

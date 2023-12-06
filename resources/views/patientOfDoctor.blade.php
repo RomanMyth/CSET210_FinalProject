@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+        <!--Style for form alerts-->
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <!--Functions for form alerts-->
+        <script src="app.js"></script>
         <title>Patient of Doctor</title>
     </head>
     <body>
@@ -34,7 +38,7 @@
         <h3>New prescription</h3>
         <br>
         <p>Fill in the form below to create a new prescription for your patient</p>
-        <form id="patientOfDcotorForm" action="" method="">
+        <form id="form" action="" method="">
             <label for="comment">Comment:</label>
             <input type="text" name="comment" id="">
             <br>
@@ -54,8 +58,15 @@
             <button type="submit" name="submit">Ok</button>
         </form>
         <br>
-        <form action="" method="">
-            <button type="submit">Cancel</button>
-        </form>
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
+
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
+        </div>
     </body>
 </html>

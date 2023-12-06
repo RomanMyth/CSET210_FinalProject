@@ -303,4 +303,10 @@ class FinalProjectController extends Controller
         return view("newRoster");
     }
     //End functions for new roster page
+
+    //Start functions for family memebrs home page
+    function showFamilyMembersHome(){
+        return view("familyMembersHome");
+    }
+    //End functions for family memebrs home page
 }
