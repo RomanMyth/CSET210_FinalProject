@@ -46,7 +46,6 @@ Route::get('viewEmployees',[FinalProjectController::class,'viewEmployees']);
 
 Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrationApproval']);
 Route::get('/additionalPatientInfo',[FinalProjectController::class,'showAdditionalPatientInfo']);
-Route::get('/doctAppt',[FinalProjectController::class,'showDoctAppt']);
 
 
 
@@ -95,3 +94,6 @@ Route::get('/roster',[FinalProjectController::class,'showRoster']);
 
 //New roster page routes
 Route::get('/newRoster',[FinalProjectController::class,'showNewRoster']);
+
+//Family members home routes
+Route::get('/familyMembersHome',[FinalProjectController::class,'showFamilyMembersHome']);

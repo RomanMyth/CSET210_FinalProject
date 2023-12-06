@@ -5,38 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+        <!--Style for form alerts-->
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <!--Functions for form alerts-->
+        <script src="app.js"></script>
         <title>New Roster</title>
         <style>
-            /*Cancel alert styling below*/
-            .alert {
-                padding: 20px;
-                background-color: #f44336; /* Red */
-                color: white;
-                margin-bottom: 15px;
-            }
-            
-            .closebtn {
-                margin-left: 15px;
-                color: white;
-                font-weight: bold;
-                float: right;
-                font-size: 22px;
-                line-height: 20px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
-            
-            .closebtn:hover {
-                color: black;
-            }
+
         </style>
+        <script>
+
+            </script>
     </head>
     <body>
         <h1>New Roster</h1>
         <br>
         <br>
         <h3>Select a secific date and then choose the given names for each position for that day</h3>
-        <form action="" method="">
+        <form id='form' action="" method="">
             <label for="date">Date</label>
             <input type="date" name="date" id="">
             <br>
@@ -66,11 +52,19 @@
             <br>
             <br>
             <button type="submit">Ok</button>
-            <div class="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                This is an alert box.
-              </div>
+            <br>
+            <br>
         </form>
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
+
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
+        </div>
         <br>
     </body>
 </html>

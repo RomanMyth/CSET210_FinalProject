@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
-
+    <!--Style for form alerts-->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--Functions for form alerts-->
+    <script src="app.js"></script>
     <title>Register Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -31,7 +34,7 @@
 <body>
     <div class="register-container">
         <h2>Registration</h2>
-        <form id="registrationForm" action="addToRegister" method="POST">
+        <form id="form" action="addToRegister" method="POST">
             @csrf
             <div class="form-group">
                 <label for="Role_ID">Role:</label>
@@ -87,6 +90,16 @@
                 <button type="submit" value="Register">Register</button>
             </div>
         </form>
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
+            
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
+        </div>
         <div class="form-group">
             <form action={{ url('/welcome') }} method="get">
                 <button>Return to Home Page</button>
