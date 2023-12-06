@@ -85,44 +85,7 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#checklistForm').submit(function(e) {
-                e.preventDefault();
-                var selectedDate = $('#selectedDate').val();
 
-                $.ajax({
-                    url: '/getChecklistByDate', // Replace with your route URL
-                    type: 'POST',
-                    data: {
-                        selected_date: selectedDate
-                    },
-                    success: function(response) {
-                        // Assuming response is an array of checklist items
-                        // Modify the following code to render the fetched data in the table
-                        // For example:
-                        var checklistTable = $('#patientsHomeTable');
-                        checklistTable.find('tr:gt(0)')
-                    .remove(); // Clear existing rows except header
-
-                        $.each(response, function(index, item) {
-                            checklistTable.append('<tr class="patientRow">' +
-                                '<td class="rowData">' + item.doctor_name +
-                                '</td>' +
-                                '<td class="rowData">' + item.appointment_date +
-                                '</td>' +
-                                // Add other columns based on your checklist data
-                                '</tr>');
-                        });
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
 

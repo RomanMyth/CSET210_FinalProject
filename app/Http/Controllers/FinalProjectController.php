@@ -315,19 +315,4 @@ class FinalProjectController extends Controller
     }
     //End functions for family memebrs home page
 
-
-
-
-
-
-    // Controller method to fetch checklist data by date
-    public function getChecklistByDate(Request $request)
-    {
-        $selectedDate = $request->input('selected_date');
-
-        // Assuming Checklist is your model and you have a 'date' column in the database table
-        $checklistData = Checklist::whereDate('date', $selectedDate)->get();
-
-        return response()->json($checklistData);
-    }
 }
