@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Doctor Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/Updateddashboard.css') }}">
 </head>
+
 <body>
     <div class="scene">
         <div class="sun"></div>
@@ -14,22 +16,22 @@
     </div>
     <header class="nohead">
         <div>Sunrise name place holder</div>
-          <h1 class="boxed">Doctor Dashboard</h1>
-            <div class="user-dropdown">
-                <button id="btn2">Profile</button>
+        <h1 class="boxed">Doctor Dashboard</h1>
+        <div class="user-dropdown">
+            <button id="btn2">Profile</button>
             <div class="dropdown-content">
-                <a href="#">First Name</a>
-                <a href="#">Last Name</a>
+                <a href="#">{{ $First_Name }}</a>
+                <a href="#">{{ $Last_Name }}</a>
                 <a href="#">Logout</a>
             </div>
         </div>
     </header>
     <div id="container">
-        <div class="banner" >
+        <div class="banner">
             {{-- just ignore this max I know youll probably see this but please this random div its actually important --}}
         </div>
-            
-            {{-- <br>
+
+        {{-- <br>
             <br>
             <h2>You are signed in as</h2>
             <h2>firstName</h2>
@@ -51,7 +53,8 @@
                     <button class="btn1">Roster</button>
                 </form>
             </div>
-        </div> 
+        </div>
     </div>
 </body>
+
 </html>
