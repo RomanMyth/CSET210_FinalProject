@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Style for form alerts-->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--Functions for form alerts-->
+    <script src="app.js"></script>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <title>Login Page</title>
     <script>
@@ -113,17 +117,19 @@
             </div>
         </form>
         <br>
-       
-            <form class="lg" action={{ url('/') }} method="get">
-                <div >
-                    <button id="btn1">Return Home</button>
-                </div>
-            </form>
-        
-       
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
 
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
         </div>
-       
+        <form class="lg" action={{ url('/') }} method="get">
+            <button id="btn1">Return to Home Page</button>
+        </form>
     </div>
 </body>
 

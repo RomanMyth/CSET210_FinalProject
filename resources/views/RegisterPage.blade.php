@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <!--Style for form alerts-->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--Functions for form alerts-->
+    <script src="app.js"></script>
     <title>Register Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -206,10 +210,19 @@
                 <button type="submit" value="Register" id="btn1">Register</button>
             </div>
         </form>
-        <br>
-        <div >
-            <form action={{ url('/welcome') }} method="get"class="lg">
-                <button id="btn2">Return to Home Page</button>
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
+            
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <form action={{ url('/welcome') }} method="get">
+                <button>Return to Home Page</button>
             </form>
         </div>
         

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day-Night Transition</title>
+  <title>Sunrise Retirement Home</title>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
       body {
@@ -152,13 +152,18 @@
     <form action={{ url('/LoginPage') }} method="get">
         @csrf
         <br>
-        <button id="btn1">Log in</button>
+        <button id="btn1">User Log in</button>
     </form>
     <form action={{ url('/RegisterPage') }} method="get">
         @csrf
         <br>
         <button id="btn1">Register</button>
     </form>
+    <form action={{ url('/familyMembersHome') }} method="get">
+      @csrf
+      <br>
+      <button id="btn1">Family Member Log in</button>
+  </form>
   </div>
    
 </body>

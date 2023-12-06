@@ -1,5 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang='en'>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+        <!--Style for form alerts-->
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <!--Functions for form alerts-->
+        <script src="app.js"></script>
+        <title>Additional Patient Information</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
             var patients = <?php echo $patients;?>;
@@ -40,14 +50,19 @@
         </style>
     </head>
     <body>
-        <form action="changePatientGroup" method="POST">
+        <h1>Addtional Patient Information</h1>
+        <br>
+        <br>
+        <form id="form" action="changePatientGroup" method="POST">
             @csrf
             Enter a Patients ID:
             <input type="number" name="Patient_ID" id="Patient-ID">
             <input type="text" name="First_Name" id="First-Name" readonly>
             <br>
+            <br>
             Current Group:
             <input type="number" name="Patient_Group" id="Patient-Group" readonly>
+            <br>
             <br>
             Admission Date:
             <input type="date" name="Addmission_Date" id="Addmission-Date" readonly>
@@ -57,5 +72,15 @@
             <br>
             <button type="Submit">Change Patient's Group</button>
         </form>
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
+            
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
+        </div>
     </body>
 </html>

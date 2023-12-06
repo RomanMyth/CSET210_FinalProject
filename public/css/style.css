@@ -1,0 +1,25 @@
+/*Start Overlay and alert for clear form fields*/
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#alertBox {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+/*End Overlay and alert for clear form fields*/
