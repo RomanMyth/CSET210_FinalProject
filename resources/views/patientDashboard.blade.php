@@ -16,7 +16,7 @@
     </div>
     <header class="nohead">
         <div>Sunrise name place holder</div>
-        <h1 class="boxed">Caregiver Dashboard</h1>
+        <h1 class="boxed">Patient Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
