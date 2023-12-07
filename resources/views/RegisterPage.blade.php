@@ -56,7 +56,7 @@
         }
         #btn1{
       width: 100%;
-      height: 70px;
+      height: 50px;
       border: 2px solid black;
       border-radius: 5px;
       background-color: transparent;
@@ -111,8 +111,8 @@
         margin-bottom: 10px;
     }
     #btn2{
-      width: 100%;
-      height: 70px;
+      width: 400px;
+      height: 50px;
       border: 2px solid black;
       border-radius: 5px;
       background-color: transparent;
@@ -123,10 +123,9 @@
                          2px -2px 0 #000, 
                         -2px -2px 0 #000;
       text-shadow: h-shadow v-shadow blur-radius color;
-      margin-bottom: 20px;
       padding-left: 90px;
       padding-right: 90px;
-      margin-bottom: 20px;
+      margin-top: 10px;
     }
     #btn2:hover{
     background-color:#0d47a1
@@ -210,8 +209,8 @@
                 <button type="submit" value="Register" id="btn1">Register</button>
             </div>
         </form>
-        <div class="cancelAlert">
-            <button onclick="showAlert()">Cancel</button>
+        <div class="cancelAlert" >
+            <button onclick="showAlert()" id="btn2">Cancel</button>
             
             <div id="overlay" onclick="hideAlert()"></div>
             <div id="alertBox">
@@ -222,7 +221,7 @@
         </div>
         <div class="form-group">
             <form action={{ url('/welcome') }} method="get">
-                <button>Return to Home Page</button>
+                <button id="btn2">Return Home</button>
             </form>
         </div>
         
