@@ -29,25 +29,66 @@
                         else{
                             patientExists = false;
                         }
-                    }
-                    if(!patientExists){
-                        $("#First-Name").slideUp("slow");
-                            $(".New-Patient-Group").slideUp("slow");
-                            $("#First-Name").val(null);
-                            $("#Patient-Group").val(null);
-                            $("#Addmission-Date").val(null);
-                    }
-                });
+                }
+                if (!patientExists) {
+                    $("#First-Name").slideUp("slow");
+                    $(".New-Patient-Group").slideUp("slow");
+                    $("#First-Name").val(null);
+                    $("#Patient-Group").val(null);
+                    $("#Addmission-Date").val(null);
+                }
+            });
+            $("#reset").click(function() {
+                $("#First-Name").slideUp("slow");
+                $("#New-Patient-Group").slideUp("slow");
+                $("#New-Patient-Group-Input").slideUp("slow");
             });
         </script>
         <style>
-            #First-Name{
-                display: none;
-            }
-            .New-Patient-Group{           
-                display: none;
-            }
-        </style>
+        #First-Name {
+            display: none;
+        }
+
+        .New-Patient-Group {
+            display: none;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
     </head>
     <body>
         <div class="scene">
@@ -61,8 +102,18 @@
                 <h1 class="boxed">Addtional Patient Information</h1>
             </div>
         </div>
-    </header>
         <div id="container">
+            <header>
+              <h1>Addtional Patient Information Dashboard</h1>
+              <div class="user-dropdown">
+                <button id="btn2">Profile</button>
+                 <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Logout</a>
+                 </div>
+              </div>
+          </header>
             <div id="hold">
                 <div class="btn-con">
                     <br>
