@@ -21,15 +21,15 @@
                 <form action={{ url('/viewRegisters') }} method="get">
                     <button class="btn1">Registration Approval</button>
                 </form>
-                <form action={{ url('/addInfoOfPatient') }} method="get">
+                <form action={{ url('/additionalPatientInfo') }} method="get">
                     <button class="btn1">Additional Information of Patient</button>
                 </form>
             </div>
             <div class="btn-con">
-                <form action={{ url('/employee') }} method="get">
+                <form action={{ url('/viewEmployees') }} method="get">
                     <button class="btn1">Employee</button>
                 </form>
-                <form action={{ url('/doctAppt') }} method="get">
+                <form action={{ url('/DoctorsAppointment') }} method="get">
                     <button class="btn1">Doctor's Appointment</button>
                 </form>
                 <form action={{ url('/adminsReport') }} method="get">

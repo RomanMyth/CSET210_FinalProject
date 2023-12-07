@@ -38,6 +38,11 @@
                             $("#Addmission-Date").val(null);
                     }
                 });
+                $("#reset").click(function(){
+                    $("#First-Name").slideUp("slow");
+                    $("#New-Patient-Group").slideUp("slow");
+                    $("#New-Patient-Group-Input").slideUp("slow");
+                });
             });
         </script>
         <style>
@@ -55,30 +60,31 @@
         <br>
         <form id="form" action="changePatientGroup" method="POST">
             @csrf
-            Enter a Patients ID:
+            Enter a Patient's ID:
             <input type="number" name="Patient_ID" id="Patient-ID">
-            <input type="text" name="First_Name" id="First-Name" readonly>
+            <input style="margin-top: 5px" type="text" name="First_Name" id="First-Name" readonly>
             <br>
             <br>
-            Current Group:
+            Patient's Current Group:
             <input type="number" name="Patient_Group" id="Patient-Group" readonly>
             <br>
             <br>
-            Admission Date:
+            Patient's Admission Date:
             <input type="date" name="Addmission_Date" id="Addmission-Date" readonly>
             <br>
-            <label for="New-Patient-Group" class="New-Patient-Group">New Group For Patient:</label>
-            <input type="number" class="New-Patient-Group" name="New-Patient-Group" min="1" max="4" required>
+            <label style="margin-top: 15px" id="New-Patient-Group" for="New-Patient-Group" class="New-Patient-Group">Enter a New Group for Patient:</label>
+            <input style="margin-bottom: 15px" id="New-Patient-Group-Input" type="number" class="New-Patient-Group" name="New-Patient-Group" min="1" max="4" required>
             <br>
             <button type="Submit">Change Patient's Group</button>
         </form>
+        <br>
         <div class="cancelAlert">
             <button onclick="showAlert()">Cancel</button>
             
             <div id="overlay" onclick="hideAlert()"></div>
             <div id="alertBox">
             <p>Do you want to reset the form?</p>
-            <button onclick="resetForm()">Reset</button>
+            <button id="reset" onclick="resetForm()">Reset</button>
             <button onclick="hideAlert()">Cancel</button>
             </div>
         </div>
