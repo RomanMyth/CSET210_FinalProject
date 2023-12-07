@@ -4,8 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
     <title>Patients Home Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var patients = <?php echo $patients;?>;
+        $(function(){
+            $("#Patient-ID").change(function(){
+                var patientExists = false;
+                for (const patient of patients){
+                    if(this.value == patient[Object.keys(patient)[0]]){
+                        $("#First-Name").val(patient[Object.keys(patient)[1]]).fadeIn('slow');
+                        $("#First-Name").slideDown("slow");
+                        patientExists = true;
+                        break;
+                    }
+                    else{
+                        patientExists = false;
+                    }
+                }
+                if(!patientExists){
+                    $("#First-Name").slideUp("slow");
+                    $("#First-Name").val(null);
+                }
+            });
+            $("#reset").click(function(){
+                $("#First-Name").slideUp("slow");
+            });
+        });
+    </script>
+    <style>
+        #First-Name{
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="scene">
@@ -21,16 +53,13 @@
               <h2>Last Name</h2>  he wants this as like a drop down thing at the side--}}
               <form action="" method="">
                   @csrf
-                  <label class="holdlabel" for="patientid">Your Patient ID:</label>
-                  <input name="patientid" type="int" value="#456" readonly>
-                  <br>
-                  <br>
-                  <label for="First_Name">Your Patient Name:</label>
-                  <input name="First_Name" type="text" value="Jack Remo" readonly>
+                  Enter a Patient's ID:
+                  <input type="number" name="Patient_ID" id="Patient-ID">
+                  <input style="margin-top: 5px" type="text" name="First_Name" id="First-Name" readonly>
                   <br>
                   <br>
                   <h3>Find your daily checklist for a specific date</h3>
-                  <label for="date">Select Date</label>
+                  <label for="date">Select a date:</label>
                   <input name="date" type="date" value ="<?php echo date('Y-m-d') ?>">
                   <br>
                   <br>
