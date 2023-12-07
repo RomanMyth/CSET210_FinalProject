@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,25 @@
     <title>Supervisor Dashboard</title>
     <link rel="stylesheet" href="{{ asset('css/UpdatedDashboard.css') }}">
 </head>
+
 <body>
     <div class="scene">
         <div class="sun"></div>
         <div class="water"></div>
     </div>
     <div id="container">
-        <div class="banner">
+        <header class="nohead">
+            <div>Sunrise name place holder</div>
             <h1 class="boxed">Supervisor Dashboard</h1>
-        </div>
+            <div class="user-dropdown">
+                <button id="btn2">Profile</button>
+                <div class="dropdown-content">
+                    <a href="#">{{ $First_Name }}</a>
+                    <a href="#">{{ $Last_Name }}</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </header>
         <div id="hold">
             <div class="btn-con">
                 <form action={{ url('/viewRegisters') }} method="get">
@@ -34,7 +45,7 @@
                 </form>
                 <form action={{ url('/adminsReport') }} method="get">
                     <button class="btn1">Admin's Report</button>
-                </form> 
+                </form>
             </div>
             <div class="btn-con">
                 <form action={{ url('/patients') }} method="get">
@@ -44,10 +55,11 @@
                     <button class="btn1">Roster & New Roster</button>
                 </form>
             </div>
-        </div>  
-            {{-- <h2>You are signed in as</h2>
+        </div>
+        {{-- <h2>You are signed in as</h2>
             <h2>First Name</h2>
-            <h2>Last Name</h2>  he wants this as like a drop down thing at the side--}}
+            <h2>Last Name</h2>  he wants this as like a drop down thing at the side --}}
     </div>
 </body>
+
 </html>
