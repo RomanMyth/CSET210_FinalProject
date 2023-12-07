@@ -218,6 +218,9 @@ class FinalProjectController extends Controller
         return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
     }
 
+
+
+
     //End functions for Admin Dashboard Page
 
     //Start functions for Supervisor Dashboard
@@ -264,7 +267,10 @@ class FinalProjectController extends Controller
     //Start functions for patients page
     function showPatients()
     {
-        return view("patients");
+        $patients = DB::table("patients")->get();
+        $patient_emergency_table = DB::table("patient_emergency")->get();
+
+        return view("patients", ["patients" => $patients, "patient_emergency" => $patient_emergency_table]);
     }
     //End functions for patients page
 

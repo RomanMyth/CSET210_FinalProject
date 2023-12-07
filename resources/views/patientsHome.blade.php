@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
     <title>Patients Home Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
