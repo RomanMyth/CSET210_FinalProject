@@ -66,7 +66,7 @@
 
 <body>
     <header>
-        <h1>Admins-Employee Dashboard</h1>
+        <h1>Employee Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
@@ -77,9 +77,6 @@
         </div>
     </header>
     </div>
-    <h1>Employees</h1>
-    <br>
-    <br>
     <h3>Browse though employees</h3>
     <table>
         <tr>

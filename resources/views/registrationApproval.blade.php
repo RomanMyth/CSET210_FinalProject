@@ -48,7 +48,7 @@
 
 <body>
     <header>
-        <h1>Admin Registration Approval Dashboard</h1>
+        <h1>Registration Approval Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
@@ -58,8 +58,6 @@
             </div>
         </div>
     </header>
-
-    <h1>Registration Approval</h1>
     <br>
     <br>
     <h2>Admins</h2>
