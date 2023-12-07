@@ -276,13 +276,15 @@ class FinalProjectController extends Controller
     //End functions for roles page
 
     //Start functions for doctor dashboard page
-    function showDoctorDashboard(){
+    function showDoctorDashboard()
+    {
         return view("doctorDashboard");
     }
     //End functions for doctor dashboard page
-  
+
     //Start functions for patient dashboard page
-    function showPatientDashboard(){
+    function showPatientDashboard()
+    {
         return view("patientDashboard");
     }
     //End functions for patient dashboard page
@@ -295,20 +297,24 @@ class FinalProjectController extends Controller
     //End functions for patient of doctor
 
     //Start functions for roster page
-    function showRoster(){
+    function showRoster()
+    {
         return view("roster");
     }
     //End functions for roster page
-    
+
     //Start functions for new roster page
-    function showNewRoster(){
+    function showNewRoster()
+    {
         return view("newRoster");
     }
     //End functions for new roster page
 
     //Start functions for family memebrs home page
-    function showFamilyMembersHome(){
+    function showFamilyMembersHome()
+    {
         return view("familyMembersHome");
     }
     //End functions for family memebrs home page
+
 }
