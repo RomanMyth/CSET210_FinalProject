@@ -52,7 +52,7 @@
 
 <body>
     <header>
-        <h1>Admin Role Dashboard</h1>
+        <h1>Roles Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">

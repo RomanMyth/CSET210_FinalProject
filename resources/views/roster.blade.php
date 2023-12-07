@@ -48,7 +48,7 @@
 
 <body>
     <header>
-        <h1>Admin Roster Dashboard</h1>
+        <h1>Roster Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
@@ -58,7 +58,6 @@
             </div>
         </div>
     </header>
-    <h1>Roster</h1>
     <br>
     <br>
     <h3>Select a secific date to browse through the schedule for that day</h3>

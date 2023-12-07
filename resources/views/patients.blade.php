@@ -52,7 +52,7 @@
 
 <body>
     <header>
-        <h1>Admin Patient Dashboard</h1>
+        <h1>Patient Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
@@ -64,7 +64,6 @@
     </header>
     <form method="POST">
         @csrf
-        <h1>Patients</h1>
         <br>
         <br>
         <h3>Browse though patients</h3>

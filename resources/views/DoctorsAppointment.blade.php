@@ -83,7 +83,7 @@
 
 <body>
     <header>
-        <h1>Admin Doctor Appointment Dashboard</h1>
+        <h1>Doctor Appointment Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
@@ -95,7 +95,6 @@
     </header>
     <form id="form" action="" method="POST">
         @csrf
-        <h1>Doctor's Appointment</h1>
         <br>
         <br>
         <h3>Assign a patient to an available doctor on a specific date</h3>

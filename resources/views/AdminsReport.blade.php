@@ -62,7 +62,6 @@
             </div>
         </div>
     </header>
-    <h1>Admin Report</h1>
     <br>
     <br>
     <h3>Check the missed patient activity for a specific day</h3>

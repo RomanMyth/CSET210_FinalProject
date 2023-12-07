@@ -51,7 +51,7 @@
 
 <body>
     <header>
-        <h1>Admin Payment Dashboard</h1>
+        <h1>Payment Dashboard</h1>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
