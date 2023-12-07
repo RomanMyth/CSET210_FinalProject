@@ -5,9 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/dashboard.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
     <title>Patients Home Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var patients = <?php echo $patients; ?>;
+        $(function() {
+            $("#Patient-ID").change(function() {
+                var patientExists = false;
+                for (const patient of patients) {
+                    if (this.value == patient[Object.keys(patient)[0]]) {
+                        $("#First-Name").val(patient[Object.keys(patient)[1]]).fadeIn('slow');
+                        $("#First-Name").slideDown("slow");
+                        patientExists = true;
+                        break;
+                    } else {
+                        patientExists = false;
+                    }
+                }
+                if (!patientExists) {
+                    $("#First-Name").slideUp("slow");
+                    $("#First-Name").val(null);
+                }
+            });
+            $("#reset").click(function() {
+                $("#First-Name").slideUp("slow");
+            });
+        });
+    </script>
+    <style>
+        #First-Name {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,14 +71,6 @@
                 <button>Enter</button>
             </form>
             <br>
-            <form id="checklistForm" action="#" method="post">
-                @csrf
-                <label for="date">Select Date</label>
-                <input name="selected_date" type="date" id="selectedDate" value="<?php echo date('Y-m-d'); ?>">
-                <br>
-                <br>
-                <button type="submit">Enter</button>
-            </form>
             <br>
             <h1>Your Daily Checklist</h1>
             <table id="patientsHomeTable">

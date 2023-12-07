@@ -175,7 +175,8 @@ class FinalProjectController extends Controller
     //Start functions to patients home page
     function showPatientsHome()
     {
-        return view("patientsHome");
+        $patients = DB::table("patients")->get();
+        return view("patientsHome", ["patients" => $patients]);
     }
     //End functions to patients home page
 
@@ -255,7 +256,8 @@ class FinalProjectController extends Controller
     //Start functions for doctors appointment page
     function showDoctorsAppointment()
     {
-        return view("DoctorsAppointment");
+        $patients = DB::table("patients")->get();
+        return view("DoctorsAppointment", ["patients" => $patients]);
     }
     //End fuctions for doctors appointment page
 

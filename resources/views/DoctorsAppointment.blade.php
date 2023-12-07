@@ -10,29 +10,58 @@
     <!--Functions for form alerts-->
     <script src="app.js"></script>
     <title>Doctor's Appointment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var patients = <?php echo $patients;?>;
+        $(function(){
+            $("#Patient-ID").change(function(){
+                var patientExists = false;
+                for (const patient of patients){
+                    if(this.value == patient[Object.keys(patient)[0]]){
+                        $("#First-Name").val(patient[Object.keys(patient)[1]]).fadeIn('slow');
+                        $("#First-Name").slideDown("slow");
+                        patientExists = true;
+                        break;
+                    }
+                    else{
+                        patientExists = false;
+                    }
+                }
+                if(!patientExists){
+                    $("#First-Name").slideUp("slow");
+                    $("#First-Name").val(null);
+                }
+            });
+            $("#reset").click(function(){
+                $("#First-Name").slideUp("slow");
+            });
+        });
+    </script>
+    <style>
+        #First-Name{
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <form id="form" method="POST">
+    <form id="form" action="" method="POST">
     @csrf
     <h1>Doctor's Appointment</h1>
     <br>
     <br>
     <h3>Assign a patient to an available doctor on a specific date</h3>
     <form id="form" action="" method="">
-        <label for="PatientID">Patient ID</label>
-        <input name="PatientID" type="int">
-        <br>
-        <br>
-        <label for="name">Patient name</label>
-        <input name="name" type="text" readonly>  
+        Enter a Patient's ID:
+            <input type="number" name="Patient_ID" id="Patient-ID">
+            <input style="margin-top: 5px" type="text" name="First_Name" id="First-Name" readonly>
         {{-- only appears when patient id is entered --}}
         <br>
         <br>
-        <label for="date">Date</label>
+        <label for="date">Select a date:</label>
         <input name="date" type="date">
         <br>
         <br>
-        <label for="">Doctor</label>
+        <label for="">Select a doctor:</label>
         <select name="Doctor" id="">
 
         </select>
@@ -47,7 +76,7 @@
         <div id="overlay" onclick="hideAlert()"></div>
         <div id="alertBox">
         <p>Do you want to reset the form?</p>
-        <button onclick="resetForm()">Reset</button>
+        <button id="reset" onclick="resetForm()">Reset</button>
         <button onclick="hideAlert()">Cancel</button>
         </div>
     </div>
