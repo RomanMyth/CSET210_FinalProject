@@ -5,9 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+        <!--Style for form alerts-->
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <!--Functions for form alerts-->
+        <script src="app.js"></script>
         <title>Registration Approval</title>
+        <script>
+            checkIfMsgSent();
+        </script>
     </head>
     <body>
+        {{-- @if (isset($denied))
+            echo "test";
+        
+        @else
+        echo "not set";
+        @endif --}}
         <h1>Registration Approval</h1>
         <br>
         <br>
@@ -39,6 +52,12 @@
                 <br>
                 <br>
                 <button type="submit">Approve</button>
+            </form>
+            <form action="deniedRegister" method="post">
+                @csrf
+                <input type="text" name="Role_ID" value={{ $supervisor->Role_ID }} readonly>
+                <input type="hidden" name="Email" value={{ $supervisor->Email }}>
+                <button onclick="" id="deny" type="submit">Deny</button>
             </form>
         @endforeach
         <h2>Doctors</h2>
@@ -86,5 +105,12 @@
                 <button type="submit">Approve</button>
             </form>
         @endforeach
+        <div class="cancelAlert">
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>User denial successful</p>
+            <button onclick="hideAlert()">Ok</button>
+            </div>
+        </div>
     </body>
 </html>

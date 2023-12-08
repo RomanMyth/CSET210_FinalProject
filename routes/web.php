@@ -29,6 +29,9 @@ Route::post('/addToRegister', [FinalProjectController::class,'addToRegistration'
 Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
 Route::post('/Register',[FinalProjectController::class,'approveRegistration']);
 
+//Deny register function
+Route::post('/deniedRegister',[FinalProjectController::class,'denyRegistration']);
+
 //Return to home function
 Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
 //end return to home function
