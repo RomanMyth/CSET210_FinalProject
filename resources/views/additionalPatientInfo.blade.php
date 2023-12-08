@@ -56,7 +56,6 @@
         header {
             background-color: #333;
             color: #fff;
-            padding: 15px;
             text-align: center;
         }
 
@@ -93,18 +92,13 @@
     <body>
         <div class="scene">
             <div class="sun"></div>
-            </div>
-            <header class="nohead">
-            <div>
-                Sunrise name place holder
-            </div>
-            <div>
-                <h1 class="boxed">Addtional Patient Information</h1>
-            </div>
         </div>
-        <div id="container">
-            <header>
+            <header class="nohead">
+                  <div>
+                Sunrise name place holder
+                </div>
               <h1>Addtional Patient Information Dashboard</h1>
+              
               <div class="user-dropdown">
                 <button id="btn2">Profile</button>
                  <div class="dropdown-content">
@@ -113,7 +107,12 @@
                     <a href="#">Logout</a>
                  </div>
               </div>
-          </header>
+          </header>  
+
+          <div id="container">
+            <div class="banner">
+            {{-- just ignore this max I know youll probably see this but please this random div its actually important --}}
+            </div>
             <div id="hold">
                 <div class="btn-con">
                     <br>
