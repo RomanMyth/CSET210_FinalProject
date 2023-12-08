@@ -52,92 +52,82 @@
         #Patient-Fields {
             display: none;
         }
+        #btn1{
+      width: 100%;
+      height: 50px;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: transparent;
+      color: white; 
+            font-size: 25px; 
+            text-shadow: -2px 2px 0 #000, 
+                          2px 2px 0 #000, 
+                         2px -2px 0 #000, 
+                        -2px -2px 0 #000;
+      text-shadow: h-shadow v-shadow blur-radius color;
+    }
+    #btn1:hover{
+    background-color:#0d47a1
+    }
+    .hold{
+        margin-top: 5px;
+      border-color: 1px solid black;
+      padding: 70px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, .2);
+      border: #000 2px solid;
+      box-shadow: 5px 5px 10px black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 800px;
+      flex-direction: column;
+      width: 400px;
+      margin-bottom: 30px;
+    }
+    h1{
+      font-family: 'DM Serif Display', serif;
+      text-shadow: h-shadow v-shadow blur-radius color;
+      color: white; 
+            font-size: 35px; 
+            text-shadow: -1px 1px 0 #000, 
+                          1px 1px 0 #000, 
+                         1px -1px 0 #000, 
+                        -1px -1px 0 #000;
+    }
+    .lg{
+        width: 100%;
 
-        #btn1 {
-            width: 100%;
-            height: 70px;
-            border: 2px solid black;
-            border-radius: 5px;
-            background-color: transparent;
-            color: white;
-            font-size: 25px;
-            text-shadow: -2px 2px 0 #000,
-                2px 2px 0 #000,
-                2px -2px 0 #000,
-                -2px -2px 0 #000;
-            text-shadow: h-shadow v-shadow blur-radius color;
-        }
-
-        #btn1:hover {
-            background-color: #0d47a1
-        }
-
-        .hold {
-            margin-top: 5px;
-            border-color: 1px solid black;
-            padding: 70px;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, .2);
-            border: #000 2px solid;
-            box-shadow: 5px 5px 10px black;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 800px;
-            flex-direction: column;
-            width: 400px;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-family: 'DM Serif Display', serif;
-            text-shadow: h-shadow v-shadow blur-radius color;
-            color: white;
-            font-size: 35px;
-            text-shadow: -1px 1px 0 #000,
-                1px 1px 0 #000,
-                1px -1px 0 #000,
-                -1px -1px 0 #000;
-        }
-
-        .lg {
-            width: 100%;
-
-        }
-
-        .lg2 {
-            width: 100%;
-            height: 27px;
-            border-radius: 5px;
-        }
-
-        .marg {
-            margin-bottom: 10px;
-        }
-
-        #btn2 {
-            width: 100%;
-            height: 70px;
-            border: 2px solid black;
-            border-radius: 5px;
-            background-color: transparent;
-            color: white;
-            font-size: 25px;
-            text-shadow: -2px 2px 0 #000,
-                2px 2px 0 #000,
-                2px -2px 0 #000,
-                -2px -2px 0 #000;
-            text-shadow: h-shadow v-shadow blur-radius color;
-            margin-bottom: 20px;
-            padding-left: 90px;
-            padding-right: 90px;
-            margin-bottom: 20px;
-        }
-
-        #btn2:hover {
-            background-color: #0d47a1
-        }
+    }
+    .lg2{
+        width: 100%;
+        height: 27px;
+        border-radius: 5px;
+    }
+    .marg{
+        margin-bottom: 10px;
+    }
+    #btn2{
+      width: 400px;
+      height: 50px;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: transparent;
+      color: white; 
+            font-size: 25px; 
+            text-shadow: -2px 2px 0 #000, 
+                          2px 2px 0 #000, 
+                         2px -2px 0 #000, 
+                        -2px -2px 0 #000;
+      text-shadow: h-shadow v-shadow blur-radius color;
+      padding-left: 90px;
+      padding-right: 90px;
+      margin-top: 10px;
+    }
+    #btn2:hover{
+    background-color:#0d47a1
+    }
     </style>
 </head>
 
@@ -228,11 +218,27 @@
                     <button onclick="hideAlert()">Cancel</button>
                 </div>
             </div>
-            <div class="form-group">
-                <form action={{ url('/welcome') }} method="get">
-                    <button>Return to Home Page</button>
-                </form>
+            <br>
+            <!-- Add more fields as needed -->
+            <div class="lg" >
+                <button type="submit" value="Register" id="btn1">Register</button>
             </div>
+        </form>
+        <div class="cancelAlert" >
+            <button onclick="showAlert()" id="btn2">Cancel</button>
+            
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <form action={{ url('/welcome') }} method="get">
+                <button id="btn2">Return Home</button>
+            </form>
+        </div>
 
         </div>
     </div>

@@ -117,16 +117,6 @@
             </div>
         </form>
         <br>
-        <div class="cancelAlert">
-            <button onclick="showAlert()">Cancel</button>
-
-            <div id="overlay" onclick="hideAlert()"></div>
-            <div id="alertBox">
-            <p>Do you want to reset the form?</p>
-            <button onclick="resetForm()">Reset</button>
-            <button onclick="hideAlert()">Cancel</button>
-            </div>
-        </div>
         <form class="lg" action={{ url('/') }} method="get">
             <button id="btn1">Return to Home Page</button>
         </form>
