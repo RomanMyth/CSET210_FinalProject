@@ -29,7 +29,15 @@
                 <th>Role</th>
                 <th>Salary</th>
             </tr>
-            @foreach($admins as $admin)
+            @foreach ($users as $user)
+                <tr>
+                    <th>{{ $user->id }}</th>
+                    <th>{{ $user->First_Name }}</th>
+                    <th>{{ $user->Role_ID }}</th>
+                    <th>{{ $user->Salary }}</th>
+                </tr>
+            @endforeach
+            {{-- @foreach($admins as $admin)
                 <tr>
                     <th>{{ $admin->Admin_ID }}</th>
                     <th>{{ $admin->First_Name}}</th>
@@ -60,7 +68,7 @@
                     <th>Caregiver</th>
                     <th>{{ $caregiver->Salary }}</th>
                 </tr>
-            @endforeach
+            @endforeach --}}
         </table>
         <form id='employeeSearchForm' action="" method="">
             <label for="search">Search</label>

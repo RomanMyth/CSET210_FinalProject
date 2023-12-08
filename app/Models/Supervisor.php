@@ -11,5 +11,5 @@ class Supervisor extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
-    protected $fillable = ["Admin_ID", "First_Name", "Last_Name", "Email", "Phone", "Password","Role_ID"];
+    protected $fillable = ["Admin_ID", "First_Name", "Last_Name", "Email", "Phone", "Password","Role_ID", "User_ID"];
 }

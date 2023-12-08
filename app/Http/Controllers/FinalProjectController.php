@@ -12,9 +12,181 @@ use App\Models\Patient;
 use App\Models\Patient_emergency;
 use App\Models\Registration;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
+//session_destroy();
+session_start();
 
 class FinalProjectController extends Controller
 {
+    function viewRegisters()
+    {
+
+        $this->middleware("auth");
+        $admins = DB::table("registrations")->where("Role_ID", "Admin")->get();
+        $supervisors = DB::table("registrations")->where("Role_ID", "Supervisor")->get();
+        $doctors = DB::table("registrations")->where("Role_ID", "Doctor")->get();
+        $caregivers = DB::table("registrations")->where("Role_ID", "Caregiver")->get();
+        $patients = DB::table("registrations")->where("Role_ID", "Patient")->get();
+        return view("/registrationApproval", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
+    }
+
+    //Users added to registration table
+    function addToRegistration(Request $request)
+    {
+        $fields = $request->validate([
+            'Email' => 'unique:registrations,Email|unique:patients,Email|unique:admins,Email|unique:supervisors,Email|unique:doctors,Email|unique:caregivers,Email',
+            'First_Name' => 'required|string',
+            'Password' => 'required|string'
+        ]);
+        $role = $request->input("Role_ID");
+
+        $data = $request->all();
+
+        if ($role != "Patient") {
+            $data['Family_Code'] = NULL;
+        }
+        
+
+        // when auth works, grab everything seperately and bycrypt the password
+        Registration::create($data);
+
+        return "success";
+    }
+
+    //adds users from registers to their respective table when approved
+    function approveRegistration(Request $request)
+    
+    {
+
+        $this->middleware('auth');
+        $role = $request->input("Role_ID");
+        $formData = $request->all();
+
+        $data = DB::table("registrations")->where("Email", $formData["Email"])->get();
+        $data = json_decode(json_encode($data), true);
+
+        if ($role == 'Admin') {
+            $data[0]["Role_ID"] = 1;
+
+            User::create($data[0]);
+
+            $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
+            $data[0]["User_ID"] = $newUser;
+
+            Admin::create($data[0]);
+        }
+
+        if ($role == 'Doctor') {
+            $data[0]["Role_ID"] = 2;
+
+            User::create($data[0]);
+            
+            $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
+            $data[0]["User_ID"] = $newUser;
+
+            Doctor::create($data[0]);
+        }
+
+        if ($role == 'Supervisor') {
+            $data[0]["Role_ID"] = 3;
+
+            User::create($data[0]);
+            
+            $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
+            $data[0]["User_ID"] = $newUser;
+
+            Supervisor::create($data[0]);
+        }
+
+        if ($role == 'Caregiver') {
+            $data[0]['Role_ID'] = 4;
+
+            User::create($data[0]);
+            
+            $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
+            $data[0]["User_ID"] = $newUser;
+
+            Caregiver::create($data[0]);
+        }
+
+        if ($role == 'Patient') {
+            $data[0]["Role_ID"] = 5;
+
+            User::create($data[0]);
+            
+            $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
+            $data[0]["User_ID"] = $newUser;
+
+            $patient_group = rand(1, 4);
+            $data[0]['Patient_Group'] = $patient_group;
+
+            Patient::create($data[0]);
+
+            $patientID = DB::table('patients')->where('Email', $formData['Email'])->value('Patient_ID');
+            $data[0]["Patient_ID"] = $patientID;
+
+            Patient_emergency::create($data[0]);
+        }
+
+        // $user = User::create($data[0]);
+        
+
+        DB::table("registrations")->where("Email", $formData["Email"])->delete();
+
+        //return $response;
+
+        return redirect("/viewRegisters");
+    }
+
+
+    function userLogin(Request $request)
+    {
+        $fields = $request->validate([
+            'Email' => 'required|string',
+        ]);
+
+        $user = User::where("Email", $fields['Email'])->first();
+      
+        if ($request->Password != $user->Password){
+            return 'Error';
+        }
+        
+        $role = $user->Role_ID;
+
+        $_SESSION['role'] = $role;
+
+        if($user['Role_ID'] == 1){
+            return redirect("/adminDashboard");
+        }
+        if($user['Role_ID'] == 2){
+            return redirect('/doctorDashboard');
+        }
+        if($user['Role_ID'] == 3){
+            return redirect('/supervisorDashboard');
+        }
+        if($user['Role_ID'] == 4){
+            return redirect('/caregiverDashbaord');
+        }
+        if($user['Role_ID'] == 5){
+            return redirect('/patientDashboard');
+        }
+    }
+
+    //end home page functions
+
+    //return to home
+    function showHomePage()
+    {
+        return view("/welcome");
+    }
+
+    // Home page functions
+    function showLoginPage()
+    {
+        return view("LoginPage");
+    }
+
     //Generates a family for the register page
     function generateFamilyCode()
     {
@@ -29,11 +201,6 @@ class FinalProjectController extends Controller
         return $FamilyCode;
     }
 
-    // Home page functions
-    function showLoginPage()
-    {
-        return view("LoginPage");
-    }
     function showRegisterPage()
     {
         //Calls the function to generate a family code and passes it to the view
@@ -41,136 +208,24 @@ class FinalProjectController extends Controller
 
         return view("RegisterPage", ['FamilyCode' => $FamilyCode]);
     }
-    //end home page functions
+    //Start function to return register views
 
-    //return to home
-    function showHomePage()
+    function doctorForm()
     {
-        return view("/welcome");
+        return view("registerDoctor");
     }
 
-    function viewRegisters()
+    function adminForm()
     {
-        $admins = DB::table("registrations")->where("Role_ID", "Admin")->get();
-        $supervisors = DB::table("registrations")->where("Role_ID", "Supervisor")->get();
-        $doctors = DB::table("registrations")->where("Role_ID", "Doctor")->get();
-        $caregivers = DB::table("registrations")->where("Role_ID", "Caregiver")->get();
-        $patients = DB::table("registrations")->where("Role_ID", "Patient")->get();
-        return view("/registrationApproval", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
+        return view("registerAdmin");
     }
 
-    //Users added to registration table
-    function addToRegistration(Request $request)
+    function supervisorForm()
     {
-        $role = $request->input("Role_ID");
-        $data = $request->all();
-        if ($role != "Patient") {
-            $data['Family_Code'] = NULL;
-        }
-
-        Registration::create($data);
-
-        return $data;
+        return view("registerSupervisor");
     }
 
-    function approveRegistration(Request $request)
-    {
-        $role = $request->input("Role_ID");
-        $formData = $request->all();
-
-        $data = DB::table("registrations")->where("Email", $formData["Email"])->get();
-        $data = json_decode(json_encode($data), true);
-
-
-        if ($role == 'Admin') {
-            $data[0]["Role_ID"] = 1;
-            Admin::create($data[0]);
-        }
-
-        if ($role == 'Doctor') {
-            $data[0]["Role_ID"] = 2;
-            Doctor::create($data[0]);
-        }
-
-        if ($role == 'Supervisor') {
-            $data[0]["Role_ID"] = 3;
-            Supervisor::create($data[0]);
-        }
-
-        if ($role == 'Caregiver') {
-            $data[0]['Role_ID'] = 4;
-            Caregiver::create($data[0]);
-        }
-
-        if ($role == 'Patient') {
-            $data[0]["Role_ID"] = 5;
-
-            $patient_group = rand(1, 5);
-            $data[0]['Patient_Group'] = $patient_group;
-
-            Patient::create($data[0]);
-
-            $patientID = DB::table('patients')->where('Email', $formData['Email'])->value('Patient_ID');
-            $data[0]["Patient_ID"] = $patientID;
-
-            Patient_emergency::create($data[0]);
-        }
-
-        DB::table("registrations")->where("Email", $formData["Email"])->delete();
-
-        return $this->viewRegisters();
-    }
-
-
-    function userLogin(Request $request)
-    {
-        $patients = DB::table("patients")->get();
-        foreach ($patients as $patient) {
-            if ($patient->Email == $request->Email && $patient->Password == $request->Password) {
-                $First_Name = $patient->First_Name;
-                $Last_Name = $patient->Last_Name;
-                return view("patientDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
-            }
-        }
-
-        $doctors = DB::table("doctors")->get();
-        foreach ($doctors as $doctor) {
-            if ($doctor->Email == $request->Email && $doctor->Password == $request->Password) {
-                $First_Name = $doctor->First_Name;
-                $Last_Name = $doctor->Last_Name;
-                return view("doctorDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
-            }
-        }
-
-        $supervisors = DB::table("supervisors")->get();
-        foreach ($supervisors as $supervisor) {
-            if ($supervisor->Email == $request->Email && $supervisor->Password == $request->Password) {
-                $First_Name = $supervisor->First_Name;
-                $Last_Name = $supervisor->Last_Name;
-                return view("supervisorDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
-            }
-        }
-
-        $caregivers = DB::table("caregivers")->get();
-        foreach ($caregivers as $caregiver) {
-            if ($caregiver->Email == $request->Email && $caregiver->Password == $request->Password) {
-                $First_Name = $caregiver->First_Name;
-                $Last_Name = $caregiver->Last_Name;
-                return view("caregiverDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
-            }
-        }
-
-        $admins = DB::table("admins")->get();
-        foreach ($admins as $admin) {
-            if ($admin->Email == $request->Email && $admin->Password == $request->Password) {
-                $First_Name = $admin->First_Name;
-                $Last_Name = $admin->Last_Name;
-                return view("adminDashboard", ["First_Name" => $First_Name, "Last_Name" => $Last_Name]);
-            }
-        }
-
-        return view("LoginPage");
-    }
+    //End functions to return register views
 
     //Start functions to patients home page
     function showPatientsHome()
@@ -189,9 +244,21 @@ class FinalProjectController extends Controller
 
     function showAdminDashboard()
     {
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 1){
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect()->back();
+        }
         return view("adminDashboard");
     }
 
+    function showRegistrationApproval()
+    {
+        echo "Reg";
+    }
     function showAdditionalPatientInfo()
     {
         $patients = DB::table("patients")->get();
@@ -209,12 +276,26 @@ class FinalProjectController extends Controller
 
     function viewEmployees()
     {
-        $admins = DB::table("admins")->where("Role_ID", 1)->get();
-        $supervisors = DB::table("supervisors")->where("Role_ID", 3)->get();
-        $doctors = DB::table("doctors")->where("Role_ID", 2)->get();
-        $caregivers = DB::table("caregivers")->where("Role_ID", 4)->get();
-        $patients = DB::table("patients")->where("Role_ID", 5)->get();
-        return view("Employees", ["admins" => $admins, "supervisors" => $supervisors, "doctors" => $doctors, "caregivers" => $caregivers, "patients" => $patients]);
+        $users = DB::select("SELECT u.id as id, u.First_Name,
+        CASE
+            WHEN u.Role_ID = 1 THEN 'Admin'
+            WHEN u.Role_ID = 2 THEN 'Doctor'
+            WHEN u.Role_ID = 3 THEN 'Supervisor'
+            WHEN u.role_ID = 4 THEN 'Caregiver'
+        END as Role_ID,
+        CASE
+            WHEN u.Role_ID = 1 THEN 'None'
+            WHEN u.Role_ID = 2 THEN d.Salary
+            WHEN u.Role_ID = 3 THEN s.Salary
+            WHEN u.Role_ID = 4 THEN c.Salary
+        END as Salary
+        FROM users u LEFT JOIN admins a ON u.id = a.User_ID LEFT JOIN doctors d ON u.id = d.User_ID LEFT JOIN supervisors s ON u.id = s.User_ID  LEFT JOIN caregivers c ON u.id = c.User_ID WHERE u.Role_ID != 5;");
+
+        return view("Employees", ["users"=> $users]);
+    }
+    function showRosterNewRoster()
+    {
+        echo "rosterns";
     }
 
     //End functions for Admin Dashboard Page
@@ -235,6 +316,10 @@ class FinalProjectController extends Controller
     function showDoctorsHome()
     {
         return view("doctorsHome");
+    }
+    function showPatientOfDoc()
+    {
+        echo "Patientofdoc";
     }
     //End function for Doctors Home
 
@@ -285,22 +370,14 @@ class FinalProjectController extends Controller
     }
     //End functions for patient dashboard page
 
-    //Start functions for patient of doctor
-    function showPatientOfDoctor()
+    function showAdminReport()
     {
-        return view("patientOfDoctor");
-    }
-    //End functions for patient of doctor
 
-    //Start functions for roster page
-    function showRoster(){
-        return view("roster");
+        return view("AdminsReport");
     }
-    //End functions for roster page
-    
-    //Start functions for new roster page
-    function showNewRoster(){
-        return view("newRoster");
+
+    function logout(){
+        unset($_SESSION["role"]);
+        return redirect('welcome');
     }
-    //End functions for new roster page
 }

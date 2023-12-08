@@ -11,5 +11,5 @@ class Doctor extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
-    protected $fillable = ["Doctor_ID", "First_Name", "Last_Name", "Email", "Password","Role_ID","Salary"];
+    protected $fillable = ["Doctor_ID", "First_Name", "Last_Name", "Email", "Phone", "Password","Role_ID","Salary", "User_ID"];
 }
