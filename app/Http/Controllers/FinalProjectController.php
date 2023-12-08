@@ -138,7 +138,20 @@ class FinalProjectController extends Controller
 
         return redirect("/viewRegisters");
     }
+    //Users denied from registration
+    function denyRegistration(Request $request){
+        $role = $request->input("Role_ID");
+        $formData = $request->all();
 
+        $data = DB::table("registrations")->where("Email", $formData["Email"])->get();
+        $data = json_decode(json_encode($data), true);
+
+        // $denied = true;
+
+        DB::table("registrations")->where("Email", $formData["Email"])->delete();
+        // return view("viewRegisters")->with('denied', $denied);
+        return $this->viewRegisters();
+    }
 
     function userLogin(Request $request)
     {
@@ -255,6 +268,7 @@ class FinalProjectController extends Controller
         }
         return view("adminDashboard");
     }
+  
     function showAdditionalPatientInfo()
     {
         $patients = DB::table("patients")->get();
