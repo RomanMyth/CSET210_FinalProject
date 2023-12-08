@@ -85,36 +85,12 @@
             <th>Role</th>
             <th>Salary</th>
         </tr>
-        @foreach ($admins as $admin)
+        @foreach ($users as $user)
             <tr>
-                <th>{{ $admin->Admin_ID }}</th>
-                <th>{{ $admin->First_Name }}</th>
-                <th>Admin</th>
-                <th>None</th>
-            </tr>
-        @endforeach
-        @foreach ($supervisors as $supervisor)
-            <tr>
-                <th>{{ $supervisor->Supervisor_ID }}</th>
-                <th>{{ $supervisor->First_Name }}</th>
-                <th>Supervisor</th>
-                <th>{{ $supervisor->Salary }}</th>
-            </tr>
-        @endforeach
-        @foreach ($doctors as $doctor)
-            <tr>
-                <th>{{ $doctor->Doctor_ID }}</th>
-                <th>{{ $doctor->First_Name }}</th>
-                <th>Doctor</th>
-                <th>{{ $doctor->Salary }}</th>
-            </tr>
-        @endforeach
-        @foreach ($caregivers as $caregiver)
-            <tr>
-                <th>{{ $caregiver->Caregiver_ID }}</th>
-                <th>{{ $caregiver->First_Name }}</th>
-                <th>Caregiver</th>
-                <th>{{ $caregiver->Salary }}</th>
+                <th>{{ $user->id }}</th>
+                <th>{{ $user->First_Name }}</th>
+                <th>{{ $user->Role_ID }}</th>
+                <th>{{ $user->Salary }}</th>
             </tr>
         @endforeach
     </table>

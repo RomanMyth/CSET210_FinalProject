@@ -18,16 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage']);
+Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage'])->name('login');
 Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
 
+Route::POST('/Login',[FinalProjectController::class,'userLogin']);
 //end home page functions
 
-Route::POST('/Login',[FinalProjectController::class,'userLogin']);
 
 Route::post('/addToRegister', [FinalProjectController::class,'addToRegistration']);
-Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
-Route::post('/Register',[FinalProjectController::class,'approveRegistration']);
 
 //Return to home function
 Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
@@ -39,8 +37,13 @@ Route::get('/DoctorsAppointment', [FinalProjectController::class,'showDoctorsApp
 //View Admin Report
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
 
-//Admin Dashboard Page Routes
+
+Route::post('/Register',[FinalProjectController::class,'approveRegistration']);
+
+Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
+
 Route::get('/adminDashboard',[FinalProjectController::class,'showAdminDashboard']);
+// Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
 
 Route::get('viewEmployees',[FinalProjectController::class,'viewEmployees']);
 
@@ -97,3 +100,6 @@ Route::get('/newRoster',[FinalProjectController::class,'showNewRoster']);
 
 //Family members home routes
 Route::get('/familyMembersHome',[FinalProjectController::class,'showFamilyMembersHome']);
+
+Route::post('/logout',[FinalProjectController::class,'logout']);
+
