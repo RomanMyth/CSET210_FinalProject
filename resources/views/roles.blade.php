@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,57 @@
     <!--Functions for form alerts-->
     <script src="app.js"></script>
     <title>Roles</title>
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
+    <header>
+        <h1>Roles Dashboard</h1>
+        <div class="user-dropdown">
+            <button id="btn2">Profile</button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </header>
     <h1>Roles</h1>
     <br>
     <br>
@@ -57,12 +107,12 @@
     <br>
     <div class="cancelAlert">
         <button onclick="showAlert()">Cancel</button>
-        
+
         <div id="overlay" onclick="hideAlert()"></div>
         <div id="alertBox">
-        <p>Do you want to reset the form?</p>
-        <button onclick="resetForm()">Reset</button>
-        <button onclick="hideAlert()">Cancel</button>
+            <p>Do you want to reset the form?</p>
+            <button onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
         </div>
     </div>
     <br>
@@ -88,7 +138,7 @@
             <td class='rowData'>Caregiver Dashboard</td>
             <td class='rowData'>Caregiver</td>
         </tr>
-                <tr id="titleRow" class="rolesRow">
+        <tr id="titleRow" class="rolesRow">
             <td class='rowData'>Patient Dashboard</td>
             <td class='rowData'>Patient</td>
         </tr>
@@ -152,4 +202,5 @@
     <br>
     <br>
 </body>
+
 </html>
