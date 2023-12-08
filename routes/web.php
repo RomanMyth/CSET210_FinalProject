@@ -38,7 +38,7 @@ Route::get('/DoctorsAppointment', [FinalProjectController::class,'showDoctorsApp
 Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
 
 
-Route::post('/Register',['middleware' => 'auth', FinalProjectController::class,'approveRegistration']);
+Route::post('/Register',[FinalProjectController::class,'approveRegistration']);
 
 Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
 
@@ -49,7 +49,6 @@ Route::get('viewEmployees',[FinalProjectController::class,'viewEmployees']);
 
 Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrationApproval']);
 Route::get('/additionalPatientInfo',[FinalProjectController::class,'showAdditionalPatientInfo']);
-Route::get('/doctAppt',[FinalProjectController::class,'showDoctAppt']);
 
 
 
@@ -99,4 +98,8 @@ Route::get('/roster',[FinalProjectController::class,'showRoster']);
 //New roster page routes
 Route::get('/newRoster',[FinalProjectController::class,'showNewRoster']);
 
+//Family members home routes
+Route::get('/familyMembersHome',[FinalProjectController::class,'showFamilyMembersHome']);
+
 Route::post('/logout',[FinalProjectController::class,'logout']);
+

@@ -230,7 +230,8 @@ class FinalProjectController extends Controller
     //Start functions to patients home page
     function showPatientsHome()
     {
-        return view("patientsHome");
+        $patients = DB::table("patients")->get();
+        return view("patientsHome", ["patients" => $patients]);
     }
     //End functions to patients home page
 
@@ -253,11 +254,6 @@ class FinalProjectController extends Controller
             return redirect()->back();
         }
         return view("adminDashboard");
-    }
-
-    function showRegistrationApproval()
-    {
-        echo "Reg";
     }
     function showAdditionalPatientInfo()
     {
@@ -292,10 +288,6 @@ class FinalProjectController extends Controller
         FROM users u LEFT JOIN admins a ON u.id = a.User_ID LEFT JOIN doctors d ON u.id = d.User_ID LEFT JOIN supervisors s ON u.id = s.User_ID  LEFT JOIN caregivers c ON u.id = c.User_ID WHERE u.Role_ID != 5;");
 
         return view("Employees", ["users"=> $users]);
-    }
-    function showRosterNewRoster()
-    {
-        echo "rosterns";
     }
 
     //End functions for Admin Dashboard Page
@@ -340,14 +332,18 @@ class FinalProjectController extends Controller
     //Start functions for doctors appointment page
     function showDoctorsAppointment()
     {
-        return view("DoctorsAppointment");
+        $patients = DB::table("patients")->get();
+        return view("DoctorsAppointment", ["patients" => $patients]);
     }
     //End fuctions for doctors appointment page
 
     //Start functions for patients page
     function showPatients()
     {
-        return view("patients");
+        $patients = DB::table("patients")->get();
+        $patient_emergency_table = DB::table("patient_emergency")->get();
+
+        return view("patients", ["patients" => $patients, "patient_emergency" => $patient_emergency_table]);
     }
     //End functions for patients page
 
@@ -359,13 +355,15 @@ class FinalProjectController extends Controller
     //End functions for roles page
 
     //Start functions for doctor dashboard page
-    function showDoctorDashboard(){
+    function showDoctorDashboard()
+    {
         return view("doctorDashboard");
     }
     //End functions for doctor dashboard page
-  
+
     //Start functions for patient dashboard page
-    function showPatientDashboard(){
+    function showPatientDashboard()
+    {
         return view("patientDashboard");
     }
     //End functions for patient dashboard page
@@ -380,4 +378,24 @@ class FinalProjectController extends Controller
         unset($_SESSION["role"]);
         return redirect('welcome');
     }
+    //Start functions for roster page
+    function showRoster()
+    {
+        return view("roster");
+    }
+    //End functions for roster page
+
+    //Start functions for new roster page
+    function showNewRoster()
+    {
+        return view("newRoster");
+    }
+    //End functions for new roster page
+
+    //Start functions for family memebrs home page
+    function showFamilyMembersHome()
+    {
+        return view("familyMembersHome");
+    }
+    //End functions for family memebrs home page
 }

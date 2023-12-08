@@ -48,13 +48,14 @@ body{
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
 }
 form{
     width: 80%;
     display: flex;
+    height: 300px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .btn1{
     width: 85%;
@@ -98,7 +99,7 @@ form{
     background-color: rgba(134, 184, 224, 0.2);
     border: #000 1px solid;
     box-shadow: 5px 5px 10px rgb(240, 110, 245);
-    width: 20%;
+    width: 50%;
     height: 100%;
 }
 
@@ -169,4 +170,6 @@ header {
   padding: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
