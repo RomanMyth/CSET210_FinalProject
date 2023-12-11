@@ -11,6 +11,7 @@ use App\Models\Caregiver;
 use App\Models\Patient;
 use App\Models\Patient_emergency;
 use App\Models\Registration;
+use App\Models\Role;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -381,10 +382,6 @@ class FinalProjectController extends Controller
     {
         return view("doctorsHome");
     }
-    function showPatientOfDoc()
-    {
-        echo "Patientofdoc";
-    }
     //End function for Doctors Home
 
     //Start functions for payment page
@@ -467,8 +464,18 @@ class FinalProjectController extends Controller
         else{
             return redirect()->back();
         }
+        $roles = DB::table("roles")->get();
 
-        return view("roles");
+        return view("roles",["roles" => $roles]);
+    }
+
+    function newRole(Request $request){
+        $rname = $request->input("Role_Name");
+        $data = $request->all();
+        Role::create($data);
+
+        $roles = DB::table("roles")->get();
+        return view("roles",["roles" => $roles]);
     }
     //End functions for roles page
 
@@ -571,5 +578,24 @@ class FinalProjectController extends Controller
         // $data = $request->all();
         // Schedule::create($data);
     }
+
+    //Start functions for patient of doctor page
+    function showPatientOfDoctor(){
+        return view("patientOfDoctor");
+    }
+    // function showNewRoster()
+    // {
+    //     if(isset($_SESSION['role'])){
+    //         if($_SESSION['role'] != 1 && $_SESSION['role'] != 3){
+    //             return redirect()->back();
+    //         }
+    //     }
+    //     else{
+    //         return redirect()->back();
+    //     }
+
+    //     return view("newRoster");
+    // }
+    //End functions for patient of doctor page
 }
 

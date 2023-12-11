@@ -15,6 +15,30 @@
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search').submit(function(e) {
+                e.preventDefault();
+                var searchText = $('input[name="search"]').val().toLowerCase();
+
+                $('table tr:gt(0)').each(function() {
+                    var found = false;
+                    $(this).find('th').each(function() {
+                        var cellText = $(this).text().toLowerCase();
+                        if (cellText.indexOf(searchText) !== -1) {
+                            found = true;
+                            return false; // Break the loop if match found
+                        }
+                    });
+                    if (found) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <header>
     <h3>
@@ -67,46 +91,18 @@
             </tr>
         @endforeach
     </table>
-    <br>
+    {{-- <br> --}}
 
-    <form action="searchPastAppointments" method="">
-        <div class="form-group">
-            <button type="submit" value="Submit">Search</button>
-        </div>
-        <div class="form-group">
-            <label for="search"></label>
-            <input type="text" id="text" name="search">
-        </div>
+
+    <form id='search' action="" method="">
+        <label for="search">Search</label>
+        <input type="text" name="search" id="">
+        <br>
+        <br>
+        <button type="submit">Enter</button>
     </form>
     <br>
     <br>
-
-
-
-    <script>
-        $(document).ready(function() {
-            $('#searchPastAppointments').submit(function(e) {
-                e.preventDefault();
-                var searchText = $('input[name="search"]').val().toLowerCase();
-
-                $('table tr:gt(0)').each(function() {
-                    var found = false;
-                    $(this).find('th').each(function() {
-                        var cellText = $(this).text().toLowerCase();
-                        if (cellText.indexOf(searchText) !== -1) {
-                            found = true;
-                            return false; // Break the loop if match found
-                        }
-                    });
-                    if (found) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

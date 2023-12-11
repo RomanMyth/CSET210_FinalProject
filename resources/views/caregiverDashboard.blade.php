@@ -35,13 +35,13 @@
         </div>
         <div id="hold">
             <div class="btn-con">
-                <form action={{ url('/registrationApproval') }} method="get">
+                <form action={{ url('/caregiversHome') }} method="get">
                     <button class="btn1">Caregiver's Home</button>
                 </form>
             </div>
             <div class="btn-con">
-                <form action={{ url('/additionalPatientInfo') }} method="get">
-                    <button class="btn1">Caregiver's Patients</button>
+                <form action={{ url('/patients') }} method="get">
+                    <button class="btn1">Patients</button>
                 </form>
             </div>
             <div class="btn-con">
