@@ -15,8 +15,35 @@
         </style>
         <script>
 
-            </script>
+        </script>
     </head>
+    <header>
+        <h3>
+            Sunrise Retirement Home
+        </h3>
+        <div class='header-btn-section'>
+            <form action="back" method='POST'>
+                @csrf
+                <button type='Submit'>Back</button>
+            </form>
+        </div>
+        <div class='header-btn-section'>
+            <div class="user-dropdown">
+                <button id="btn2">Profile</button>
+                <div class="dropdown-content">
+                    {{-- <a href="#">{{ $First_Name }}</a> --}}
+                    {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                    You exist!
+                </div>
+            </div>
+        </div>
+        <div class='header-btn-section'>
+            <form action="logout" method='POST'>
+                @csrf
+                <button type='Submit'>Logout</button>
+            </form>
+        </div>
+    </header>
     <body>
         <h1>New Roster</h1>
         <br>

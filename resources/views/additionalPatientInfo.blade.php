@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="{{ asset('css/addcss.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/addcss.css') }}"> --}}
+        <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
         <!--Style for form alerts-->
         <link rel="stylesheet" href="css/style.css" type="text/css">
         <!--Functions for form alerts-->
@@ -44,71 +45,38 @@
                 $("#New-Patient-Group-Input").slideUp("slow");
             });
         </script>
-        <style>
-        #First-Name {
-            display: none;
-        }
-
-        .New-Patient-Group {
-            display: none;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-        }
-
-        .user-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .user-dropdown:hover .dropdown-content {
-            display: block;
-        }
-    </style>
     </head>
+    <header>
+        <h3>
+            Sunrise Retirement Home
+        </h3>
+        <div class='header-btn-section'>
+            <form action="back" method='POST'>
+                @csrf
+                <button type='Submit'>Back</button>
+            </form>
+        </div>
+        <div class='header-btn-section'>
+            <div class="user-dropdown">
+                <button id="btn2">Profile</button>
+                <div class="dropdown-content">
+                    {{-- <a href="#">{{ $First_Name }}</a> --}}
+                    {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                    You exist!
+                </div>
+            </div>
+        </div>
+        <div class='header-btn-section'>
+            <form action="logout" method='POST'>
+                @csrf
+                <button type='Submit'>Logout</button>
+            </form>
+        </div>
+    </header>
     <body>
         <div class="scene">
             <div class="sun"></div>
         </div>
-            <header class="nohead">
-                  <div>
-                Sunrise name place holder
-                </div>
-              <h1>Addtional Patient Information Dashboard</h1>
-              
-              <div class="user-dropdown">
-                <button id="btn2">Profile</button>
-                 <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Logout</a>
-                 </div>
-              </div>
-          </header>  
-
           <div id="container">
             <div class="banner">
             {{-- just ignore this max I know youll probably see this but please this random div its actually important --}}
