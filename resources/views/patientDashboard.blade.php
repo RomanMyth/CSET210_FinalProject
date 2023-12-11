@@ -30,9 +30,9 @@
         </div>
     </header>
     <div id="container">
-        <div class="banner">
+        {{-- <div class="banner">
             <h1 class="boxed">Patient Dashboard</h1>
-        </div>
+        </div> --}}
         <div id="hold">
             <div class="btn-con">
                 <form action={{ url('/patientsHome') }} method="get">
