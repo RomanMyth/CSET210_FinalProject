@@ -11,70 +11,57 @@
         #First-Name {
             display: none;
         }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .user-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .user-dropdown:hover .dropdown-content {
-            display: block;
-        }
     </style>
 </head>
-
-<body>
-    <header>
-        <h1>Patient Dashboard</h1>
+<header>
+    <h3>
+        Sunrise Retirement Home
+    </h3>
+    <div class='header-btn-section'>
+        <form action="back" method='POST'>
+            @csrf
+            <button type='Submit'>Back</button>
+        </form>
+    </div>
+    <div class='header-btn-section'>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Logout</a>
+                {{-- <a href="#">{{ $First_Name }}</a> --}}
+                {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                You exist!
             </div>
         </div>
-    </header>
-    <form method="POST">
-        @csrf
-        <br>
-        <br>
-        <h3>Browse though patients</h3>
-        <table id="patientsTable">
-            <tr id="titleRow" class="patientsRow">
-                <td class='titleRowData'><strong>Patient ID</strong></td>
-                <td class='titleRowData'><strong>Patient Name</strong></td>
-                <td class='titleRowData'><strong>Patient Age</strong></td>
-                <td class='titleRowData'><strong>Emergency Contact Number</strong></td>
-                <td class='titleRowData'><strong>Emergency Contact Name</strong></td>
-                <td class='titleRowData'><strong>Admission Date</strong></td>
+    </div>
+    <div class='header-btn-section'>
+        <form action="logout" method='POST'>
+            @csrf
+            <button type='Submit'>Logout</button>
+        </form>
+    </div>
+</header>
+
+<body>
+    <br>
+    <br>
+    <h3>Browse though patients</h3>
+    <table>
+        <tr>
+            <th>Patient ID</th>
+            <th>Patient_First_Name</th>
+            <th>Patient_Last_Name</th>
+            <th>Patient_Email</th>
+            <th>Patient_Phone_Number</th>
+        </tr>
+        @foreach ($patients as $patient)
+            <tr>
+                <th>{{ $patient->Patient_ID }}</th>
+                <th>{{ $patient->First_Name }}</th>
+                <th>{{ $patient->Last_Name }}</th>
+                <th>{{ $patient->dob }}</th>
+                {{-- <th>{{ $patient->$patient_emergency_table->Emergency_Contact }}</th>
+                    <th>{{ $patient->$patient_emergency_table->Contact_Relation }}</th> --}}
+                <th>{{ $patient->Admission_Date }}</th>
             </tr>
             <tr id="titleRow" class="patientRow">
                 <td class='rowData'>#123</td>
@@ -84,18 +71,18 @@
                 <td class='rowData'>Matt Doe</td>
                 <td class='rowData'>11/22/33</td>
             </tr>
-        </table>
-        <form action="searchPastAppointments" method="post">
-            <div class="form-group">
-                <button type="submit" value="Submit">Search</button>
-            </div>
-            <div class="form-group">
-                <label for="search"></label>
-                <input type="text" id="text" name="search">
-            </div>
-        </form>
-        <br>
-        <br>
+    </table>
+    <form action="searchPastAppointments" method="post">
+        <div class="form-group">
+            <button type="submit" value="Submit">Search</button>
+        </div>
+        <div class="form-group">
+            <label for="search"></label>
+            <input type="text" id="text" name="search">
+        </div>
+    </form>
+    <br>
+    <br>
 </body>
 
 </html>
