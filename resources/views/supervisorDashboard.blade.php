@@ -21,8 +21,8 @@
             <div class="user-dropdown">
                 <button id="btn2">Profile</button>
                 <div class="dropdown-content">
-                    <a href="#">{{ $First_Name }}</a>
-                    <a href="#">{{ $Last_Name }}</a>
+                    {{-- <a href="#">{{ $First_Name }}</a>
+                    <a href="#">{{ $Last_Name }}</a> --}}
                     <a href="#">Logout</a>
                 </div>
             </div>
