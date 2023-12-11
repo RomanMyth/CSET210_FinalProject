@@ -185,8 +185,6 @@ class FinalProjectController extends Controller
             return redirect("/adminDashboard");
         }
         if($user['Role_ID'] == 2){
-            //$doctor = DB::table('users')->where('Email', $fields["Email"])->first()->Doctor_ID;
-            //$_SESSION["User"] = $doctor;
 
             return redirect('/doctorDashboard');
         }
@@ -194,6 +192,9 @@ class FinalProjectController extends Controller
             return redirect('/supervisorDashboard');
         }
         if($user['Role_ID'] == 4){
+            $Caregiver = DB::table('caregivers')->where('Email', $fields["Email"])->first()->Caregiver_ID;
+            $_SESSION["User"] = $Caregiver;
+
             return redirect('/caregiverDashboard');
         }
         if($user['Role_ID'] == 5){
@@ -275,7 +276,19 @@ class FinalProjectController extends Controller
     //Start functions to caregivers home page
     function showCaregiversHome()
     {
-        return view("caregiversHome");
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 4){
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect()->back();
+        }
+        $caregiver = $_SESSION['User'];
+        
+        $patients = DB::select("SELECT t.Caregiver_ID, t.Patient_ID, t.Morning_Med, t.Afternoon_Med, t.Night_Med, t.Breakfast, t.Lunch, t.Dinner, p.First_Name FROM `daily_caregiver_tasks` t JOIN patients p ON p.Patient_ID = t.Patient_ID WHERE Caregiver_ID = $caregiver AND Date = CURRENT_DATE;");
+
+        return view("caregiversHome", ["patients" => $patients]);
     }
 
     //Start Functions for Admin Dashboard Page
@@ -508,6 +521,7 @@ class FinalProjectController extends Controller
 
     function logout(){
         unset($_SESSION["role"]);
+        unset($_SESSION["User"]);
         return redirect('welcome');
     }
     //Start functions for roster page
@@ -595,7 +609,7 @@ class FinalProjectController extends Controller
         for($i = 1; $i < 5; $i++){
             $patients = DB::select("SELECT Patient_ID FROM patients WHERE Patient_Group = $i;");
             $patients = json_decode(json_encode($patients), true);
-            
+
             if($i == 1){
                 $caregiver = $caregiver1;
             }

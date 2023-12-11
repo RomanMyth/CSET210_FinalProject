@@ -35,7 +35,7 @@
         </div>
         <div id="hold">
             <div class="btn-con">
-                <form action={{ url('/registrationApproval') }} method="get">
+                <form action={{ url('/caregiversHome') }} method="get">
                     <button class="btn1">Caregiver's Home</button>
                 </form>
             </div>
