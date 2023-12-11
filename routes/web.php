@@ -18,95 +18,96 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/LoginPage',[FinalProjectController::class,'showLoginPage'])->name('login');
-Route::get('/RegisterPage',[FinalProjectController::class,'showRegisterPage']);
+Route::get('/LoginPage', [FinalProjectController::class, 'showLoginPage'])->name('login');
+Route::get('/RegisterPage', [FinalProjectController::class, 'showRegisterPage']);
 
-Route::POST('/Login',[FinalProjectController::class,'userLogin']);
+Route::POST('/Login', [FinalProjectController::class, 'userLogin']);
 //end home page functions
 
 
-Route::post('/addToRegister', [FinalProjectController::class,'addToRegistration']);
+Route::post('/addToRegister', [FinalProjectController::class, 'addToRegistration']);
 
 //Deny register function
-Route::post('/deniedRegister',[FinalProjectController::class,'denyRegistration']);
+Route::post('/deniedRegister', [FinalProjectController::class, 'denyRegistration']);
 
 //Return to home function
-Route::get('/welcome',[FinalProjectController::class,'showHomePage']);
+Route::get('/welcome', [FinalProjectController::class, 'showHomePage']);
 //end return to home function
 
 //Doctors appointment page routes
-Route::get('/DoctorsAppointment', [FinalProjectController::class,'showDoctorsAppointment']);
+Route::get('/DoctorsAppointment', [FinalProjectController::class, 'showDoctorsAppointment']);
 
 //View Admin Report
-Route::get('/AdminsReport',[FinalProjectController::class,'showAdminReport']);
+Route::get('/AdminsReport', [FinalProjectController::class, 'showAdminReport']);
 
 
-Route::post('/Register',[FinalProjectController::class,'approveRegistration']);
+Route::post('/Register', [FinalProjectController::class, 'approveRegistration']);
 
-Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
+Route::get('/viewRegisters', [FinalProjectController::class, 'viewRegisters']);
 
-Route::get('/adminDashboard',[FinalProjectController::class,'showAdminDashboard']);
+Route::get('/adminDashboard', [FinalProjectController::class, 'showAdminDashboard']);
 // Route::get('/viewRegisters',[FinalProjectController::class,'viewRegisters']);
 
-Route::get('viewEmployees',[FinalProjectController::class,'viewEmployees']);
+Route::get('viewEmployees', [FinalProjectController::class, 'viewEmployees']);
 
-Route::get('/registrationApproval',[FinalProjectController::class,'showRegistrationApproval']);
-Route::get('/additionalPatientInfo',[FinalProjectController::class,'showAdditionalPatientInfo']);
-
-
+Route::get('/registrationApproval', [FinalProjectController::class, 'showRegistrationApproval']);
+Route::get('/additionalPatientInfo', [FinalProjectController::class, 'showAdditionalPatientInfo']);
 
 
 
-Route::post('changePatientGroup',[FinalProjectController::class,'changePatientGroup']);
+
+
+Route::post('changePatientGroup', [FinalProjectController::class, 'changePatientGroup']);
 
 //Supervsior Dashboard Page Routes
-Route::get('/supervisorDashboard',[FinalProjectController::class,'showSupervisorDashboard']);
+Route::get('/supervisorDashboard', [FinalProjectController::class, 'showSupervisorDashboard']);
 
 //Caregiver Dashboard Page Routes
-Route::get('/caregiverDashboard',[FinalProjectController::class,'showCaregiverDashboard']);
+Route::get('/caregiverDashboard', [FinalProjectController::class, 'showCaregiverDashboard']);
 
 //Doctors Home Page Routes
-Route::get('/doctorsHome',[FinalProjectController::class,'showDoctorsHome']);
+Route::get('/doctorsHome', [FinalProjectController::class, 'showDoctorsHome']);
 
 //Patients Home Page Routes
-Route::get('/patientsHome',[FinalProjectController::class,'showPatientsHome']);
+Route::get('/patientsHome', [FinalProjectController::class, 'showPatientsHome']);
 
 //Caregivers Home Page Routes
-Route::get('/caregiversHome',[FinalProjectController::class,'showCaregiversHome']);
+Route::get('/caregiversHome', [FinalProjectController::class, 'showCaregiversHome']);
 
 //Payment Page Routes
-Route::get('/payment',[FinalProjectController::class,'showPayment']);
+Route::get('/payment', [FinalProjectController::class, 'showPayment']);
 
 //Admins Report Page Routes
-Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);
+Route::get('/adminsReport', [FinalProjectController::class, 'showAdminsReport']);
 
 //Patients page routes
-Route::get('/patients',[FinalProjectController::class,'showPatients']);
+Route::get('/patients', [FinalProjectController::class, 'showPatients']);
 
 //Roles page routes
-Route::get('/roles',[FinalProjectController::class,'showRoles']);
+Route::get('/roles', [FinalProjectController::class, 'showRoles']);
 
 //Doctor dashboard routes
-Route::get('/doctorDashboard',[FinalProjectController::class,'showDoctorDashboard']);
+Route::get('/doctorDashboard', [FinalProjectController::class, 'showDoctorDashboard']);
 
 //Patient dashboard routes
-Route::get('/patientDashboard',[FinalProjectController::class,'showPatientDashboard']);
+Route::get('/patientDashboard', [FinalProjectController::class, 'showPatientDashboard']);
 
 //Patient of doctor page routes
-Route::get('/patientOfDoctor',[FinalProjectController::class,'showPatientOfDoctor']);
+Route::get('/patientOfDoctor', [FinalProjectController::class, 'showPatientOfDoctor']);
 
 //Roster page routes
-Route::get('/roster',[FinalProjectController::class,'showRoster']);
+Route::get('/roster', [FinalProjectController::class, 'showRoster']);
 
 //New roster page routes
-Route::get('/newRoster',[FinalProjectController::class,'showNewRoster']);
+Route::get('/newRoster', [FinalProjectController::class, 'showNewRoster']);
 
 //Family members home routes
-Route::get('/familyMembersHome',[FinalProjectController::class,'showFamilyMembersHome']);
+Route::get('/familyMembersHome', [FinalProjectController::class, 'showFamilyMembersHome']);
 
-Route::post('/logout',[FinalProjectController::class,'logout']);
+Route::post('/logout', [FinalProjectController::class, 'logout']);
 
-Route::post('/UpdateSalary',[FinalProjectController::class,'UpdateSalary']);
+Route::post('/UpdateSalary', [FinalProjectController::class, 'UpdateSalary']);
 
-Route::post('/NewRoster',[FinalProjectController::class,'NewRoster']);
+Route::post('/NewRoster', [FinalProjectController::class, 'NewRoster']);
 
+Route::post('/Back', [FinalProjectController::class, 'LastPage']);

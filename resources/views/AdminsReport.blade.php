@@ -20,18 +20,13 @@
     <h3>
         Sunrise Retirement Home
     </h3>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-    <button onclick="goBack()">Go Back</button>
-    {{-- <div class='header-btn-section'>
+
+    <div class='header-btn-section'>
         <form action="back" method='POST'>
             @csrf
             <button type='Submit'>Back</button>
         </form>
-    </div> --}}
+    </div>
     <div class='header-btn-section'>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>

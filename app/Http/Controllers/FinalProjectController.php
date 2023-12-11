@@ -556,4 +556,11 @@ class FinalProjectController extends Controller
         // $data = $request->all();
         // Schedule::create($data);
     }
+
+
+
+    function LastPage()
+    {
+        return redirect()->back();
+    }
 }
