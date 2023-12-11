@@ -22,17 +22,17 @@
         <br>
         <br>
         <h3>Select a secific date and then choose the given names for each position for that day</h3>
-        <form id='form' action="" method="">
+        <form id='form' action="NewSchedule" method="POST">
             <label for="date">Date</label>
-            <input type="date" name="date" id="">
+            <input type="date" name="Date" id="">
             <br>
             <br>
             <label for="supervisor">Supervisor</label>
-            <select name="supervisor" id="newRosterSupervisorDropdown"></select>
+            <select name="Supervisor_ID" id="newRosterSupervisorDropdown"></select>
             <br>
             <br>
             <label for="doctor">Doctor</label>
-            <select name="doctor" id="newRosterDoctorDropdown"></select>
+            <select name="Doctor_ID" id="newRosterDoctorDropdown"></select>
             <br>
             <br>
             <label for="Caregiver1">Caregiver 1</label>
@@ -51,7 +51,7 @@
             <select name="Caregiver4" id="newRosterCaregiver4Dropdown"></select>
             <br>
             <br>
-            <button type="submit">Ok</button>
+            <button type="submit">Create Schedule</button>
             <br>
             <br>
         </form>

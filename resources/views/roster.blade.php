@@ -96,9 +96,11 @@
             <td class=" rosterData">4</td>
         </tr>
     </table>
-    <form action={{ '/newRoster' }} method="GET">
-        <button type="submit">New Roster (admin & sup only)</button>
-    </form>
+    @if($_SESSION['role'] == 1 || $_SESSION['role'] == 3)
+        <form action={{ '/newRoster' }} method="GET">
+            <button type="submit">New Roster (admin & sup only)</button>
+        </form>
+    @endif
 </body>
 
 </html>

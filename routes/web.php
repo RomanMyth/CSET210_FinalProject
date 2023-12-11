@@ -106,3 +106,7 @@ Route::get('/familyMembersHome',[FinalProjectController::class,'showFamilyMember
 
 Route::post('/logout',[FinalProjectController::class,'logout']);
 
+Route::post('/UpdateSalary',[FinalProjectController::class,'UpdateSalary']);
+
+Route::post('/NewRoster',[FinalProjectController::class,'NewRoster']);
+
