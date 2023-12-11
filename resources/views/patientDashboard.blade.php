@@ -20,16 +20,16 @@
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
-                <a href="#">{{ $First_Name }}</a>
+                {{-- <a href="#">{{ $First_Name }}</a>
                 <a href="#">{{ $Last_Name }}</a>
-                <a href="#">Logout</a>
+                <a href="#">Logout</a> --}}
             </div>
         </div>
     </header>
     <div id="container">
-        <div class="banner">
+        {{-- <div class="banner">
             <h1 class="boxed">Patient Dashboard</h1>
-        </div>
+        </div> --}}
         <div id="hold">
             <div class="btn-con">
                 <form action={{ url('/patientsHome') }} method="get">
