@@ -23,7 +23,10 @@
                 <div class="dropdown-content">
                     {{-- <a href="#">{{ $First_Name }}</a>
                     <a href="#">{{ $Last_Name }}</a> --}}
-                    <a href="#">Logout</a>
+                    <form action="logout" method='POST'>
+                        @csrf
+                        <button type='Submit'>Logout</button>
+                    </form>
                 </div>
             </div>
         </header>
