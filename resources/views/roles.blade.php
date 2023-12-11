@@ -19,12 +19,18 @@
     <h3>
         Sunrise Retirement Home
     </h3>
-    <div class='header-btn-section'>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <button onclick="goBack()">Go Back</button>
+    {{-- <div class='header-btn-section'>
         <form action="back" method='POST'>
             @csrf
             <button type='Submit'>Back</button>
         </form>
-    </div>
+    </div> --}}
     <div class='header-btn-section'>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
@@ -42,6 +48,7 @@
         </form>
     </div>
 </header>
+
 <body>
     <h1>Roles</h1>
     <br>

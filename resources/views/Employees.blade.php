@@ -65,8 +65,8 @@
         <form action="back" method='POST'>
             @csrf
             <button type='Submit'>Back</button>
-        </form> --}}
-    </div>
+        </form>
+    </div> --}}
     <div class='header-btn-section'>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
