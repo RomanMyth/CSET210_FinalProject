@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
+    <!--Style for form alerts-->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Patients Home Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -39,7 +41,33 @@
         }
     </style>
 </head>
-
+<header>
+    <h3>
+        Sunrise Retirement Home
+    </h3>
+    <div class='header-btn-section'>
+        <form action="back" method='POST'>
+            @csrf
+            <button type='Submit'>Back</button>
+        </form>
+    </div>
+    <div class='header-btn-section'>
+        <div class="user-dropdown">
+            <button id="btn2">Profile</button>
+            <div class="dropdown-content">
+                {{-- <a href="#">{{ $First_Name }}</a> --}}
+                {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                You exist!
+            </div>
+        </div>
+    </div>
+    <div class='header-btn-section'>
+        <form action="logout" method='POST'>
+            @csrf
+            <button type='Submit'>Logout</button>
+        </form>
+    </div>
+</header>
 <body>
     <div class="scene">
         <div class="sun"></div>

@@ -23,3 +23,72 @@
     display: none;
 }
 /*End Overlay and alert for clear form fields*/
+
+/*Start header styling*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+header h3{
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+}
+
+.header-btn-section{
+    display: inline-block;
+    width: 31%;
+}
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    color: #000;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+/*End header styling*/
+
+/*Start page styling*/
+body{
+    background: radial-gradient(circle at 50% 90%, #ff6b6b, #ffb6c1, #87ceeb);
+    text-align: 1px solid #000;
+    color: #000;
+}
+input{
+    background-color: #fff;
+    color: #000;
+}
+select{
+    background-color: #fff;
+    color: #000;
+}
+/*End page styling*/
