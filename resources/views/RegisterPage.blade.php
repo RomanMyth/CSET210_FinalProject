@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <!--Style for form alerts-->
+    <!--Style for form alerts and header-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!--Functions for form alerts-->
     <script src="app.js"></script>
@@ -141,7 +141,7 @@
 
         <div class="hold">
             <h1>Registration</h1>
-            <form id="registrationForm" action="addToRegister" method="POST" class="lg">
+            <form id="form" action="addToRegister" method="POST" class="lg">
                 @csrf
                 <div class="marg">
                     <label for="Role_ID" id="font1">Role:</label>
@@ -208,22 +208,6 @@
                     <button type="submit" value="Register" id="btn1">Register</button>
                 </div>
             </form>
-            <div class="cancelAlert">
-                <button onclick="showAlert()">Cancel</button>
-
-                <div id="overlay" onclick="hideAlert()"></div>
-                <div id="alertBox">
-                    <p>Do you want to reset the form?</p>
-                    <button onclick="resetForm()">Reset</button>
-                    <button onclick="hideAlert()">Cancel</button>
-                </div>
-            </div>
-            <br>
-            <!-- Add more fields as needed -->
-            <div class="lg" >
-                <button type="submit" value="Register" id="btn1">Register</button>
-            </div>
-        </form>
         <div class="cancelAlert" >
             <button onclick="showAlert()" id="btn2">Cancel</button>
             

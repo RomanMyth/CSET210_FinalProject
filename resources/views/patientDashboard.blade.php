@@ -21,8 +21,11 @@
             <button id="btn2">Profile</button>
             <div class="dropdown-content">
                 {{-- <a href="#">{{ $First_Name }}</a>
-                <a href="#">{{ $Last_Name }}</a>
-                <a href="#">Logout</a> --}}
+                <a href="#">{{ $Last_Name }}</a> --}}
+                <form action="logout" method='POST'>
+                    @csrf
+                    <button type='Submit'>Logout</button>
+                </form>
             </div>
         </div>
     </header>

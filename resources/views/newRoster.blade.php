@@ -15,24 +15,51 @@
         </style>
         <script>
 
-            </script>
+        </script>
     </head>
+    <header>
+        <h3>
+            Sunrise Retirement Home
+        </h3>
+        <div class='header-btn-section'>
+            <form action="back" method='POST'>
+                @csrf
+                <button type='Submit'>Back</button>
+            </form>
+        </div>
+        <div class='header-btn-section'>
+            <div class="user-dropdown">
+                <button id="btn2">Profile</button>
+                <div class="dropdown-content">
+                    {{-- <a href="#">{{ $First_Name }}</a> --}}
+                    {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                    You exist!
+                </div>
+            </div>
+        </div>
+        <div class='header-btn-section'>
+            <form action="logout" method='POST'>
+                @csrf
+                <button type='Submit'>Logout</button>
+            </form>
+        </div>
+    </header>
     <body>
         <h1>New Roster</h1>
         <br>
         <br>
         <h3>Select a secific date and then choose the given names for each position for that day</h3>
-        <form id='form' action="" method="">
+        <form id='form' action="NewSchedule" method="POST">
             <label for="date">Date</label>
-            <input type="date" name="date" id="">
+            <input type="date" name="Date" id="">
             <br>
             <br>
             <label for="supervisor">Supervisor</label>
-            <select name="supervisor" id="newRosterSupervisorDropdown"></select>
+            <select name="Supervisor_ID" id="newRosterSupervisorDropdown"></select>
             <br>
             <br>
             <label for="doctor">Doctor</label>
-            <select name="doctor" id="newRosterDoctorDropdown"></select>
+            <select name="Doctor_ID" id="newRosterDoctorDropdown"></select>
             <br>
             <br>
             <label for="Caregiver1">Caregiver 1</label>
@@ -51,7 +78,7 @@
             <select name="Caregiver4" id="newRosterCaregiver4Dropdown"></select>
             <br>
             <br>
-            <button type="submit">Ok</button>
+            <button type="submit">Create Schedule</button>
             <br>
             <br>
         </form>
