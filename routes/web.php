@@ -108,5 +108,5 @@ Route::post('/logout',[FinalProjectController::class,'logout']);
 
 Route::post('/UpdateSalary',[FinalProjectController::class,'UpdateSalary']);
 
-Route::post('/NewRoster',[FinalProjectController::class,'NewRoster']);
+Route::post('/NewSchedule',[FinalProjectController::class,'NewSchedule']);
 

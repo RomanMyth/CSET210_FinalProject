@@ -50,32 +50,63 @@
         <br>
         <h3>Select a secific date and then choose the given names for each position for that day</h3>
         <form id='form' action="NewSchedule" method="POST">
+            @csrf
             <label for="date">Date</label>
             <input type="date" name="Date" id="">
             <br>
             <br>
             <label for="supervisor">Supervisor</label>
-            <select name="Supervisor_ID" id="newRosterSupervisorDropdown"></select>
+            <select name="Supervisor_ID" id="newRosterSupervisorDropdown">
+                <option value="" selected disabled hidden>Choose here</option>
+                @foreach($supervisors as $supervisor)
+                    <option value="{{ $supervisor->Supervisor_ID }}">{{ $supervisor->First_Name }} {{  $supervisor->Last_Name }} </option>
+                @endforeach
+            </select>
             <br>
             <br>
             <label for="doctor">Doctor</label>
-            <select name="Doctor_ID" id="newRosterDoctorDropdown"></select>
+            <select name="Doctor_ID" id="newRosterDoctorDropdown">
+                <option value="" selected disabled hidden>Choose here</option>
+                @foreach($doctors as $doctor)
+                    <option value="{{ $doctor->Doctor_ID }}">{{ $doctor->First_Name }} {{  $doctor->Last_Name }} </option>
+                @endforeach
+            </select>
             <br>
             <br>
             <label for="Caregiver1">Caregiver 1</label>
-            <select name="Caregiver1" id="newRosterCaregiver1Dropdown"></select>
+            <select name="Caregiver1" id="newRosterCaregiver1Dropdown">
+                <option value="" selected disabled hidden>Choose here</option>
+                @foreach($caregivers as $caregiver)
+                    <option value="{{ $caregiver->Caregiver_ID }}">{{ $caregiver->First_Name }} {{  $caregiver->Last_Name }} </option>
+                @endforeach
+            </select>
             <br>
             <br>
             <label for="Caregiver2">Caregiver 2</label>
-            <select name="Caregiver2" id="newRosterCaregiver2Dropdown"></select>
+            <select name="Caregiver2" id="newRosterCaregiver2Dropdown">
+                <option value="" selected disabled hidden>Choose here</option>
+                @foreach($caregivers as $caregiver)
+                    <option value="{{ $caregiver->Caregiver_ID }}">{{ $caregiver->First_Name }} {{  $caregiver->Last_Name }} </option>
+                @endforeach
+            </select>
             <br>
             <br>
             <label for="Caregiver3">Caregiver 3</label>
-            <select name="Caregiver3" id="newRosterCaregiver3Dropdown"></select>
+            <select name="Caregiver3" id="newRosterCaregiver3Dropdown">
+                <option value="" selected disabled hidden>Choose here</option>
+                @foreach($caregivers as $caregiver)
+                    <option value="{{ $caregiver->Caregiver_ID }}">{{ $caregiver->First_Name }} {{  $caregiver->Last_Name }} </option>
+                @endforeach
+            </select>
             <br>
             <br>
             <label for="Caregiver4">Caregiver 4</label>
-            <select name="Caregiver4" id="newRosterCaregiver4Dropdown"></select>
+            <select name="Caregiver4" id="newRosterCaregiver4Dropdown">
+                <option value="" selected disabled hidden>Choose here</option>
+                @foreach($caregivers as $caregiver)
+                    <option value="{{ $caregiver->Caregiver_ID }}">{{ $caregiver->First_Name }} {{  $caregiver->Last_Name }} </option>
+                @endforeach
+            </select>
             <br>
             <br>
             <button type="submit">Create Schedule</button>

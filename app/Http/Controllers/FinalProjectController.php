@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Daily_caregiver_task;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Admin;
@@ -12,6 +13,7 @@ use App\Models\Patient;
 use App\Models\Patient_emergency;
 use App\Models\Registration;
 use App\Models\Schedule;
+use App\Models\Caregiver_patient_group;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
@@ -531,7 +533,11 @@ class FinalProjectController extends Controller
             return redirect()->back();
         }
 
-        return view("newRoster");
+        $doctors = Doctor::all();
+        $supervisors = Supervisor::all();
+        $caregivers = Caregiver::all();
+
+        return view("newRoster", ['doctors' => $doctors, 'supervisors' => $supervisors, 'caregivers' => $caregivers]);
     }
     //End functions for new roster page
 
@@ -567,9 +573,48 @@ class FinalProjectController extends Controller
         return redirect()->back();
     }
 
-    function NewRoster(Request $request){
-        // $data = $request->all();
-        // Schedule::create($data);
+    function NewSchedule(Request $request){
+        $data = $request->all();
+        Schedule::create($data);
+
+        $schedule = DB::table('schedules')->latest('Schedule_ID')->first()->Schedule_ID;
+        $date = DB::table('schedules')->latest('Schedule_ID')->first()->Date;
+        $schedule = json_decode(json_encode($schedule), true);
+        $date = json_decode(json_encode($date), true);
+
+        $caregiver1 = $request->Caregiver1;
+        $caregiver2 = $request->Caregiver2;
+        $caregiver3 = $request->Caregiver3;
+        $caregiver4 = $request->Caregiver4;
+
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver1, 'Group_ID' => 1]);
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver2, 'Group_ID' => 2]);
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver3, 'Group_ID' => 3]);
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver4, 'Group_ID' => 4]);
+
+        for($i = 1; $i < 5; $i++){
+            $patients = DB::select("SELECT Patient_ID FROM patients WHERE Patient_Group = $i;");
+            $patients = json_decode(json_encode($patients), true);
+            
+            if($i == 1){
+                $caregiver = $caregiver1;
+            }
+            elseif($i == 2){
+                $caregiver = $caregiver2;
+            }
+            elseif($i == 3){
+                $caregiver = $caregiver3;
+            }
+            else{
+                $caregiver = $caregiver4;
+            }
+
+            foreach($patients as $patient){
+                Daily_caregiver_task::create(['Caregiver_ID' => $caregiver, 'Patient_ID' => $patient['Patient_ID'], 'Date' => $date, 'Morning_Med' => NULL, 'Afternoon_Med' => NULL, 'Night_Med' => NULL, 'Breakfast' => NULL, 'Lunch' => NULL, 'Dinner' => NULL]);
+            }
+        }
+
+        return 'success';
     }
 }
 
