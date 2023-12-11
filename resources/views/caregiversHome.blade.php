@@ -75,39 +75,66 @@
                 <td class='titleRowData'><strong>Lunch</strong></td>
                 <td class='titleRowData'><strong>Dinner</strong></td>
             </tr>
-            <tr class="caregiverRow">
-                <td class='rowData'>John Doe</td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-            </tr>
+            @foreach ($patients as $patient)
+                <tr class="caregiverRow">
+                    <td class="rowData">{{ $patient->First_Name }}</td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Morning_Med == NULL || $patient->Morning_Med == "No")
+                                <input type="checkbox" id="checkbox" name="Morning_Med">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Morning_Med" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Afternoon_Med == NULL || $patient->Afternoon_Med == "No")
+                                <input type="checkbox" id="checkbox" name="Afternoon_Med">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Afternoon_Med" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Night_Med == NULL || $patient->Night_Med == "No")
+                                <input type="checkbox" id="checkbox" name="Night_Med">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Night_Med" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Breakfast == NULL || $patient->Breakfast == "No")
+                                <input type="checkbox" id="checkbox" name="Breakfast">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Breakfast" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Lunch == NULL || $patient->Lunch == "No")
+                                <input type="checkbox" id="checkbox" name="Lunch">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Lunch" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Dinner == NULL || $patient->Dinner == "No")
+                                <input type="checkbox" id="checkbox" name="Dinner">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Dinner" checked>
+                            @endif
+                        </div>
+                    </td>
+                </tr>
+
+            @endforeach
         </table>
         <button>Enter</button>
     </form>
