@@ -55,11 +55,17 @@
     <h3>
         Sunrise Retirement Home
     </h3>
-    <div class='header-btn-section'>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <button onclick="goBack()">Go Back</button>
+    {{-- <div class='header-btn-section'>
         <form action="back" method='POST'>
             @csrf
             <button type='Submit'>Back</button>
-        </form>
+        </form> --}}
     </div>
     <div class='header-btn-section'>
         <div class="user-dropdown">
@@ -78,6 +84,7 @@
         </form>
     </div>
 </header>
+
 <body>
     </div>
     <h3>Browse though employees</h3>
@@ -104,35 +111,35 @@
         <br>
         <button type="submit">Enter</button>
     </form>
-        @if($_SESSION['role'] == 1)
+    @if ($_SESSION['role'] == 1)
         <br>
-            <h3>Change employee salary (admin only)</h3>
+        <h3>Change employee salary (admin only)</h3>
+        <br>
+        <br>
+        <form id='form' action="UpdateSalary" method="POST">
+            @csrf
+            <label for="User_ID">Employee ID</label>
+            <input type="number" name="User_ID" id="">
             <br>
             <br>
-            <form id='form' action="UpdateSalary" method="POST">
-                @csrf
-                <label for="User_ID">Employee ID</label>
-                <input type="number" name="User_ID" id="">
-                <br>
-                <br>
-                <label for="Salary">New salary</label>
-                <input type="number" name="Salary" id="">
-                <br>
-                <br>
-                <button type="submit">Change</button>
-            </form>
+            <label for="Salary">New salary</label>
+            <input type="number" name="Salary" id="">
             <br>
-            <div class="cancelAlert">
-                <button onclick="showAlert()">Cancel</button>
-        
-                <div id="overlay" onclick="hideAlert()"></div>
-                <div id="alertBox">
-                    <p>Do you want to reset the form?</p>
-                    <button onclick="resetForm()">Reset</button>
-                    <button onclick="hideAlert()">Cancel</button>
-                </div>
+            <br>
+            <button type="submit">Change</button>
+        </form>
+        <br>
+        <div class="cancelAlert">
+            <button onclick="showAlert()">Cancel</button>
+
+            <div id="overlay" onclick="hideAlert()"></div>
+            <div id="alertBox">
+                <p>Do you want to reset the form?</p>
+                <button onclick="resetForm()">Reset</button>
+                <button onclick="hideAlert()">Cancel</button>
             </div>
-        @endif
+        </div>
+    @endif
 
 </body>
 
