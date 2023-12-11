@@ -50,18 +50,12 @@
     <h3>
         Sunrise Retirement Home
     </h3>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-    <button onclick="goBack()">Go Back</button>
-    {{-- <div class='header-btn-section'>
+    <div class='header-btn-section'>
         <form action="back" method='POST'>
             @csrf
             <button type='Submit'>Back</button>
         </form>
-    </div> --}}
+    </div>
     <div class='header-btn-section'>
         <div class="user-dropdown">
             <button id="btn2">Profile</button>
@@ -95,16 +89,16 @@
                 <form id="form" action="changePatientGroup" method="POST">
                     @csrf
                     Enter a Patients ID:
-                    <input id="textbox" type="number" name="Patient_ID" id="Patient-ID">
+                    <input class="textbox" type="number" name="Patient_ID" id="Patient-ID">
                     <input type="text" name="First_Name" id="First-Name" readonly>
                     <br>
                     <br>
                     Current Group:
-                    <input id="textbox" type="number" name="Patient_Group" id="Patient-Group" readonly>
+                    <input class="textbox" type="number" name="Patient_Group" id="Patient-Group" readonly>
                     <br>
                     <br>
                     Admission Date:
-                    <input id="textbox" type="date" name="Addmission_Date" id="Addmission-Date" readonly>
+                    <input class="textbox" type="date" name="Addmission_Date" id="Addmission-Date" readonly>
                     <br>
                     <label for="New-Patient-Group" class="New-Patient-Group">New Group For Patient:</label>
                     <input type="number" class="New-Patient-Group" name="New-Patient-Group" min="1"
