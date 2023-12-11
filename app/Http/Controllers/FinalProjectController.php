@@ -11,6 +11,7 @@ use App\Models\Caregiver;
 use App\Models\Patient;
 use App\Models\Patient_emergency;
 use App\Models\Registration;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
@@ -21,8 +22,14 @@ class FinalProjectController extends Controller
 {
     function viewRegisters()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
 
-        $this->middleware("auth");
         $admins = DB::table("registrations")->where("Role_ID", "Admin")->get();
         $supervisors = DB::table("registrations")->where("Role_ID", "Supervisor")->get();
         $doctors = DB::table("registrations")->where("Role_ID", "Doctor")->get();
@@ -46,7 +53,7 @@ class FinalProjectController extends Controller
         if ($role != "Patient") {
             $data['Family_Code'] = NULL;
         }
-        
+
 
         // when auth works, grab everything seperately and bycrypt the password
         Registration::create($data);
@@ -56,10 +63,8 @@ class FinalProjectController extends Controller
 
     //adds users from registers to their respective table when approved
     function approveRegistration(Request $request)
-    
-    {
 
-        $this->middleware('auth');
+    {
         $role = $request->input("Role_ID");
         $formData = $request->all();
 
@@ -81,7 +86,7 @@ class FinalProjectController extends Controller
             $data[0]["Role_ID"] = 2;
 
             User::create($data[0]);
-            
+
             $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
             $data[0]["User_ID"] = $newUser;
 
@@ -92,7 +97,7 @@ class FinalProjectController extends Controller
             $data[0]["Role_ID"] = 3;
 
             User::create($data[0]);
-            
+
             $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
             $data[0]["User_ID"] = $newUser;
 
@@ -103,7 +108,7 @@ class FinalProjectController extends Controller
             $data[0]['Role_ID'] = 4;
 
             User::create($data[0]);
-            
+
             $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
             $data[0]["User_ID"] = $newUser;
 
@@ -114,7 +119,7 @@ class FinalProjectController extends Controller
             $data[0]["Role_ID"] = 5;
 
             User::create($data[0]);
-            
+
             $newUser = DB::table('users')->where('Email', $formData["Email"])->first()->id;
             $data[0]["User_ID"] = $newUser;
 
@@ -130,7 +135,7 @@ class FinalProjectController extends Controller
         }
 
         // $user = User::create($data[0]);
-        
+
 
         DB::table("registrations")->where("Email", $formData["Email"])->delete();
 
@@ -139,7 +144,8 @@ class FinalProjectController extends Controller
         return redirect("/viewRegisters");
     }
     //Users denied from registration
-    function denyRegistration(Request $request){
+    function denyRegistration(Request $request)
+    {
         $role = $request->input("Role_ID");
         $formData = $request->all();
 
@@ -159,29 +165,36 @@ class FinalProjectController extends Controller
             'Email' => 'required|string',
         ]);
 
+        if (!User::where('Email', $request->Email)->exists()) {
+            return redirect('/LoginPage');
+        }
+
         $user = User::where("Email", $fields['Email'])->first();
-      
-        if ($request->Password != $user->Password){
+
+        if ($request->Password != $user->Password) {
             return 'Error';
         }
-        
+
         $role = $user->Role_ID;
 
         $_SESSION['role'] = $role;
 
-        if($user['Role_ID'] == 1){
+        if ($user['Role_ID'] == 1) {
             return redirect("/adminDashboard");
         }
-        if($user['Role_ID'] == 2){
+        if ($user['Role_ID'] == 2) {
+            //$doctor = DB::table('users')->where('Email', $fields["Email"])->first()->Doctor_ID;
+            //$_SESSION["User"] = $doctor;
+
             return redirect('/doctorDashboard');
         }
-        if($user['Role_ID'] == 3){
+        if ($user['Role_ID'] == 3) {
             return redirect('/supervisorDashboard');
         }
-        if($user['Role_ID'] == 4){
-            return redirect('/caregiverDashbaord');
+        if ($user['Role_ID'] == 4) {
+            return redirect('/caregiverDashboard');
         }
-        if($user['Role_ID'] == 5){
+        if ($user['Role_ID'] == 5) {
             return redirect('/patientDashboard');
         }
     }
@@ -243,6 +256,14 @@ class FinalProjectController extends Controller
     //Start functions to patients home page
     function showPatientsHome()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 5) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         $patients = DB::table("patients")->get();
         return view("patientsHome", ["patients" => $patients]);
     }
@@ -258,19 +279,27 @@ class FinalProjectController extends Controller
 
     function showAdminDashboard()
     {
-        if(isset($_SESSION['role'])){
-            if($_SESSION['role'] != 1){
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1) {
                 return redirect()->back();
             }
-        }
-        else{
+        } else {
             return redirect()->back();
         }
         return view("adminDashboard");
     }
-  
+
     function showAdditionalPatientInfo()
     {
+
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         $patients = DB::table("patients")->get();
 
         return view("additionalPatientInfo", ["patients" => $patients]);
@@ -286,6 +315,14 @@ class FinalProjectController extends Controller
 
     function viewEmployees()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         $users = DB::select("SELECT u.id as id, u.First_Name,
         CASE
             WHEN u.Role_ID = 1 THEN 'Admin'
@@ -301,7 +338,7 @@ class FinalProjectController extends Controller
         END as Salary
         FROM users u LEFT JOIN admins a ON u.id = a.User_ID LEFT JOIN doctors d ON u.id = d.User_ID LEFT JOIN supervisors s ON u.id = s.User_ID  LEFT JOIN caregivers c ON u.id = c.User_ID WHERE u.Role_ID != 5;");
 
-        return view("Employees", ["users"=> $users]);
+        return view("Employees", ["users" => $users]);
     }
 
     //End functions for Admin Dashboard Page
@@ -309,12 +346,27 @@ class FinalProjectController extends Controller
     //Start functions for Supervisor Dashboard
     function showSupervisorDashboard()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
         return view("supervisorDashboard");
     }
     //End function for Supervisor Dashboard
 
     function showCaregiverDashboard()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 4) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("caregiverDashboard");
     }
 
@@ -332,13 +384,30 @@ class FinalProjectController extends Controller
     //Start functions for payment page
     function showPayment()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("PaymentPage");
     }
+
     //End functions for payment page
 
     //Start functions for admins report page
     function showAdminsReport()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("AdminsReport");
     }
     //End functions for admins report page
@@ -346,6 +415,14 @@ class FinalProjectController extends Controller
     //Start functions for doctors appointment page
     function showDoctorsAppointment()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         $patients = DB::table("patients")->get();
         return view("DoctorsAppointment", ["patients" => $patients]);
     }
@@ -354,13 +431,32 @@ class FinalProjectController extends Controller
     //Start functions for patients page
     function showPatients()
     {
-        return view("patients");
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] == 5) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
+        $patients = DB::table("patients")->get();
+        $patient_emergency_table = DB::table("patient_emergencies")->get();
+
+        return view("patients", ["patients" => $patients, "patient_emergency" => $patient_emergency_table]);
     }
     //End functions for patients page
 
     //Start functions for roles page
     function showRoles()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("roles");
     }
     //End functions for roles page
@@ -368,6 +464,14 @@ class FinalProjectController extends Controller
     //Start functions for doctor dashboard page
     function showDoctorDashboard()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 2) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("doctorDashboard");
     }
     //End functions for doctor dashboard page
@@ -375,23 +479,30 @@ class FinalProjectController extends Controller
     //Start functions for patient dashboard page
     function showPatientDashboard()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 5) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("patientDashboard");
     }
     //End functions for patient dashboard page
 
-    function showAdminReport()
+    function logout()
     {
-
-        return view("AdminsReport");
-    }
-
-    function logout(){
         unset($_SESSION["role"]);
         return redirect('welcome');
     }
     //Start functions for roster page
     function showRoster()
     {
+        if (!isset($_SESSION['role'])) {
+            return redirect()->back();
+        }
+
         return view("roster");
     }
     //End functions for roster page
@@ -399,6 +510,14 @@ class FinalProjectController extends Controller
     //Start functions for new roster page
     function showNewRoster()
     {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+
         return view("newRoster");
     }
     //End functions for new roster page
@@ -409,4 +528,32 @@ class FinalProjectController extends Controller
         return view("familyMembersHome");
     }
     //End functions for family memebrs home page
+
+    function UpdateSalary(Request $request)
+    {
+        $user = $request->User_ID;
+        //return $user;
+        $role = DB::table('users')->where('id', $user)->first()->Role_ID;
+        if ($role == 1) {
+            return redirect()->back();
+        } else {
+            $salary = $request->Salary;
+            if ($role == 2) {
+                // $Doctor = DB::select("SELECT Doctor_ID FROM doctors JOIN users ON doctors.User_ID = users.id WHERE users.id = $user");
+                // return $Doctor[0]['Doctor_ID'];
+                DB::select("UPDATE doctors SET Salary = $salary WHERE Doctor_ID = (SELECT Doctor_ID FROM doctors JOIN users ON doctors.User_ID = users.id WHERE users.id = $user)");
+            } elseif ($role == 3) {
+                DB::select("UPDATE supervisors SET Salary = $salary WHERE Supervisor_ID = (SELECT Supervisor_ID FROM supervisors JOIN users ON supervisors.User_ID = users.id WHERE users.id = $user)");
+            } elseif ($role == 4) {
+                DB::select("UPDATE caregivers SET Salary = $salary WHERE Caregiver_ID = (SELECT Caregiver_ID FROM caregivers JOIN users ON caregivers.User_ID = users.id WHERE users.id = $user)");
+            }
+        }
+        return redirect()->back();
+    }
+
+    function NewRoster(Request $request)
+    {
+        // $data = $request->all();
+        // Schedule::create($data);
+    }
 }

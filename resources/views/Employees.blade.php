@@ -24,6 +24,30 @@
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#employeeSearchForm').submit(function(e) {
+                e.preventDefault();
+                var searchText = $('input[name="search"]').val().toLowerCase();
+
+                $('table tr:gt(0)').each(function() {
+                    var found = false;
+                    $(this).find('th').each(function() {
+                        var cellText = $(this).text().toLowerCase();
+                        if (cellText.indexOf(searchText) !== -1) {
+                            found = true;
+                            return false; // Break the loop if match found
+                        }
+                    });
+                    if (found) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
 
 </head>
 
@@ -80,57 +104,35 @@
         <br>
         <button type="submit">Enter</button>
     </form>
-    <br>
-    <h3>Change employee salary (admin only)</h3>
-    <br>
-    <br>
-    <form id='form' action="" method="">
-        <label for="empID">Employee ID</label>
-        <input type="number" name="empID" id="">
+        @if($_SESSION['role'] == 1)
         <br>
-        <br>
-        <label for="salary">New salary</label>
-        <input type="number" name="salary" id="">
-        <br>
-        <br>
-        <button type="submit">Change</button>
-    </form>
-    <br>
-    <div class="cancelAlert">
-        <button onclick="showAlert()">Cancel</button>
-
-        <div id="overlay" onclick="hideAlert()"></div>
-        <div id="alertBox">
-            <p>Do you want to reset the form?</p>
-            <button onclick="resetForm()">Reset</button>
-            <button onclick="hideAlert()">Cancel</button>
-        </div>
-    </div>
-
-    <script>
-        $(document).ready(function() {
-            $('#employeeSearchForm').submit(function(e) {
-                e.preventDefault();
-                var searchText = $('input[name="search"]').val().toLowerCase();
-
-                $('table tr:gt(0)').each(function() {
-                    var found = false;
-                    $(this).find('th').each(function() {
-                        var cellText = $(this).text().toLowerCase();
-                        if (cellText.indexOf(searchText) !== -1) {
-                            found = true;
-                            return false; // Break the loop if match found
-                        }
-                    });
-                    if (found) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            });
-        });
-    </script>
+            <h3>Change employee salary (admin only)</h3>
+            <br>
+            <br>
+            <form id='form' action="UpdateSalary" method="POST">
+                @csrf
+                <label for="User_ID">Employee ID</label>
+                <input type="number" name="User_ID" id="">
+                <br>
+                <br>
+                <label for="Salary">New salary</label>
+                <input type="number" name="Salary" id="">
+                <br>
+                <br>
+                <button type="submit">Change</button>
+            </form>
+            <br>
+            <div class="cancelAlert">
+                <button onclick="showAlert()">Cancel</button>
+        
+                <div id="overlay" onclick="hideAlert()"></div>
+                <div id="alertBox">
+                    <p>Do you want to reset the form?</p>
+                    <button onclick="resetForm()">Reset</button>
+                    <button onclick="hideAlert()">Cancel</button>
+                </div>
+            </div>
+        @endif
 
 </body>
 
