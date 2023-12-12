@@ -31,7 +31,7 @@
         <input type="text" name="patientID" id="">
         <br>
         <br>
-        <button type="submit" name="submit">Ok</button>
+        <button onclick="showSection()" type="button" name="submit">Ok</button>
     </form>
     <br>
     <div class="cancelAlert">
@@ -44,31 +44,33 @@
         <button onclick="hideAlert()">Cancel</button>
         </div>
     </div>
-    <h1>Patient Details (hidden until info above is entered)</h1>
-    <table id="familyMembersHomeTable">
-        <tr id="titleRow" class="familyRow">
-            <td class='titleRowData'><strong>Doctor's Name</strong></td>
-            <td class='titleRowData'><strong>Doctor's Appointment</strong></td>
-            <td class='titleRowData'><strong>Caregiver's Name</strong></td>
-            <td class='titleRowData'><strong>Morning Med</strong></td>
-            <td class='titleRowData'><strong>Afternoon Med</strong></td>
-            <td class='titleRowData'><strong>Night Med</strong></td>
-            <td class='titleRowData'><strong>Breakfast</strong></td>
-            <td class='titleRowData'><strong>Lunch</strong></td>
-            <td class='titleRowData'><strong>Dinner</strong></td>
-        </tr>
-        <tr id="titleRow" class="familyRow">
-            <td class='rowData'>Jane Smith</td>
-            <td class='rowData'>11/22/33</td>
-            <td class='rowData'>Anne Smith</td>
-            <td class='rowData'>yes</td>
-            <td class='rowData'>no</td>
-            <td class='rowData'>no</td>
-            <td class='rowData'>yes</td>
-            <td class='rowData'>no</td>
-            <td class='rowData'>no</td>
-        </tr>
-    </table>
+    <div id="patient-details-section">
+        <h1>Patient Details (hidden until info above is entered)</h1>
+        <table id="familyMembersHomeTable">
+            <tr id="titleRow" class="familyRow">
+                <td class='titleRowData'><strong>Doctor's Name</strong></td>
+                <td class='titleRowData'><strong>Doctor's Appointment</strong></td>
+                <td class='titleRowData'><strong>Caregiver's Name</strong></td>
+                <td class='titleRowData'><strong>Morning Med</strong></td>
+                <td class='titleRowData'><strong>Afternoon Med</strong></td>
+                <td class='titleRowData'><strong>Night Med</strong></td>
+                <td class='titleRowData'><strong>Breakfast</strong></td>
+                <td class='titleRowData'><strong>Lunch</strong></td>
+                <td class='titleRowData'><strong>Dinner</strong></td>
+            </tr>
+            <tr id="titleRow" class="familyRow">
+                <td class='rowData'>Jane Smith</td>
+                <td class='rowData'>11/22/33</td>
+                <td class='rowData'>Anne Smith</td>
+                <td class='rowData'>yes</td>
+                <td class='rowData'>no</td>
+                <td class='rowData'>no</td>
+                <td class='rowData'>yes</td>
+                <td class='rowData'>no</td>
+                <td class='rowData'>no</td>
+            </tr>
+        </table>
+    </div>
     <form action={{ url('/') }} method="get">
         <button>Return to Home</button>
     </form>

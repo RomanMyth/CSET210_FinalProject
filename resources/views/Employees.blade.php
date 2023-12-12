@@ -26,7 +26,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#employeeSearchForm').submit(function(e) {
+            $('#search').submit(function(e) {
                 e.preventDefault();
                 var searchText = $('input[name="search"]').val().toLowerCase();
 
@@ -99,7 +99,7 @@
             </tr>
         @endforeach
     </table>
-    <form id='employeeSearchForm' action="" method="">
+    <form id='search' action="" method="">
         <label for="search">Search</label>
         <input type="text" name="search" id="">
         <br>

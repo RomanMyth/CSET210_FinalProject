@@ -12,6 +12,7 @@ use App\Models\Caregiver;
 use App\Models\Patient;
 use App\Models\Patient_emergency;
 use App\Models\Registration;
+use App\Models\Role;
 use App\Models\Schedule;
 use App\Models\Caregiver_patient_group;
 use Illuminate\Support\Facades\DB;
@@ -274,7 +275,18 @@ class FinalProjectController extends Controller
     //Start functions to caregivers home page
     function showCaregiversHome()
     {
-        return view("caregiversHome");
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 4) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+        $caregiver = $_SESSION['User'];
+
+        $patients = DB::select("SELECT t.Caregiver_ID, t.Patient_ID, t.Morning_Med, t.Afternoon_Med, t.Night_Med, t.Breakfast, t.Lunch, t.Dinner, p.First_Name FROM `daily_caregiver_tasks` t JOIN patients p ON p.Patient_ID = t.Patient_ID WHERE Caregiver_ID = $caregiver AND Date = CURRENT_DATE;");
+
+        return view("caregiversHome", ["patients" => $patients]);
     }
 
     //Start Functions for Admin Dashboard Page
@@ -377,10 +389,6 @@ class FinalProjectController extends Controller
     {
         return view("doctorsHome");
     }
-    function showPatientOfDoc()
-    {
-        echo "Patientofdoc";
-    }
     //End function for Doctors Home
 
     //Start functions for payment page
@@ -458,8 +466,19 @@ class FinalProjectController extends Controller
         } else {
             return redirect()->back();
         }
+        $roles = DB::table("roles")->get();
 
-        return view("roles");
+        return view("roles", ["roles" => $roles]);
+    }
+
+    function newRole(Request $request)
+    {
+        $rname = $request->input("Role_Name");
+        $data = $request->all();
+        Role::create($data);
+
+        $roles = DB::table("roles")->get();
+        return view("roles", ["roles" => $roles]);
     }
     //End functions for roles page
 
@@ -496,6 +515,7 @@ class FinalProjectController extends Controller
     function logout()
     {
         unset($_SESSION["role"]);
+        unset($_SESSION["User"]);
         return redirect('welcome');
     }
     //Start functions for roster page
@@ -597,12 +617,5 @@ class FinalProjectController extends Controller
         }
 
         return 'success';
-    }
-
-
-
-    function LastPage()
-    {
-        return redirect()->back();
     }
 }

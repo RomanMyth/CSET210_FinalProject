@@ -59,35 +59,17 @@
             <td class='titleRowData'><strong>Role</strong></td>
             <td class='titleRowData'><strong>Access Level</strong></td>
         </tr>
-        <tr id="titleRow" class="rolesRow">
-            <td class='rowData'>Admin</td>
-            <td class='rowData'>1</td>
+        @foreach ($roles as $role)
+        <tr>
+            <td>{{ $role->Role_ID }}</td>
+            <td>{{ $role->Role_Name }}</td>
         </tr>
-        <tr id="titleRow" class="rolesRow">
-            <td class='rowData'>Supervisor</td>
-            <td class='rowData'>2</td>
-        </tr>
-        <tr id="titleRow" class="rolesRow">
-            <td class='rowData'>Doctor</td>
-            <td class='rowData'>3</td>
-        </tr>
-        <tr id="titleRow" class="rolesRow">
-            <td class='rowData'>Caregiver</td>
-            <td class='rowData'>4</td>
-        </tr>
-        <tr id="titleRow" class="rolesRow">
-            <td class='rowData'>Patient</td>
-            <td class='rowData'>5</td>
-        </tr>
+    @endforeach
     </table>
-    <form id="form" action="" method="">
+    <form id="form" action="newRole" method="POST">
         @csrf
-        <label for="newRole">New Role</label>
-        <input type="text" name="newRole" id="">
-        <br>
-        <br>
-        <label for="accessLevel">Access Level</label>
-        <input type="int" name="accessLevel" id="">
+        <label for="newRole">New Role Name:</label>
+        <input type="text" name="Role_Name" id="Role_Name">
         <br>
         <br>
         <button type="submit">Ok</button>
