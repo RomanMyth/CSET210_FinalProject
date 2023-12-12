@@ -618,4 +618,24 @@ class FinalProjectController extends Controller
 
         return 'success';
     }
+
+    //Start functions for patient of doctor page
+    function showPatientOfDoctor()
+    {
+        return view("patientOfDoctor");
+    }
+    // function showNewRoster()
+    // {
+    //     if(isset($_SESSION['role'])){
+    //         if($_SESSION['role'] != 1 && $_SESSION['role'] != 3){
+    //             return redirect()->back();
+    //         }
+    //     }
+    //     else{
+    //         return redirect()->back();
+    //     }
+
+    //     return view("newRoster");
+    // }
+    //End functions for patient of doctor page
 }
