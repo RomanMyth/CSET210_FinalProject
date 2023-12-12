@@ -21,8 +21,7 @@ use App\Models\User;
 //session_destroy();
 session_start();
 
-class FinalProjectController extends Controller
-{
+class FinalProjectController extends Controller {
     function viewRegisters()
     {
         if(isset($_SESSION['role'])){
@@ -556,14 +555,28 @@ class FinalProjectController extends Controller
         return redirect('welcome');
     }
     //Start functions for roster page
-    function showRoster()
-    {
+    function showRoster(){
+        if(!isset($_SESSION['role'])){
+            return redirect()->back();
+        }
+        // if(isset($request)){
+        //     $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = $request->Date;");
+        // }
+        $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = CURRENT_DATE;");
+        
+        return view("roster", ["users"=> $Users]);
+    }
+
+    function Roster(Request $request){
         if(!isset($_SESSION['role'])){
             return redirect()->back();
         }
 
-        return view("roster");
+        $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = '$request->Date';");
+        
+        return view("roster", ["users"=> $Users]);
     }
+
     //End functions for roster page
 
     //Start functions for new roster page

@@ -100,6 +100,8 @@ Route::get('/patientOfDoctor',[FinalProjectController::class,'showPatientOfDocto
 //Roster page routes
 Route::get('/roster',[FinalProjectController::class,'showRoster']);
 
+Route::get('/Roster',[FinalProjectController::class,'Roster']);
+
 //New roster page routes
 Route::get('/newRoster',[FinalProjectController::class,'showNewRoster']);
 
