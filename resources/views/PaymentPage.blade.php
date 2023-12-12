@@ -97,11 +97,7 @@
                     </div>
                 </form>
             </div>
-            
-        </div>
-       
     </div>
-
     <script>
 
         //Relaoding the whole page when refresed

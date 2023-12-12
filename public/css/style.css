@@ -28,6 +28,10 @@
 /*End Overlay and alert for clear form fields*/
 
 /*Start header styling*/
+body, html {
+    height: 100%;
+
+}
 header {
     background-color: #333;
     color: #fff;
@@ -42,7 +46,7 @@ header h3{
 
 .header-btn-section{
     display: inline-block;
-    width: 31%;
+    width: 37%;
 }
 
 .user-dropdown {
@@ -85,6 +89,9 @@ body{
     background: radial-gradient(circle at 50% 90%, #ff6b6b, #ffb6c1, #87ceeb);
     text-align: 1px solid #000;
     color: #000;
+    height: 100%;
+    width: 100%;
+    align-items: center;
 }
 input{
     background-color: #fff;
