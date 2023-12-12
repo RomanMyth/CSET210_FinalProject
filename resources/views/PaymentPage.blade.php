@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css"> --}}
+    <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
     <!--Style for form alerts-->
-    <link rel="stylesheet" href="css/addcss.css" type="text/css">
+    {{-- <link rel="stylesheet" href="css/addcss.css" type="text/css"> --}}
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!--Functions for form alerts-->
     <script src="app.js"></script>
