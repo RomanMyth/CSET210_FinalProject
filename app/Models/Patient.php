@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Registration extends Model
+class Patient extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
-    protected $fillable = ['Role_ID', 'First_Name', 'Last_Name', 'Email', 'Phone', 'Password', 'dob', 'Family_Code', 'Emergency_Contact', 'Contact_Relation'];
+    protected $fillable = ["Patient_ID", "First_Name", "Last_Name", "Email", "Phone", "Password","Role_ID", "dob", "Patient_Group", "Admission_Date", "Family_Code", "User_ID"];
 }
