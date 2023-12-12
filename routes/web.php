@@ -76,6 +76,7 @@ Route::get('/caregiversHome',[FinalProjectController::class,'showCaregiversHome'
 
 //Payment Page Routes
 Route::get('/payment',[FinalProjectController::class,'showPayment']);
+Route::post('/updatePayment',[FinalProjectController::class,'updatePayment']);
 
 //Admins Report Page Routes
 Route::get('/adminsReport',[FinalProjectController::class,'showAdminsReport']);
@@ -110,4 +111,6 @@ Route::post('/logout',[FinalProjectController::class,'logout']);
 Route::post('/UpdateSalary',[FinalProjectController::class,'UpdateSalary']);
 
 Route::post('/NewSchedule',[FinalProjectController::class,'NewSchedule']);
+
+Route::post('CaregiverPatient',[FinalProjectController::class,'updateCaregiverPatient']);
 
