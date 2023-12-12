@@ -111,3 +111,5 @@ Route::post('/UpdateSalary',[FinalProjectController::class,'UpdateSalary']);
 
 Route::post('/NewSchedule',[FinalProjectController::class,'NewSchedule']);
 
+Route::post('CaregiverPatient',[FinalProjectController::class,'updateCaregiverPatient']);
+
