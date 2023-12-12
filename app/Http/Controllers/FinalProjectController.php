@@ -642,19 +642,25 @@ class FinalProjectController extends Controller
     function showPatientOfDoctor(){
         return view("patientOfDoctor");
     }
-    // function showNewRoster()
-    // {
-    //     if(isset($_SESSION['role'])){
-    //         if($_SESSION['role'] != 1 && $_SESSION['role'] != 3){
-    //             return redirect()->back();
-    //         }
-    //     }
-    //     else{
-    //         return redirect()->back();
-    //     }
+    
+    function updateCaregiverPatient(Request $request){
+        $data = $request->all();
+        $caregiver = $_SESSION['User'];
+        $date = date("Y-m-d");
+        
+        foreach($data as $key => $value){
+            if($value == "on"){
+                $data[$key] = "Yes";
+            }
+            else if($value == 'off'){
+                $data[$key] = 'No';
+            }
+        }
 
-    //     return view("newRoster");
-    // }
+        Daily_caregiver_task::where('Caregiver_ID', $caregiver)->where('Date', $date)->where('Patient_ID', $data["Patient_ID"])->update(['Morning_Med' => $data['Morning_Med'], 'Afternoon_Med' => $data['Afternoon_Med'], 'Night_Med' => $data['Night_Med'], 'Breakfast' => $data['Breakfast'], 'Lunch' => $data['Lunch'], 'Dinner' => $data['Dinner']]);
+
+        return $this->showCaregiversHome();
+    }
     //End functions for patient of doctor page
 }
 
