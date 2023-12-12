@@ -19,6 +19,13 @@ function resetForm() {
     hideAlert();
 }
 
+//Show section for family memebrs home page
+function showSection(){
+    const section = document.getElementById('patient-details-section');
+
+    section.style.display = 'block';
+}
+
 
 //alert message function
 function checkIfMsgSent() {

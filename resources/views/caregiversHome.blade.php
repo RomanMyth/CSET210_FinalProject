@@ -55,6 +55,33 @@
         display: block;
     }
 </style>
+<header>
+    <h3>
+        Sunrise Retirement Home
+    </h3>
+    <div class='header-btn-section'>
+        <form action="back" method='POST'>
+            @csrf
+            <button type='Submit'>Back</button>
+        </form>
+    </div>
+    <div class='header-btn-section'>
+        <div class="user-dropdown">
+            <button id="btn2">Profile</button>
+            <div class="dropdown-content">
+                {{-- <a href="#">{{ $First_Name }}</a> --}}
+                {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                You exist!
+            </div>
+        </div>
+    </div>
+    <div class='header-btn-section'>
+        <form action="logout" method='POST'>
+            @csrf
+            <button type='Submit'>Logout</button>
+        </form>
+    </div>
+</header>
 <body>
     <h1>Caregivers Home</h1>
     <br>
@@ -75,44 +102,71 @@
                 <td class='titleRowData'><strong>Lunch</strong></td>
                 <td class='titleRowData'><strong>Dinner</strong></td>
             </tr>
-            <tr class="caregiverRow">
-                <td class='rowData'>John Doe</td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-                <td class='rowData'>
-                    <div class="form-group">
-                        <input type="checkbox" id="checkbox" name="checkbox">
-                    </div>
-                </td>
-            </tr>
+            @foreach ($patients as $patient)
+                <tr class="caregiverRow">
+                    <td class="rowData">{{ $patient->First_Name }}</td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Morning_Med == NULL || $patient->Morning_Med == "No")
+                                <input type="checkbox" id="checkbox" name="Morning_Med">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Morning_Med" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Afternoon_Med == NULL || $patient->Afternoon_Med == "No")
+                                <input type="checkbox" id="checkbox" name="Afternoon_Med">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Afternoon_Med" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Night_Med == NULL || $patient->Night_Med == "No")
+                                <input type="checkbox" id="checkbox" name="Night_Med">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Night_Med" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Breakfast == NULL || $patient->Breakfast == "No")
+                                <input type="checkbox" id="checkbox" name="Breakfast">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Breakfast" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Lunch == NULL || $patient->Lunch == "No")
+                                <input type="checkbox" id="checkbox" name="Lunch">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Lunch" checked>
+                            @endif
+                        </div>
+                    </td>
+                    <td class="rowData">
+                        <div class="form-group">
+                            @if ($patient->Dinner == NULL || $patient->Dinner == "No")
+                                <input type="checkbox" id="checkbox" name="Dinner">
+                            @else
+                                <input type="checkbox" id="checkbox" name="Dinner" checked>
+                            @endif
+                        </div>
+                    </td>
+                </tr>
+
+            @endforeach
         </table>
         <button>Enter</button>
     </form>
     <br>
-    <div class="cancelAlert">
+    {{-- <div class="cancelAlert">
         <button onclick="showAlert()">Cancel</button>
 
         <div id="overlay" onclick="hideAlert()"></div>
@@ -121,6 +175,6 @@
         <button onclick="resetForm()">Reset</button>
         <button onclick="hideAlert()">Cancel</button>
         </div>
-    </div>
+    </div> --}}
 </body>
 </html>

@@ -1,4 +1,7 @@
 /*Start Overlay and alert for clear form fields*/
+.cancelAlert{
+    margin-bottom: 100px;
+}
 #overlay {
     display: none;
     position: fixed;
@@ -92,3 +95,9 @@ select{
     color: #000;
 }
 /*End page styling*/
+
+/*Start patient details page styling*/
+#patient-details-section{
+    display: none;
+}
+/*End patient details page styling*/

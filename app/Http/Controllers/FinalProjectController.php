@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Daily_caregiver_task;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Admin;
@@ -11,7 +12,9 @@ use App\Models\Caregiver;
 use App\Models\Patient;
 use App\Models\Patient_emergency;
 use App\Models\Registration;
+use App\Models\Role;
 use App\Models\Schedule;
+use App\Models\Caregiver_patient_group;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
@@ -183,8 +186,6 @@ class FinalProjectController extends Controller
             return redirect("/adminDashboard");
         }
         if($user['Role_ID'] == 2){
-            //$doctor = DB::table('users')->where('Email', $fields["Email"])->first()->Doctor_ID;
-            //$_SESSION["User"] = $doctor;
 
             return redirect('/doctorDashboard');
         }
@@ -192,6 +193,9 @@ class FinalProjectController extends Controller
             return redirect('/supervisorDashboard');
         }
         if($user['Role_ID'] == 4){
+            $Caregiver = DB::table('caregivers')->where('Email', $fields["Email"])->first()->Caregiver_ID;
+            $_SESSION["User"] = $Caregiver;
+
             return redirect('/caregiverDashboard');
         }
         if($user['Role_ID'] == 5){
@@ -273,7 +277,19 @@ class FinalProjectController extends Controller
     //Start functions to caregivers home page
     function showCaregiversHome()
     {
-        return view("caregiversHome");
+        if(isset($_SESSION['role'])){
+            if($_SESSION['role'] != 4){
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect()->back();
+        }
+        $caregiver = $_SESSION['User'];
+        
+        $patients = DB::select("SELECT t.Caregiver_ID, t.Patient_ID, t.Morning_Med, t.Afternoon_Med, t.Night_Med, t.Breakfast, t.Lunch, t.Dinner, p.First_Name FROM `daily_caregiver_tasks` t JOIN patients p ON p.Patient_ID = t.Patient_ID WHERE Caregiver_ID = $caregiver AND Date = CURRENT_DATE;");
+
+        return view("caregiversHome", ["patients" => $patients]);
     }
 
     //Start Functions for Admin Dashboard Page
@@ -381,10 +397,6 @@ class FinalProjectController extends Controller
     {
         return view("doctorsHome");
     }
-    function showPatientOfDoc()
-    {
-        echo "Patientofdoc";
-    }
     //End function for Doctors Home
 
     //Start functions for payment page
@@ -467,8 +479,18 @@ class FinalProjectController extends Controller
         else{
             return redirect()->back();
         }
+        $roles = DB::table("roles")->get();
 
-        return view("roles");
+        return view("roles",["roles" => $roles]);
+    }
+
+    function newRole(Request $request){
+        $rname = $request->input("Role_Name");
+        $data = $request->all();
+        Role::create($data);
+
+        $roles = DB::table("roles")->get();
+        return view("roles",["roles" => $roles]);
     }
     //End functions for roles page
 
@@ -506,6 +528,7 @@ class FinalProjectController extends Controller
 
     function logout(){
         unset($_SESSION["role"]);
+        unset($_SESSION["User"]);
         return redirect('welcome');
     }
     //Start functions for roster page
@@ -531,7 +554,11 @@ class FinalProjectController extends Controller
             return redirect()->back();
         }
 
-        return view("newRoster");
+        $doctors = Doctor::all();
+        $supervisors = Supervisor::all();
+        $caregivers = Caregiver::all();
+
+        return view("newRoster", ['doctors' => $doctors, 'supervisors' => $supervisors, 'caregivers' => $caregivers]);
     }
     //End functions for new roster page
 
@@ -567,9 +594,67 @@ class FinalProjectController extends Controller
         return redirect()->back();
     }
 
-    function NewRoster(Request $request){
-        // $data = $request->all();
-        // Schedule::create($data);
+    function NewSchedule(Request $request){
+        $data = $request->all();
+        Schedule::create($data);
+
+        $schedule = DB::table('schedules')->latest('Schedule_ID')->first()->Schedule_ID;
+        $date = DB::table('schedules')->latest('Schedule_ID')->first()->Date;
+        $schedule = json_decode(json_encode($schedule), true);
+        $date = json_decode(json_encode($date), true);
+
+        $caregiver1 = $request->Caregiver1;
+        $caregiver2 = $request->Caregiver2;
+        $caregiver3 = $request->Caregiver3;
+        $caregiver4 = $request->Caregiver4;
+
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver1, 'Group_ID' => 1]);
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver2, 'Group_ID' => 2]);
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver3, 'Group_ID' => 3]);
+        Caregiver_patient_group::create(['Schedule_ID' => $schedule, 'Caregiver_ID' => $caregiver4, 'Group_ID' => 4]);
+
+        for($i = 1; $i < 5; $i++){
+            $patients = DB::select("SELECT Patient_ID FROM patients WHERE Patient_Group = $i;");
+            $patients = json_decode(json_encode($patients), true);
+
+            if($i == 1){
+                $caregiver = $caregiver1;
+            }
+            elseif($i == 2){
+                $caregiver = $caregiver2;
+            }
+            elseif($i == 3){
+                $caregiver = $caregiver3;
+            }
+            else{
+                $caregiver = $caregiver4;
+            }
+
+            foreach($patients as $patient){
+                Daily_caregiver_task::create(['Caregiver_ID' => $caregiver, 'Patient_ID' => $patient['Patient_ID'], 'Date' => $date, 'Morning_Med' => NULL, 'Afternoon_Med' => NULL, 'Night_Med' => NULL, 'Breakfast' => NULL, 'Lunch' => NULL, 'Dinner' => NULL]);
+            }
+        }
+
+        return 'success';
     }
+
+    //Start functions for patient of doctor page
+    function showPatientOfDoctor(){
+        return view("patientOfDoctor");
+    }
+    // function showNewRoster()
+    // {
+    //     if(isset($_SESSION['role'])){
+    //         if($_SESSION['role'] != 1 && $_SESSION['role'] != 3){
+    //             return redirect()->back();
+    //         }
+    //     }
+    //     else{
+    //         return redirect()->back();
+    //     }
+
+    //     return view("newRoster");
+    // }
+    //End functions for patient of doctor page
 }
 

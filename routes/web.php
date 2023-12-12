@@ -85,6 +85,7 @@ Route::get('/patients',[FinalProjectController::class,'showPatients']);
 
 //Roles page routes
 Route::get('/roles',[FinalProjectController::class,'showRoles']);
+Route::post('/newRole',[FinalProjectController::class,'newRole']);
 
 //Doctor dashboard routes
 Route::get('/doctorDashboard',[FinalProjectController::class,'showDoctorDashboard']);
@@ -108,5 +109,5 @@ Route::post('/logout',[FinalProjectController::class,'logout']);
 
 Route::post('/UpdateSalary',[FinalProjectController::class,'UpdateSalary']);
 
-Route::post('/NewRoster',[FinalProjectController::class,'NewRoster']);
+Route::post('/NewSchedule',[FinalProjectController::class,'NewSchedule']);
 
