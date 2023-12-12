@@ -70,23 +70,21 @@
             </div>
         </form>
         <br>
-        <div class="cancelAlert">
-            <button onclick="showAlert()">Cancel</button>
-                <div id="overlay" onclick="hideAlert()"></div>
-                <div id="alertBox">
-                    <p>Do you want to reset the form?</p>
-                    <button onclick="resetForm()" >Reset</button>
-                    <button onclick="hideAlert()" >Cancel</button>
-                </div>
-                <br>
-                <div class="form-group" >
-                    <input type="submit" value="Update" id="btn-pay2">
-                </div>
+            <div class="cancelAlert">
+                <button onclick="showAlert()">Cancel</button>
+                    <div id="overlay" onclick="hideAlert()"></div>
+                        <div id="alertBox">
+                            <p>Do you want to reset the form?</p>
+                            <button onclick="resetForm()" >Reset</button>
+                            <button onclick="hideAlert()" >Cancel</button>
+                        </div>
+                        <br>
+                        <div class="form-group" >
+                            <input type="submit" value="Update" id="btn-pay2">
+                        </div>
             </div>
-            
-        </div>
-       
     </div>
+
 </body>
 
 </html>
