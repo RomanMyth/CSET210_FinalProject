@@ -11,8 +11,8 @@
 
 <body>
     <div class="scene">
-        <div class="sun"></div>
-        <div class="water"></div>
+        {{-- <div class="sun"></div> --}}
+        {{-- <div class="water"></div> --}}
     </div>
     <header class="nohead">
         <div>
@@ -35,9 +35,7 @@
         </div>
     </header>
     <div id="container">
-        <div class="banner">
-            {{-- just ignore this max I know youll probably see this but please this random div its actually important --}}
-        </div>
+        
         <div id="hold">
             <div class="btn-con">
                 <form action={{ url('/viewRegisters') }} method="get">
