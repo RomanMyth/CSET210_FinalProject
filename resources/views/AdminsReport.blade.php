@@ -45,6 +45,12 @@
     </div>
 </header>
 
+<style>
+    .highlight-red {
+        outline: 1px solid red;
+    }
+</style>
+
 <body>
     <div class="scene">
         <div class="sun"></div>
@@ -73,14 +79,52 @@
 
             <div class="btn-con2">
                 <table id="patientsHomeTable">
+                    <!-- Table headers -->
                     <tr id="titleRow" class="patientRow">
-                        <td class='titleRowData'><strong>Patient's Name</strong></td>
-                        <td class='titleRowData'><strong>Doctor's Name</strong></td>
-                        <td class='titleRowData'><strong>Doctor's Appointment</strong></td>
-                        <td class='titleRowData'><strong>Caregiver's Name</strong></td>
+                        <th>Patient's Name</th>
+                        <th>Doctor's Name</th>
+                        <th>Caregivers ID?</th>
+
+
+                        <!-- Add more headers as needed -->
                     </tr>
+                    {{-- <tr id="titleRow" class="patientRow">
+                        <th>Morning Med</th>
+                        <th>Afternoon Med</th>
+                        <th>Night Med</th>
+                        <th>Breakfast</th>
+                        <th>Lunch</th>
+                        <th>Dinner</th>
+
+                        <!-- Add more headers as needed -->
+                    </tr> --}}
+                    @foreach ($patients as $patient)
+                        <tr>
+                            <td>{{ $patient->First_Name }}</td>
+                            <td class="{{ $patient->doctor ? '' : 'highlight-red' }}">
+                                @if ($patient->doctor)
+                                    {{ $patient->doctor->Role_ID }}
+                                @else
+                                    No Doctor Assigned
+                                @endif
+                            </td>
+                            <td class="{{ $patient->doctor ? '' : 'highlight-red' }}">
+                                @if ($patient->doctor)
+                                    {{ $patient->caregiver->Caregiver_ID }}
+                                @else
+                                    No Caregiver Assigned
+                                @endif
+                            </td>
+
+
+                            <!-- Display other patient data -->
+                        </tr>
+                    @endforeach
+
+
+                    {{-- <br>
                     <br>
-                    <br>
+                    
                     <tr id="titleRow" class="patientRow">
                         <td class='rowData'>John Doe</td>
                         <td class='rowData'>Jane Smith</td>
@@ -108,7 +152,7 @@
                         <td class='rowData'>yes</td>
                         <td class='rowData'>no</td>
                         <td class='rowData'>no</td>
-                    </tr>
+                    </tr> --}}
                 </table>
             </div>
         </div>

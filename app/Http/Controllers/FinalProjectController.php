@@ -410,6 +410,7 @@ class FinalProjectController extends Controller
     //Start functions for admins report page
     function showAdminsReport()
     {
+
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
                 return redirect()->back();
@@ -417,10 +418,15 @@ class FinalProjectController extends Controller
         } else {
             return redirect()->back();
         }
+        // Retrieve patient data along with associated doctor and caregiver data
+        $patients = Patient::with(['doctor', 'caregiver'])->get();
 
-        return view("AdminsReport");
+        return view("AdminsReport", compact('patients'));
     }
     //End functions for admins report page
+
+
+
 
     //Start functions for doctors appointment page
     function showDoctorsAppointment()
@@ -638,4 +644,8 @@ class FinalProjectController extends Controller
     //     return view("newRoster");
     // }
     //End functions for patient of doctor page
+
+
+
+
 }
