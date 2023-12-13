@@ -10,9 +10,6 @@
         <!--Functions for form alerts-->
         <script src="app.js"></script>
         <title>Registration Approval</title>
-        <script>
-            checkIfMsgSent();
-        </script>
     </head>
     <header>
         <h3>
@@ -65,6 +62,12 @@
                 <br>
                 <button type="submit">Approve</button>
             </form>
+            <form action="deniedRegister" method="post">
+                @csrf
+                <input type="hidden" name="Role_ID" value={{ $admin->Role_ID }}>
+                <input type="hidden" name="Email" value={{ $admin->Email }}>
+                <button onclick="" id="deny" type="submit">Deny</button>
+            </form>
         @endforeach
         <h2>Supervisors</h2>
         @foreach($supervisors as $supervisor)
@@ -82,7 +85,7 @@
             </form>
             <form action="deniedRegister" method="post">
                 @csrf
-                <input type="text" name="Role_ID" value={{ $supervisor->Role_ID }} readonly>
+                <input type="hidden" name="Role_ID" value={{ $supervisor->Role_ID }}>
                 <input type="hidden" name="Email" value={{ $supervisor->Email }}>
                 <button onclick="" id="deny" type="submit">Deny</button>
             </form>
@@ -101,6 +104,12 @@
                 <br>
                 <button type="submit">Approve</button>
             </form>
+            <form action="deniedRegister" method="post">
+                @csrf
+                <input type="hidden" name="Role_ID" value={{ $doctor->Role_ID }}>
+                <input type="hidden" name="Email" value={{ $doctor->Email }}>
+                <button onclick="" id="deny" type="submit">Deny</button>
+            </form>
         @endforeach
         <h2>Caregivers</h2>
         @foreach($caregivers as $caregiver)
@@ -116,6 +125,12 @@
                 <br>
                 <button type="submit">Approve</button>
             </form>
+            <form action="deniedRegister" method="post">
+                @csrf
+                <input type="hidden" name="Role_ID" value={{ $caregiver->Role_ID }}>
+                <input type="hidden" name="Email" value={{ $caregiver->Email }}>
+                <button onclick="" id="deny" type="submit">Deny</button>
+            </form>
         @endforeach
         <h2>Patients</h2>
         @foreach($patients as $patient)
@@ -130,6 +145,12 @@
                 <br>
                 <br>
                 <button type="submit">Approve</button>
+            </form>
+            <form action="deniedRegister" method="post">
+                @csrf
+                <input type="hidden" name="Role_ID" value={{ $patient->Role_ID }}>
+                <input type="hidden" name="Email" value={{ $patient->Email }}>
+                <button onclick="" id="deny" type="submit">Deny</button>
             </form>
         @endforeach
         <div class="cancelAlert">
