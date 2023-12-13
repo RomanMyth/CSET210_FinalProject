@@ -14,7 +14,7 @@ class Patient extends Model
     protected $fillable = ["Patient_ID", "First_Name", "Last_Name", "Email", "Phone", "Password", "Role_ID", "dob", "Patient_Group", "Admission_Date", "Family_Code", "User_ID"];
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class, 'doctor_id'); // Replace 'doctor_id' with the actual foreign key column
+        return $this->belongsTo(Doctor::class, 'Doctor_id'); // Replace 'doctor_id' with the actual foreign key column
     }
     public function caregiver()
     {
