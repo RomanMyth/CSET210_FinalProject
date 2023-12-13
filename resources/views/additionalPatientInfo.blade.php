@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         var patients = <?php echo $patients; ?>;
-        $(function() {
+        $(document).ready(function() {
                     $("#Patient-ID").change(function() {
                         var patientExists = false;
                         for (const patient of patients) {
