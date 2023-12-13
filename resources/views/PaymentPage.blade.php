@@ -17,9 +17,9 @@
             color: #fff;
             text-align: center;
         }
-
     </style>
 </head>
+
 <body>
     <div class="scene">
         <div class="sun"></div>
@@ -35,14 +35,25 @@
             </form>
         </div>
         <div class='header-btn-section'>
-        <div class="user-dropdown">
-            <button id="btn2">Profile</button>
-            <div class="dropdown-content">
-                {{-- <a href="#">{{ $First_Name }}</a> --}}
-                {{-- <a href="#">{{ $Last_Name }}</a> --}}
-                You exist!
+            <div class="user-dropdown">
+                <button id="btn2">Profile</button>
+                <div class="dropdown-content">
+                    {{-- <a href="#">{{ $First_Name }}</a> --}}
+                    {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                    You exist!
+                </div>
             </div>
-        </div>
+            <<<<<<< HEAD </div>
+                <div class='header-btn-section'>
+                    <form action="logout" method='POST'>
+                        @csrf
+                        <button type='Submit'>Logout</button>
+                    </form>
+                </div>
+    </header>
+
+    <body>
+        =======
         <div class='header-btn-section'>
             <form action="logout" method='POST'>
                 @csrf
@@ -83,8 +94,8 @@
                 <div id="overlay" onclick="hideAlert()"></div>
                 <div class="form-group" id="alertBox">
                     <p>Do you want to reset the form?</p>
-                    <button onclick="resetForm()" >Reset</button>
-                    <button onclick="hideAlert()" >Cancel</button>
+                    <button onclick="resetForm()">Reset</button>
+                    <button onclick="hideAlert()">Cancel</button>
                 </div>
                 <br>
 
