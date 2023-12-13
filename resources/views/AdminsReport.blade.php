@@ -84,6 +84,10 @@
                         <th>Patient's Name</th>
                         <th>Doctor's Name</th>
                         <th>Caregivers ID?</th>
+                        <th>Comment</th>
+                        <th>Morning_Med</th>
+                        <th>Afternoon_Med</th>
+                        <th>Night_Med</th>
 
 
                         <!-- Add more headers as needed -->
@@ -98,25 +102,45 @@
 
                         <!-- Add more headers as needed -->
                     </tr> --}}
-                    @foreach ($patients as $patient)
+                    @foreach ($appointments as $appointment)
                         <tr>
-                            <td>{{ $patient->First_Name }}</td>
-                            <td class="{{ $patient->doctor ? '' : 'highlight-red' }}">
-                                @if ($patient->doctor)
-                                    {{ $patient->doctor->Role_ID }}
+                            <td>{{ $appointment->Patient_ID }}</td>
+                            <td class="{{ $appointment->Doctor_ID ? '' : 'highlight-red' }}">
+                                @if ($appointment->Doctor_ID)
+                                    {{ $appointment->Doctor_ID }}
                                 @else
                                     No Doctor Assigned
                                 @endif
                             </td>
-                            <td class="{{ $patient->doctor ? '' : 'highlight-red' }}">
-                                @if ($patient->doctor)
-                                    {{ $patient->caregiver->Caregiver_ID }}
+                            <td class="{{ $appointment->Patient_ID ? '' : 'highlight-red' }}">
+                                @if ($appointment->Patient_ID)
+                                    {{ $appointment->Patient_ID }}
                                 @else
                                     No Caregiver Assigned
                                 @endif
                             </td>
-
-
+                            <td>{{ $appointment->Comment }}</td>
+                            <td class="{{ $appointment->Morning_Med ? '' : 'highlight-red' }}">
+                                @if ($appointment->Morning_Med)
+                                    {{ $appointment->Morning_Med }}
+                                @else
+                                    No No morning Med Assigned
+                                @endif
+                            </td>
+                            <td class="{{ $appointment->Afternoon_Med ? '' : 'highlight-red' }}">
+                                @if ($appointment->Afternoon_Med)
+                                    {{ $appointment->Afternoon_Med }}
+                                @else
+                                    No Afternoon Med Assigned
+                                @endif
+                            </td>
+                            <td class="{{ $appointment->Night_Med ? '' : 'highlight-red' }}">
+                                @if ($appointment->Night_Med)
+                                    {{ $appointment->Night_Med }}
+                                @else
+                                    No Night Med Assigned
+                                @endif
+                            </td>
                             <!-- Display other patient data -->
                         </tr>
                     @endforeach
