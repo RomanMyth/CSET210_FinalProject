@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +10,15 @@
     <!--Functions for form alerts-->
     <script src="app.js"></script>
     <title>Doctor's Appointment</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+
         var patients = <?php echo $patients; ?>;
-        $(function() {
+        var doctors = <?php echo json_encode($doctors); ?>;
+
+        $(document).ready(function() {
+
             $("#Patient-ID").change(function() {
                 var patientExists = false;
                 for (const patient of patients) {
@@ -35,9 +39,38 @@
             $("#reset").click(function() {
                 $("#First-Name").slideUp("slow");
             });
+            $("#date").change(function() {
+                $("option").each(function(){
+                    this.remove();
+                });
+
+                var date = this.value;
+                var test = (doctors[Object.keys(doctors)[1]]);
+
+                $("#doctor-select").fadeIn("slow");
+                $("#doctor-select-label").fadeIn("slow");
+                
+                for(var i = 0; i<Object.keys(doctors).length;i++){
+                    if(doctors[Object.keys(doctors)[i]]["date"]==date){
+                        console.log(doctors[Object.keys(doctors)[i]]["first_name"]);
+                        $('#doctor-select').append($('<option>', {
+                            value: doctors[Object.keys(doctors)[i]]["doctor_id"],
+                            text: doctors[Object.keys(doctors)[i]]["first_name"],
+                        }));
+                    }
+                }
+            });
         });
     </script>
 </head>
+<style>
+    #First-Name{
+        display: none;
+    }
+    #doctor-select, #doctor-select-label{
+        display: none;
+    }
+</style>
 <header>
     <h3>
         Sunrise Retirement Home
@@ -73,45 +106,40 @@
 </header>
 
 <body>
-    <form id="form" action="" method="POST">
+    <br>
+    <br>
+    <h3>Assign a patient to an available doctor on a specific date</h3>
+    <form id="" action="createAppointment" method="POST">
         @csrf
+        Enter a Patient's ID:
+        <input type="number" name="Patient_ID" id="Patient-ID">
+        <input style="margin-top: 5px" type="text" name="First_Name" value="{{ old("First-Name") }}" id="First-Name" readonly>
+        {{-- only appears when patient id is entered --}}
         <br>
         <br>
-        <h3>Assign a patient to an available doctor on a specific date</h3>
-        <form id="form" action="" method="">
-            Enter a Patient's ID:
-            <input type="number" name="Patient_ID" id="Patient-ID">
-            <input style="margin-top: 5px" type="text" name="First_Name" id="First-Name" readonly>
-            {{-- only appears when patient id is entered --}}
-            <br>
-            <br>
-            <label for="date">Select a date:</label>
-            <input name="date" type="date">
-            <br>
-            <br>
-            <label for="">Select a doctor:</label>
-            <select name="Doctor" id="">
-
-            </select>
-            <br>
-            <br>
-            <button id="submit">Submit</button>
-        </form>
-        <br>
-        <div class="cancelAlert">
-            <button onclick="showAlert()">Cancel</button>
-
-            <div id="overlay" onclick="hideAlert()"></div>
-            <div id="alertBox">
-                <p>Do you want to reset the form?</p>
-                <button id="reset" onclick="resetForm()">Reset</button>
-                <button onclick="hideAlert()">Cancel</button>
-            </div>
-        </div>
+        <label for="date">Select a date:</label>
+        <input name="Date" type="date" id="date">
         <br>
         <br>
-
+        <label for="doctor-select" id="doctor-select-label">Select a doctor:</label>
+        <select name="Doctor_ID" id="doctor-select"></select>
+        <br>
+        <br>
+        <button id="submit">Submit</button>
     </form>
+    <br>
+    <div class="cancelAlert">
+        <button onclick="showAlert()">Cancel</button>
+
+        <div id="overlay" onclick="hideAlert()"></div>
+        <div id="alertBox">
+            <p>Do you want to reset the form?</p>
+            <button id="reset" onclick="resetForm()">Reset</button>
+            <button onclick="hideAlert()">Cancel</button>
+        </div>
+    </div>
+    <br>
+    <br>
 </body>
 
 </html>

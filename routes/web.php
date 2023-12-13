@@ -35,7 +35,8 @@ Route::get('/welcome', [FinalProjectController::class, 'showHomePage']);
 //end return to home function
 
 //Doctors appointment page routes
-Route::get('/DoctorsAppointment', [FinalProjectController::class, 'showDoctorsAppointment']);
+Route::get('/DoctorsAppointment', [FinalProjectController::class,'showDoctorsAppointment']);
+Route::post('/createAppointment', [FinalProjectController::class, 'createAppointment']);
 
 //View Admin Report
 Route::get('/AdminsReport', [FinalProjectController::class, 'showAdminReport']);
