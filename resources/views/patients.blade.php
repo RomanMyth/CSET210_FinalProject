@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script src="app.js"></script>
     <title>Patients</title>
     <style>
         #First-Name {
             display: none;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <<<<<<< HEAD=======<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#search').submit(function(e) {
@@ -39,6 +37,7 @@
             });
         });
     </script>
+    >>>>>>> 5cc0f99fac2e2151f121a3fa9a3d370c28d3783b
 </head>
 <header>
     <h3>
@@ -67,6 +66,7 @@
         </form>
     </div>
 </header>
+
 <body>
     <br>
     <br>
@@ -89,9 +89,16 @@
                     <th>{{ $patient->$patient_emergency_table->Contact_Relation }}</th> --}}
                 <th>{{ $patient->Phone }}</th>
             </tr>
-        @endforeach
+            <tr id="titleRow" class="patientRow">
+                <td class='rowData'>#123</td>
+                <td class='rowData'>John Doe</td>
+                <td class='rowData'>33</td>
+                <td class='rowData'>1234567890</td>
+                <td class='rowData'>Matt Doe</td>
+                <td class='rowData'>11/22/33</td>
+            </tr>
     </table>
-    {{-- <br> --}}
+
 
 
     <form id='search' action="" method="">

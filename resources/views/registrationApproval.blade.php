@@ -11,35 +11,42 @@
         <script src="app.js"></script>
         <title>Registration Approval</title>
     </head>
-    <header>
-        <h3>
-            Sunrise Retirement Home
-        </h3>
-        <div class='header-btn-section'>
+<header>
+    <h3>
+        Sunrise Retirement Home
+    </h3>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <button onclick="goBack()">Go Back</button>
+    {{-- <div class='header-btn-section'>
             <form action="back" method='POST'>
                 @csrf
                 <button type='Submit'>Back</button>
             </form>
-        </div>
-        <div class='header-btn-section'>
-            <div class="user-dropdown">
-                <button id="btn2">Profile</button>
-                <div class="dropdown-content">
-                    {{-- <a href="#">{{ $First_Name }}</a> --}}
-                    {{-- <a href="#">{{ $Last_Name }}</a> --}}
-                    You exist!
-                </div>
+        </div> --}}
+    <div class='header-btn-section'>
+        <div class="user-dropdown">
+            <button id="btn2">Profile</button>
+            <div class="dropdown-content">
+                {{-- <a href="#">{{ $First_Name }}</a> --}}
+                {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                You exist!
             </div>
         </div>
-        <div class='header-btn-section'>
-            <form action="logout" method='POST'>
-                @csrf
-                <button type='Submit'>Logout</button>
-            </form>
-        </div>
-    </header>
-    <body>
-        {{-- @if (isset($denied))
+    </div>
+    <div class='header-btn-section'>
+        <form action="logout" method='POST'>
+            @csrf
+            <button type='Submit'>Logout</button>
+        </form>
+    </div>
+</header>
+
+<body>
+    {{-- @if (isset($denied))
             echo "test";
         
         @else
@@ -158,7 +165,8 @@
             <div id="alertBox">
             <p>User denial successful</p>
             <button onclick="hideAlert()">Ok</button>
-            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
