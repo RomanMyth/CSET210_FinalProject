@@ -105,6 +105,8 @@ Route::get('/Roster',[FinalProjectController::class,'Roster']);
 //New roster page routes
 Route::get('/newRoster', [FinalProjectController::class, 'showNewRoster']);
 
+Route::post('/NewSchedule', [FinalProjectController::class, 'NewSchedule']);
+
 //Family members home routes
 Route::get('/familyMembersHome', [FinalProjectController::class, 'showFamilyMembersHome']);
 
@@ -112,6 +114,5 @@ Route::post('/logout', [FinalProjectController::class, 'logout']);
 
 Route::post('/UpdateSalary', [FinalProjectController::class, 'UpdateSalary']);
 
-Route::post('/NewSchedule', [FinalProjectController::class, 'NewSchedule']);
 
 Route::post('/Back', [FinalProjectController::class, 'LastPage']);
