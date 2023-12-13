@@ -1,5 +1,7 @@
 body{
     margin: 0px;
+    height: 100%;
+    width: 100%;
 }
 .scene{
     position: absolute;
@@ -45,14 +47,15 @@ body{
 } 
 #container{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
+    position: absolute;
 }
 form{
     width: 80%;
     display: flex;
-    height: 300px;
+    height: 260px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -88,13 +91,13 @@ form{
     justify-content: space-evenly;
     align-items: center;
     height: 50%;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 .btn-con{
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     background-color: rgba(134, 184, 224, 0.2);
     border: #000 1px solid;

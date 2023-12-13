@@ -44,7 +44,7 @@
                 <form action={{ url('/doctorsHome') }} method="get">
                     <button class="btn1">Doctors Home</button>
                 </form>
-                <form action={{ url('/patientOfDoc') }} method="get">
+                <form action={{ url('/patientOfDoctor') }} method="get">
                     <button class="btn1">Patient of Doctor</button>
                 </form>
             </div>
@@ -52,7 +52,7 @@
                 <form action={{ url('/patients') }} method="get">
                     <button class="btn1">Patients</button>
                 </form>
-                <form action={{ url('/rosterNewRoster') }} method="get">
+                <form action={{ url('/roster') }} method="get">
                     <button class="btn1">Roster</button>
                 </form>
             </div>
