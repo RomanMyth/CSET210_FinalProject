@@ -12,7 +12,7 @@
             display: none;
         }
     </style>
-    <<<<<<< HEAD=======<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#search').submit(function(e) {
@@ -37,7 +37,6 @@
             });
         });
     </script>
-    >>>>>>> 5cc0f99fac2e2151f121a3fa9a3d370c28d3783b
 </head>
 <header>
     <h3>
@@ -89,14 +88,7 @@
                     <th>{{ $patient->$patient_emergency_table->Contact_Relation }}</th> --}}
                 <th>{{ $patient->Phone }}</th>
             </tr>
-            <tr id="titleRow" class="patientRow">
-                <td class='rowData'>#123</td>
-                <td class='rowData'>John Doe</td>
-                <td class='rowData'>33</td>
-                <td class='rowData'>1234567890</td>
-                <td class='rowData'>Matt Doe</td>
-                <td class='rowData'>11/22/33</td>
-            </tr>
+        @endforeach
     </table>
 
 
