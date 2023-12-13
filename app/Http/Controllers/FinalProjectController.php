@@ -7,6 +7,7 @@ use App\Models\Daily_caregiver_task;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Admin;
+use App\Models\Appointment;
 use App\Models\Supervisor;
 use App\Models\Caregiver;
 use App\Models\Patient;
@@ -445,7 +446,14 @@ class FinalProjectController extends Controller
         }
 
         $patients = DB::table("patients")->get();
-        return view("DoctorsAppointment", ["patients" => $patients]);
+        $doctors = DB::select("SELECT s.date, s.doctor_id, d.first_name FROM `schedules` s JOIN `doctors` d ON d.doctor_ID = s.doctor_ID;");
+        return view("DoctorsAppointment", ["patients" => $patients, "doctors" => $doctors]);
+    }
+
+    function createAppointment(Request $request){
+        $data = $request->all();
+        Appointment::create($data);
+        return redirect()->back();
     }
     //End fuctions for doctors appointment page
 

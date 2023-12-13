@@ -19,11 +19,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script>
             var patients = <?php echo $patients;?>;
-            console.log(patients);
-
             $(document).ready(function(){
                 $("#Patient-ID").change(function(){
-                    console.log('true');
                     var patientExists = false;
                     for (const patient of patients){
                         if(this.value == patient[Object.keys(patient)[0]]){
@@ -119,7 +116,7 @@
                     <div id="overlay" onclick="hideAlert()"></div>
                     <div id="alertBox">
                     <p>Do you want to reset the form?</p>
-                    <button onclick="resetForm()">Reset</button>
+                    <button id="reset" onclick="resetForm()">Reset</button>
                     <button onclick="hideAlert()">Cancel</button>
                     </div>
                 </div>
