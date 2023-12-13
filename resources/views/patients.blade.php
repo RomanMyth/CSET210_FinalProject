@@ -84,10 +84,10 @@
                 <th>{{ $patient->Patient_ID }}</th>
                 <th>{{ $patient->First_Name }}</th>
                 <th>{{ $patient->Last_Name }}</th>
-                <th>{{ $patient->dob }}</th>
+                <th>{{ $patient->Email }}</th>
                 {{-- <th>{{ $patient->$patient_emergency_table->Emergency_Contact }}</th>
                     <th>{{ $patient->$patient_emergency_table->Contact_Relation }}</th> --}}
-                <th>{{ $patient->Admission_Date }}</th>
+                <th>{{ $patient->Phone }}</th>
             </tr>
             <tr id="titleRow" class="patientRow">
                 <td class='rowData'>#123</td>

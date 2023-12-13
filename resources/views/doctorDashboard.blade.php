@@ -52,7 +52,7 @@
                 <form action={{ url('/patients') }} method="get">
                     <button class="btn1">Patients</button>
                 </form>
-                <form action={{ url('/rosterNewRoster') }} method="get">
+                <form action={{ url('/roster') }} method="get">
                     <button class="btn1">Roster</button>
                 </form>
             </div>

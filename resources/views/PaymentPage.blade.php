@@ -143,7 +143,7 @@
 
                    
         
-                    if (patientID.length >= 1 && patientID.length <= 3 )  {
+                    if (patientID.length >= 1 && patientID.length <= 100000 )  {
                         document.getElementById('paymentForm').submit();
                     }
                 }

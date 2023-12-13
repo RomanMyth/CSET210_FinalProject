@@ -158,7 +158,7 @@ class FinalProjectController extends Controller {
 
         DB::table("registrations")->where("Email", $formData["Email"])->delete();
         // return view("viewRegisters")->with('denied', $denied);
-        return $this->viewRegisters();
+        return redirect()->back();
     }
 
     function userLogin(Request $request)

@@ -53,7 +53,7 @@
     <h1>Roles</h1>
     <br>
     <br>
-    <h3>Browse though roles ad their corresponding access levels, along with which pages they can view</h3>
+    <h3>Browse though roles and their corresponding access levels, along with which pages they can view</h3>
     <table id="rolesTable">
         <tr id="titleRow" class="rolesRow">
             <td class='titleRowData'><strong>Role</strong></td>
