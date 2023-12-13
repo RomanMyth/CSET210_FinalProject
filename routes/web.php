@@ -75,7 +75,8 @@ Route::get('/patientsHome', [FinalProjectController::class, 'showPatientsHome'])
 Route::get('/caregiversHome', [FinalProjectController::class, 'showCaregiversHome']);
 
 //Payment Page Routes
-Route::get('/payment', [FinalProjectController::class, 'showPayment']);
+Route::get('/payment', [FinalProjectController::class,'showPayment']);
+Route::post('/updatePayment', [FinalProjectController::class,'updatePayment']);
 
 //Admins Report Page Routes
 Route::get('/adminsReport', [FinalProjectController::class, 'showAdminsReport']);
@@ -98,6 +99,8 @@ Route::get('/patientOfDoctor', [FinalProjectController::class, 'showPatientOfDoc
 
 //Roster page routes
 Route::get('/roster', [FinalProjectController::class, 'showRoster']);
+
+Route::get('/Roster',[FinalProjectController::class,'Roster']);
 
 //New roster page routes
 Route::get('/newRoster', [FinalProjectController::class, 'showNewRoster']);

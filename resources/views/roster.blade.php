@@ -12,6 +12,15 @@
     <style>
 
     </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#date").change(function(){
+                $('#rosterSearchForm').submit();
+            });
+        });
+    </script>
 </head>
 <header>
     <h3>
@@ -51,9 +60,9 @@
     <br>
     <br>
     <h3>Select a secific date to browse through the schedule for that day</h3>
-    <form action="" method="" id="rosterSearchForm">
+    <form action="{{ url('/Roster') }}" method="GET" id="rosterSearchForm">
         <label for="date">Date</label>
-        <input type="date" name="date" id="">
+        <input type="date" name="Date" id="date" value="{{ $users[0]->Date }}">
     </form>
     <br>
     <br>
@@ -69,12 +78,12 @@
         </tr>
         <tr class=" rosterRow">
             <td class=" rosterData"><strong>Name</strong></td>
-            <td class=" rosterData">John Doe</td>
-            <td class=" rosterData">Jane Smith</td>
-            <td class=" rosterData">asdf</td>
-            <td class=" rosterData">qwerty</td>
-            <td class=" rosterData">zxcv</td>
-            <td class=" rosterData">poiuyt</td>
+            <td class=" rosterData">{{ $users[0]->Supervisor }}</td>
+            <td class=" rosterData">{{ $users[0]->Doctor }}</td>
+            <td class=" rosterData">{{ $users[0]->Caregiver1}}</td>
+            <td class=" rosterData">{{ $users[0]->Caregiver2 }}</td>
+            <td class=" rosterData">{{ $users[0]->Caregiver3 }}</td>
+            <td class=" rosterData">{{ $users[0]->Caregiver4 }}</td>
         </tr>
         <tr class=" rosterRow">
             <td class=" rosterData"><strong>Patient Group</strong></td>

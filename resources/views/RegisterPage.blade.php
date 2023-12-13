@@ -157,7 +157,7 @@
                 <div class="marg">
                     <label for="First_Name" id="font1">First Name:</label>
                     <br>
-                    <input type="text" id="First_Name" name="First_Name" required class="lg2">
+                    <input type="text" id="First_Name" name="First_Name" value='{{ old("First_Name") }}' required class="lg2">
                 </div>
                 <div class="marg">
                     <label for="Last_Name" id="font1">Last Name:</label>
