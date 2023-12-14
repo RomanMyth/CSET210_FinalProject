@@ -433,18 +433,29 @@ class FinalProjectController extends Controller
 
     //Start functions for admins report page
 
-    public function showAdminsReport()
+    public function showAdminsReport(Request $request)
     {
-        if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
-                return redirect()->back();
-            }
-        } else {
+        // Check session role
+        if (!isset($_SESSION['role']) || ($_SESSION['role'] != 1 && $_SESSION['role'] != 3)) {
             return redirect()->back();
         }
 
         // Retrieve appointment data
-        $appointments = Appointment::all();
+        $date = $request->input('date');
+
+        // Retrieve appointment data based on date if provided, otherwise fetch all appointments
+        $appointments = Appointment::query();
+
+        if ($date) {
+            $appointments = $appointments->whereDate('Date', $date);
+        }
+
+        $appointments = $appointments->get();
+
+        // Check if appointments are empty for the provided date, if so, fetch all appointments
+        if ($date && $appointments->isEmpty()) {
+            $appointments = Appointment::all(); // Fetch all appointments
+        }
 
         return view("AdminsReport", compact('appointments'));
     }
