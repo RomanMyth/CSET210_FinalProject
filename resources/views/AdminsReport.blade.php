@@ -22,7 +22,7 @@
     </h3>
 
     <div class='header-btn-section'>
-        <form action="back" method='POST'>
+        <form action="{{ URL::previous() }}" method='GET'>
             @csrf
             <button type='Submit'>Back</button>
         </form>
@@ -68,7 +68,7 @@
 
 
             <div class="btn-con1">
-                <form id="adminsReportForm" action="" method="">
+                <form id="adminsReportForm" action='adminsReport' method="GET">
                     <label for="date" name="date">Select Date</label>
                     <input type="date" name="date" id="textbox">
                     <br>
@@ -92,16 +92,7 @@
 
                         <!-- Add more headers as needed -->
                     </tr>
-                    {{-- <tr id="titleRow" class="patientRow">
-                        <th>Morning Med</th>
-                        <th>Afternoon Med</th>
-                        <th>Night Med</th>
-                        <th>Breakfast</th>
-                        <th>Lunch</th>
-                        <th>Dinner</th>
 
-                        <!-- Add more headers as needed -->
-                    </tr> --}}
                     @foreach ($appointments as $appointment)
                         <tr>
                             <td>{{ $appointment->Patient_ID }}</td>
@@ -146,37 +137,7 @@
                     @endforeach
 
 
-                    {{-- <br>
-                    <br>
-                    
-                    <tr id="titleRow" class="patientRow">
-                        <td class='rowData'>John Doe</td>
-                        <td class='rowData'>Jane Smith</td>
-                        <td class='rowData'>11/22/33</td>
-                        <td class='rowData'>Anne Smith</td>
 
-                    </tr>
-                    <br>
-                    <br>
-                    <br>
-                    <tr>
-                        <td class='titleRowData'><strong>Morning Med</strong></td>
-                        <td class='titleRowData'><strong>Afternoon Med</strong></td>
-                        <td class='titleRowData'><strong>Night Med</strong></td>
-                        <td class='titleRowData'><strong>Breakfast</strong></td>
-                        <td class='titleRowData'><strong>Lunch</strong></td>
-                        <td class='titleRowData'><strong>Dinner</strong></td>
-                    </tr>
-
-
-                    <tr id="titleRow" class="patientRow">
-                        <td class='rowData'>yes</td>
-                        <td class='rowData'>no</td>
-                        <td class='rowData'>no</td>
-                        <td class='rowData'>yes</td>
-                        <td class='rowData'>no</td>
-                        <td class='rowData'>no</td>
-                    </tr> --}}
                 </table>
             </div>
         </div>
