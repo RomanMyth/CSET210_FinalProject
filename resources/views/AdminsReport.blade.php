@@ -22,7 +22,7 @@
     </h3>
 
     <div class='header-btn-section'>
-        <form action="back" method='POST'>
+        <form action="{{ URL::previous() }}" method='GET'>
             @csrf
             <button type='Submit'>Back</button>
         </form>
@@ -68,7 +68,7 @@
 
 
             <div class="btn-con1">
-                <form id="adminsReportForm" action="" method="">
+                <form id="adminsReportForm" action='adminsReport' method="GET">
                     <label for="date" name="date">Select Date</label>
                     <input type="date" name="date" id="textbox">
                     <br>
@@ -84,75 +84,60 @@
                         <th>Patient's Name</th>
                         <th>Doctor's Name</th>
                         <th>Caregivers ID?</th>
+                        <th>Comment</th>
+                        <th>Morning_Med</th>
+                        <th>Afternoon_Med</th>
+                        <th>Night_Med</th>
 
 
                         <!-- Add more headers as needed -->
                     </tr>
-                    {{-- <tr id="titleRow" class="patientRow">
-                        <th>Morning Med</th>
-                        <th>Afternoon Med</th>
-                        <th>Night Med</th>
-                        <th>Breakfast</th>
-                        <th>Lunch</th>
-                        <th>Dinner</th>
 
-                        <!-- Add more headers as needed -->
-                    </tr> --}}
-                    @foreach ($patients as $patient)
+                    @foreach ($appointments as $appointment)
                         <tr>
-                            <td>{{ $patient->First_Name }}</td>
-                            <td class="{{ $patient->doctor ? '' : 'highlight-red' }}">
-                                @if ($patient->doctor)
-                                    {{ $patient->doctor->Role_ID }}
+                            <td>{{ $appointment->Patient_ID }}</td>
+                            <td class="{{ $appointment->Doctor_ID ? '' : 'highlight-red' }}">
+                                @if ($appointment->Doctor_ID)
+                                    {{ $appointment->Doctor_ID }}
                                 @else
                                     No Doctor Assigned
                                 @endif
                             </td>
-                            <td class="{{ $patient->doctor ? '' : 'highlight-red' }}">
-                                @if ($patient->doctor)
-                                    {{ $patient->caregiver->Caregiver_ID }}
+                            <td class="{{ $appointment->Patient_ID ? '' : 'highlight-red' }}">
+                                @if ($appointment->Patient_ID)
+                                    {{ $appointment->Patient_ID }}
                                 @else
                                     No Caregiver Assigned
                                 @endif
                             </td>
-
-
+                            <td>{{ $appointment->Comment }}</td>
+                            <td class="{{ $appointment->Morning_Med ? '' : 'highlight-red' }}">
+                                @if ($appointment->Morning_Med)
+                                    {{ $appointment->Morning_Med }}
+                                @else
+                                    No No morning Med Assigned
+                                @endif
+                            </td>
+                            <td class="{{ $appointment->Afternoon_Med ? '' : 'highlight-red' }}">
+                                @if ($appointment->Afternoon_Med)
+                                    {{ $appointment->Afternoon_Med }}
+                                @else
+                                    No Afternoon Med Assigned
+                                @endif
+                            </td>
+                            <td class="{{ $appointment->Night_Med ? '' : 'highlight-red' }}">
+                                @if ($appointment->Night_Med)
+                                    {{ $appointment->Night_Med }}
+                                @else
+                                    No Night Med Assigned
+                                @endif
+                            </td>
                             <!-- Display other patient data -->
                         </tr>
                     @endforeach
 
 
-                    {{-- <br>
-                    <br>
-                    
-                    <tr id="titleRow" class="patientRow">
-                        <td class='rowData'>John Doe</td>
-                        <td class='rowData'>Jane Smith</td>
-                        <td class='rowData'>11/22/33</td>
-                        <td class='rowData'>Anne Smith</td>
 
-                    </tr>
-                    <br>
-                    <br>
-                    <br>
-                    <tr>
-                        <td class='titleRowData'><strong>Morning Med</strong></td>
-                        <td class='titleRowData'><strong>Afternoon Med</strong></td>
-                        <td class='titleRowData'><strong>Night Med</strong></td>
-                        <td class='titleRowData'><strong>Breakfast</strong></td>
-                        <td class='titleRowData'><strong>Lunch</strong></td>
-                        <td class='titleRowData'><strong>Dinner</strong></td>
-                    </tr>
-
-
-                    <tr id="titleRow" class="patientRow">
-                        <td class='rowData'>yes</td>
-                        <td class='rowData'>no</td>
-                        <td class='rowData'>no</td>
-                        <td class='rowData'>yes</td>
-                        <td class='rowData'>no</td>
-                        <td class='rowData'>no</td>
-                    </tr> --}}
                 </table>
             </div>
         </div>
