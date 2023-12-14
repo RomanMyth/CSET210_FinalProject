@@ -22,7 +22,8 @@ use App\Models\User;
 //session_destroy();
 session_start();
 
-class FinalProjectController extends Controller {
+class FinalProjectController extends Controller
+{
     function viewRegisters()
     {
         if (isset($_SESSION['role'])) {
@@ -404,37 +405,37 @@ class FinalProjectController extends Controller {
             return redirect()->back();
         }
 
-        if($request->patientID !== null){
+        if ($request->patientID !== null) {
 
-            
+
             $patient_id = $request->patientID;
             $patient = DB::select('select * from payments where Patient_ID = ?', [$patient_id]);
-            
-            if($patient === []){
+
+            if ($patient === []) {
                 $patient[0] = [];
             }
-           
-            return view('paymentPage', ['data'=>$patient[0]]);
+
+            return view('paymentPage', ['data' => $patient[0]]);
         }
         return view('paymentPage');
     }
 
-    public function updatePayment(Request $request){
+    public function updatePayment(Request $request)
+    {
         $payment = DB::select('select * from payments where Patient_ID = ?', [$request->patientID]);
         DB::table('payments')
-        ->where('Patient_ID', $request->patientID)
-        ->update(['Payment_Amount' => $request->amountDue]);
+            ->where('Patient_ID', $request->patientID)
+            ->update(['Payment_Amount' => $request->amountDue]);
         return view('PaymentPage');
-
-     
     }
 
-        
+
 
     //End functions for payment page
 
     //Start functions for admins report page
-    function showAdminsReport()
+
+    public function showAdminsReport()
     {
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] != 1 && $_SESSION['role'] != 3) {
@@ -443,11 +444,13 @@ class FinalProjectController extends Controller {
         } else {
             return redirect()->back();
         }
-        // Retrieve patient data along with associated doctor and caregiver data
-        $patients = Patient::with(['doctor', 'caregiver'])->get();
 
-        return view("AdminsReport", compact('patients'));
+        // Retrieve appointment data
+        $appointments = Appointment::all();
+
+        return view("AdminsReport", compact('appointments'));
     }
+
     //End functions for admins report page
 
 
@@ -469,7 +472,8 @@ class FinalProjectController extends Controller {
         return view("DoctorsAppointment", ["patients" => $patients, "doctors" => $doctors]);
     }
 
-    function createAppointment(Request $request){
+    function createAppointment(Request $request)
+    {
         $data = $request->all();
         Appointment::create($data);
         return redirect()->back();
@@ -566,18 +570,19 @@ class FinalProjectController extends Controller {
         //     $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = $request->Date;");
         // }
         $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = CURRENT_DATE;");
-        
-        return view("roster", ["users"=> $Users]);
+
+        return view("roster", ["users" => $Users]);
     }
 
-    function Roster(Request $request){
-        if(!isset($_SESSION['role'])){
+    function Roster(Request $request)
+    {
+        if (!isset($_SESSION['role'])) {
             return redirect()->back();
         }
 
         $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = '$request->Date';");
-        
-        return view("roster", ["users"=> $Users]);
+
+        return view("roster", ["users" => $Users]);
     }
 
     //End functions for roster page
