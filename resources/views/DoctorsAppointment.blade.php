@@ -38,6 +38,8 @@
             });
             $("#reset").click(function() {
                 $("#First-Name").slideUp("slow");
+                $("#doctor-select").slideUp("slow");
+                $("#doctor-select-label").slideUp("slow");
             });
             $("#date").change(function() {
                 $("option").each(function(){
@@ -109,7 +111,7 @@
     <br>
     <br>
     <h3>Assign a patient to an available doctor on a specific date</h3>
-    <form id="" action="createAppointment" method="POST">
+    <form id="form" action="createAppointment" method="POST">
         @csrf
         Enter a Patient's ID:
         <input type="number" name="Patient_ID" id="Patient-ID">

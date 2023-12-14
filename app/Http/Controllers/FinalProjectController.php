@@ -186,8 +186,8 @@ class FinalProjectController extends Controller {
             return redirect("/adminDashboard");
         }
         if ($user['Role_ID'] == 2) {
-            //$doctor = DB::table('users')->where('Email', $fields["Email"])->first()->Doctor_ID;
-            //$_SESSION["User"] = $doctor;
+            $doctor = DB::table('doctors')->where('Email', $fields["Email"])->first()->Doctor_ID;
+            $_SESSION["User"] = $doctor;
 
             return redirect('/doctorDashboard');
         }
@@ -389,8 +389,19 @@ class FinalProjectController extends Controller {
     //Start functions for Doctors Home
     function showDoctorsHome()
     {
-        return view("doctorsHome");
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 2) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+        $doctor = $_SESSION['User'];
+
+        $appointments = DB::select("SELECT a.Doctor_ID, a.Patient_ID, a.Date, a.Comment, a.Morning_Med, a.Afternoon_Med, a.Night_Med, p.First_Name FROM `appointments` a JOIN `patients` p ON p.Patient_ID = a.Patient_ID WHERE Doctor_ID = $doctor;");
+        return view("doctorsHome", ["appointments" => $appointments]);
     }
+
     //End function for Doctors Home
 
     //Start functions for payment page
@@ -566,7 +577,6 @@ class FinalProjectController extends Controller {
         //     $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = $request->Date;");
         // }
         $Users = DB::select("SELECT r.Date, s.First_Name as Supervisor, d.First_Name as Doctor, c1.First_Name as Caregiver1, c2.First_Name as Caregiver2, c3.First_Name as Caregiver3, c4.First_Name as Caregiver4 FROM schedules r JOIN supervisors s JOIN doctors d Join caregivers c1 JOIN caregivers c2 JOIN caregivers c3 JOIN caregivers c4 ON r.Supervisor_ID = s.Supervisor_ID AND r.Doctor_ID = d.Doctor_ID AND r.Caregiver1 = c1.Caregiver_ID AND r.Caregiver2 = c2.Caregiver_ID AND r.Caregiver3 = c3.Caregiver_ID AND r.Caregiver4 = c4.Caregiver_ID WHERE r.Date = CURRENT_DATE;");
-        
         return view("roster", ["users"=> $Users]);
     }
 
