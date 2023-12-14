@@ -187,8 +187,8 @@ class FinalProjectController extends Controller
             return redirect("/adminDashboard");
         }
         if ($user['Role_ID'] == 2) {
-            //$doctor = DB::table('users')->where('Email', $fields["Email"])->first()->Doctor_ID;
-            //$_SESSION["User"] = $doctor;
+            $doctor = DB::table('doctors')->where('Email', $fields["Email"])->first()->Doctor_ID;
+            $_SESSION["User"] = $doctor;
 
             return redirect('/doctorDashboard');
         }
@@ -390,8 +390,19 @@ class FinalProjectController extends Controller
     //Start functions for Doctors Home
     function showDoctorsHome()
     {
-        return view("doctorsHome");
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 2) {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back();
+        }
+        $doctor = $_SESSION['User'];
+
+        $appointments = DB::select("SELECT a.Doctor_ID, a.Patient_ID, a.Date, a.Comment, a.Morning_Med, a.Afternoon_Med, a.Night_Med, p.First_Name FROM `appointments` a JOIN `patients` p ON p.Patient_ID = a.Patient_ID WHERE Doctor_ID = $doctor;");
+        return view("doctorsHome", ["appointments" => $appointments]);
     }
+
     //End function for Doctors Home
 
     //Start functions for payment page

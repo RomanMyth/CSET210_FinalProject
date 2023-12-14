@@ -43,7 +43,13 @@
                         $("#New-Patient-Group").slideUp("slow");
                         $("#New-Patient-Group-Input").slideUp("slow");
                     });
+        });
     </script>
+    <style>
+    #First-Name{
+        display: none;
+    }
+</style>
 </head>
 <header>
     <h3>
@@ -89,6 +95,8 @@
                     @csrf
                     Enter a Patients ID:
                     <input class="textbox" type="number" name="Patient_ID" id="Patient-ID">
+                    <br>
+                    <br>
                     <input type="text" name="First_Name" id="First-Name" readonly>
                     <br>
                     <br>
@@ -99,18 +107,22 @@
                     Admission Date:
                     <input class="textbox" type="date" name="Addmission_Date" id="Addmission-Date" readonly>
                     <br>
+                    <br>
                     <label for="New-Patient-Group" class="New-Patient-Group">New Group For Patient:</label>
                     <input type="number" class="New-Patient-Group" name="New-Patient-Group" min="1"
                         max="4" required>
                     <br>
+                    <br>
                     <button type="Submit" class="btn1">Change Patient's Group</button>
+                    <br>
+                    <br>
                 </form>
                 <div class="cancelAlert">
                     <button onclick="showAlert()" id="btn2">Cancel</button>
                     <div id="overlay" onclick="hideAlert()"></div>
                     <div id="alertBox">
                         <p>Do you want to reset the form?</p>
-                        <button onclick="resetForm()">Reset</button>
+                        <button id="reset" onclick="resetForm()">Reset</button>
                         <button onclick="hideAlert()">Cancel</button>
                     </div>
                 </div>

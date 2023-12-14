@@ -8,6 +8,31 @@
     <!--Style for form alerts-->
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Doctors Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search').submit(function(e) {
+                e.preventDefault();
+                var searchText = $('input[name="search"]').val().toLowerCase();
+
+                $('table tr:gt(0)').each(function() {
+                    var found = false;
+                    $(this).find('th').each(function() {
+                        var cellText = $(this).text().toLowerCase();
+                        if (cellText.indexOf(searchText) !== -1) {
+                            found = true;
+                            return false; // Break the loop if match found
+                        }
+                    });
+                    if (found) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <header>
     <h3>
@@ -40,13 +65,8 @@
     <h1>Doctor's Home</h1>
     <br>
     <br>
-    <h2>You are signed in as Dr.</h2>
-    <h2>firstName</h2>
-    <h2>lastname</h2>
-    <br>
-    <br>
-    <h1>Past Appointments</h1>
-    <table id="docHomeTable">
+    <h2>Past Appointments</h2>
+    <table id="">
         <tr id="titleRow" class="docRow">
             <td class='titleRowData'></td>
             <td class='titleRowData'><strong>Patient Name</strong></td>
@@ -56,77 +76,60 @@
             <td class='titleRowData'><strong>Afternoon Med</strong></td>
             <td class='titleRowData'><strong>Night Med</strong></td>
         </tr>
-        <tr id="titleRow" class="docRow">
-            <td class='titleRowData'>
+        @foreach ($appointments as $appointment)
+        <tr>
+            <th>                
                 <form action={{ url('/patientOfDoc') }} method="get">
                     <button>Info</button>
                 </form>
-            </td>
-            <td class='rowData'>John Doe</td>
-            <td class='rowData'>11/22/33</td>
-            <td class='rowData'>He deed</td>
-            <td class='rowData'>yes</td>
-            <td class='rowData'>no</td>
-            <td class='rowData'>no</td>
+            </th>
+            <th>{{ $appointment->First_Name }}</th>
+            <th>{{ $appointment->Date }}</th>
+            <th>{{ $appointment->Comment }}</th>
+            <th>{{ $appointment->Morning_Med }}</th>
+            <th>{{ $appointment->Afternoon_Med }}</th>
+            <th>{{ $appointment->Night_Med }}</th>
         </tr>
-        <tr id="titleRow" class="docRow">
-            <td class='rowData'>
-                <form action={{ url('/patientOfDoc') }} method="get">
-                    <button>Info</button>
-                </form>
-            </td>
-            <td class='rowData'>John Doe</td>
-            <td class='rowData'>11/22/33</td>
-            <td class='rowData'>He deed</td>
-            <td class='rowData'>yes</td>
-            <td class='rowData'>no</td>
-            <td class='rowData'>no</td>
-        </tr>
+        @endforeach
     </table>
-    <form action="searchPastAppointments" method="post">
-        <div class="form-group">
-            <button type="submit" value="Submit">Search</button>
-        </div>
+    <form id="search" action="" method="">
         <div class="form-group">
             <label for="search"></label>
-            <input type="text" id="text" name="text">
-        </div>
-    </form>
-    <br>
-    <br>
-    <h1>Future Appointments</h1>
-    <p>Search for all your upcoming patient appointments from today until a specified date</p>
-    <form id="appointmentsForm" action="appointmentsForm" mehtod="POST">
-        <div class="form-group">
-            <label for="date">Future Date</label>
-            <input type="date" id="date" name="date">
+            <input type="text" id="text" name="search">
         </div>
         <br>
         <div class="form-group">
-            <button type="submit" value="Submit">Search</button>
+            <button id="search" type="submit" name="search" value="Submit">Search</button>
         </div>
     </form>
     <br>
-    <table id="docHomeTable">
+    <br>
+    {{-- <h1>Future Appointments</h1>
+    <p>Search for all your upcoming patient appointments from today until a specified date</p>
+    <form id="appointmentsForm" action="" mehtod="">
+        <div class="form-group">
+            <label for="date">Future Date</label>
+            <input type="date" id="inputDate" name="date">
+        </div>
+        <br>
+        <div class="form-group">
+            <button onclick="filterTable()" type="button" value="">Search</button>
+        </div>
+    </form>
+    <br>
+    <table id="dataTable">
         <tr id="titleRow" class="docRow">
             <td class='titleRowData'><strong>Patient Name</strong></td>
             <td class='titleRowData'><strong>Appointment Date</strong></td>
         </tr>
-        <tr id="titleRow" class="docRow">
-            <td class='titleRowData'>John Doe</td>
-            <td class='titleRowData'>11/22/33</td>
+        @foreach ($appointments as $appointment)
+        <tr>
+            <th>{{ $appointment->First_Name }}</th>
+            <th>{{ $appointment->Date }}</th>
         </tr>
+        @endforeach
     </table>
     <br>
-    <br>
-    <form action={{ url('/patients') }} method="get">
-        <button>Patients</button>
-    </form>
-    <br>
-    <form action={{ url('/rosterNewRoster') }} method="get">
-        <button>Roster</button>
-    </form>
-    <br>
-    <br>
+    <br> --}}
 </body>
 </html>
