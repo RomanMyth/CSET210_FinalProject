@@ -631,7 +631,8 @@ class FinalProjectController extends Controller
     //Start functions for family memebrs home page
     function showFamilyMembersHome()
     {
-        return view("familyMembersHome");
+        $patients = Patient::all();
+        return view("familyMembersHome", ['patients' => $patients]);
     }
     //End functions for family memebrs home page
 

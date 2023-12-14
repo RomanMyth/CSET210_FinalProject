@@ -20,14 +20,12 @@
             <h1 class="boxed">Supervisor Dashboard</h1>
             <div class="user-dropdown">
                 <button id="btn2">Profile</button>
-                <div class="dropdown-content">
-                    {{-- <a href="#">{{ $First_Name }}</a>
-                    <a href="#">{{ $Last_Name }}</a> --}}
-                    <form action="logout" method='POST'>
-                        @csrf
-                        <button type='Submit'>Logout</button>
-                    </form>
-                </div>
+                    {{-- <a href="#">{{ $First_Name }}</a> --}}
+                    {{-- <a href="#">{{ $Last_Name }}</a> --}}
+                <form action="logout" method='POST' id="Logout" class="dropdown-content">
+                    @csrf
+                    <button type='Submit' id="logout-btn">Logout</button>
+                </form>
             </div>
         </header>
         <div id="hold">

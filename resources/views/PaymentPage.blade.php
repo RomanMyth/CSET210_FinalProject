@@ -43,28 +43,19 @@
                     You exist!
                 </div>
             </div>
-            <<<<<<< HEAD </div>
-                <div class='header-btn-section'>
-                    <form action="logout" method='POST'>
-                        @csrf
-                        <button type='Submit'>Logout</button>
-                    </form>
-                </div>
+            <div class='header-btn-section'>
+                <form action="logout" method='POST'>
+                    @csrf
+                    <button type='Submit'>Logout</button>
+                </form>
+            </div>
+        </div>
     </header>
 
     <body>
-        =======
-        <div class='header-btn-section'>
-            <form action="logout" method='POST'>
-                @csrf
-                <button type='Submit'>Logout</button>
-            </form>
-        </div>
-    </header>
     <div class="payment-container">
         <h2>Payment</h2>
         <form  action="{{ url('/payment') }}" method="GET" name="paymentForm" id="paymentForm">
-
             @csrf
             <div class="form-group">
                 <label for="patientID">Patient ID:</label>
@@ -78,16 +69,12 @@
                 <label for="newPayment">New Payment ($):</label>
                 <input type="number" id="newPayment" name="newPayment" step="0.01">
             </div>
-
-            
-            
         </form>
 
         <div class="form-group">
             <input type="submit" value="Submit Payment" onclick="changeAmount()">
         </div>
 
-      
         <br>
         <div class="cancelAlert">
             <button onclick="showAlert()">Cancel</button>
