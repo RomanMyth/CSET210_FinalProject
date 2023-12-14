@@ -15,35 +15,41 @@
     <script>
         var patients = <?php echo $patients; ?>;
         $(document).ready(function() {
-                    $("#Patient-ID").change(function() {
-                        var patientExists = false;
-                        for (const patient of patients) {
-                            if (this.value == patient[Object.keys(patient)[0]]) {
-                                $("#First-Name").val(patient[Object.keys(patient)[1]]).fadeIn('slow');
-                                $("#Patient-Group").val(patient[Object.keys(patient)[8]]);
-                                $("#Addmission-Date").val(patient[Object.keys(patient)[9]]);
-                                $("#First-Name").slideDown("slow");
-                                $(".New-Patient-Group").slideDown("slow");
-                                patientExists = true;
-                                break;
-                            } else {
-                                patientExists = false;
-                            }
-                        }
-                        if (!patientExists) {
-                            $("#First-Name").slideUp("slow");
-                            $(".New-Patient-Group").slideUp("slow");
-                            $("#First-Name").val(null);
-                            $("#Patient-Group").val(null);
-                            $("#Addmission-Date").val(null);
-                        }
-                    });
-                    $("#reset").click(function() {
-                        $("#First-Name").slideUp("slow");
-                        $("#New-Patient-Group").slideUp("slow");
-                        $("#New-Patient-Group-Input").slideUp("slow");
-                    });
+            $("#Patient-ID").change(function() {
+                var patientExists = false;
+                for (const patient of patients) {
+                    if (this.value == patient[Object.keys(patient)[0]]) {
+                        $("#First-Name").val(patient[Object.keys(patient)[1]]).fadeIn('slow');
+                        $("#Patient-Group").val(patient[Object.keys(patient)[8]]);
+                        $("#Addmission-Date").val(patient[Object.keys(patient)[9]]);
+                        $("#First-Name").slideDown("slow");
+                        $(".New-Patient-Group").slideDown("slow");
+                        patientExists = true;
+                        break;
+                    } else {
+                        patientExists = false;
+                    }
+                }
+                if (!patientExists) {
+                    $("#First-Name").slideUp("slow");
+                    $(".New-Patient-Group").slideUp("slow");
+                    $("#First-Name").val(null);
+                    $("#Patient-Group").val(null);
+                    $("#Addmission-Date").val(null);
+                }
+            });
+            $("#reset").click(function() {
+                $("#First-Name").slideUp("slow");
+                $("#New-Patient-Group").slideUp("slow");
+                $("#New-Patient-Group-Input").slideUp("slow");
+            });
+        });
     </script>
+    <style>
+        #First-Name{
+            display: none;
+        }
+    </style>
 </head>
 <header>
     <h3>

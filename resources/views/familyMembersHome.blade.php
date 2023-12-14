@@ -10,6 +10,64 @@
     <!--Functions for form alerts-->
     <script src="app.js"></script>
     <title>Family Member's Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+
+        var patients = <?php echo $patients; ?>;
+
+        $(document).ready(function() {
+            console.log(patients);
+            // $("#Patient-ID").change(function() {
+            //     var patientExists = false;
+            //     for (const patient of patients) {
+            //         if (this.value == patient[Object.keys(patient)[0]]) {
+            //             $("#First-Name").val(patient[Object.keys(patient)[1]]).fadeIn('slow');
+            //             $("#First-Name").slideDown("slow");
+            //             patientExists = true;
+            //             break;
+            //         } else {
+            //             patientExists = false;
+            //         }
+            //     }
+            //     if (!patientExists) {
+            //         $("#First-Name").slideUp("slow");
+            //         $("#First-Name").val(null);
+            //     }
+            // });
+            $('#submit').click(function(){
+                for(var i = 0; i < Object.keys(patients).length; i++){
+                    // console.log(typeof(patients[Object.keys(patients)[i]]['Family_Code']))
+                    // console.log($('#familyCode').val());
+                    // console.log(patients[Object.keys(patients)[i]]['Family_Code']);
+                    if($('#familyCode').val() == patients[Object.keys(patients)[i]]['Family_Code'] && $('#patientID').val() == patients[Object.keys(patients)[i]]['Patient_ID']){
+                        // console.log("test");
+                        console.log(patients[Object.keys(patients)[i]]['Family_Code']);
+                    }
+                }
+            });
+            // $("#date").change(function() {
+            //     $("option").each(function(){
+            //         this.remove();
+            //     });
+
+            //     var date = this.value;
+            //     var test = (doctors[Object.keys(doctors)[1]]);
+
+            //     $("#doctor-select").fadeIn("slow");
+            //     $("#doctor-select-label").fadeIn("slow");
+                
+            //     for(var i = 0; i<Object.keys(doctors).length;i++){
+            //         if(doctors[Object.keys(doctors)[i]]["date"]==date){
+            //             console.log(doctors[Object.keys(doctors)[i]]["first_name"]);
+            //             $('#doctor-select').append($('<option>', {
+            //                 value: doctors[Object.keys(doctors)[i]]["doctor_id"],
+            //                 text: doctors[Object.keys(doctors)[i]]["first_name"],
+            //             }));
+            //         }
+            //     }
+            // });
+        });
+    </script>
 </head>
 <body>
     <h1>Family Member's Home</h1>
@@ -18,21 +76,19 @@
     <h3>Please enter the date, your family code, and your
         patient ID to view all patient details
     </h3>
-    <form id="form" action="" method="">
-        <label for="date" name="date">Select Date</label>
-        <input type="date" name="date">
-        <br>
-        <br>
-        <label for="familyCode">Family Code</label>
-        <input type="text" name="familyCode" id="">
-        <br>
-        <br>
-        <label for="patientID">Patient ID</label>
-        <input type="text" name="patientID" id="">
-        <br>
-        <br>
-        <button onclick="showSection()" type="button" name="submit">Ok</button>
-    </form>
+    <label for="date" name="date">Select Date</label>
+    <input type="date" name="date" id="date">
+    <br>
+    <br>
+    <label for="familyCode">Family Code</label>
+    <input type="number" name="familyCode" id="familyCode">
+    <br>
+    <br>
+    <label for="patientID">Patient ID</label>
+    <input type="number" name="patientID" id="patientID">
+    <br>
+    <br>
+    <button id="submit" type="button" name="submit">Ok</button>
     <br>
     <div class="cancelAlert">
         <button onclick="showAlert()">Cancel</button>
@@ -45,7 +101,6 @@
         </div>
     </div>
     <div id="patient-details-section">
-        <h1>Patient Details (hidden until info above is entered)</h1>
         <table id="familyMembersHomeTable">
             <tr id="titleRow" class="familyRow">
                 <td class='titleRowData'><strong>Doctor's Name</strong></td>
