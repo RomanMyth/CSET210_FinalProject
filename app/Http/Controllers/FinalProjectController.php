@@ -196,6 +196,8 @@ class FinalProjectController extends Controller
             return redirect('/supervisorDashboard');
         }
         if ($user['Role_ID'] == 4) {
+            $caregiver = DB::table('caregivers')->where('Email', $fields["Email"])->first()->Caregiver_ID;
+            $_SESSION["User"] = $caregiver;
             return redirect('/caregiverDashboard');
         }
         if ($user['Role_ID'] == 5) {
